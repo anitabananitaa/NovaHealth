@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-
-class Menu extends Component {
+class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return <div> AAAAAAAAAAAAA</div>;
   }
 }
 
-export default Menu;
+export default Input;

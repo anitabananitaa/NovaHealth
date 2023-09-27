@@ -8,21 +8,29 @@ class Login extends Component {
     this.state = {};
   }
   render() {
+    const { usuario, contraseña } = this.state;
     return (
       <div class="contenedor">
-        <h1>Login</h1>
-        <div class="formulario">
-          <Input titulo="Usuario" />
-          <i class="bx bxs-user"></i>
+        <div className="logeo">
+          <h1>Acceso</h1>
+          <div class="formulario">
+            Usuario:
+            <Input titulo="Usuario" />
+          </div>
+          <div class="formulario">
+            Contraseña:
+            <Input titulo="Contraseña" />
+          </div>
+          <div className="botonera">
+            <Boton
+              titulo="Iniciar sesión"
+              placeholder="Iniciar sesión"
+              type="submit"
+              class="btn"
+              id="logear"
+            />
+          </div>
         </div>
-        <div class="formulario">
-          <Input titulo="Materia" />
-          <i class="bx bxs-lock-alt"></i>
-        </div>
-        <Boton type="submit" class="btn" id="logear" />
-        Log in
-        <Boton type="submit" class="btn" onclick="redireccionar()" id="crear" />
-        Create
       </div>
     );
   }

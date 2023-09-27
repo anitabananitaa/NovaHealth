@@ -4,18 +4,82 @@
 }
 
 body {
-  margin: 0px;
-  paddin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #13181f;
 }
 
-.contenedor{
-	width: 420px;
-	background: transparent;
-	border: 2px solid rgb(255, 255, 255, .2);
-	backdrop-filter: blur(5px);
-	box-shadow: 0 0 10px rgb(0, 0, 0, .2);
-	color: #fff;
-	border-radius: 10px;
-	padding: 30px 40px ;
+.contenedor {
+  display: flex;
+  flex-direction: center;
+}
 
+.logeo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 420px;
+  height: 300px;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 30px 40px;
+}
+
+.logeo .formulario {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  margin: 30px 0;
+  border: none;
+  border-bottom: 2px solid #13181f;
+  margin-bottom: 5px;
+  outline: none;
+}
+.formulario input {
+  cursor: text;
+  font-size: 14px;
+  width: 40vh;
+  padding: 0 16px;
+  height: 20px;
+  color: hsl(0, 0%, 0%, 0.7);
+  border: none;
+  outline: none;
+}
+
+.formulario font {
+  margin-top: 30px;
+}
+
+.botonera {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  position: relative;
+  margin: 65px 0;
+  justify-content: center;
+}
+
+.btn {
+  background: #13181f;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 20px;
 }

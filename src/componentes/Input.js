@@ -5,7 +5,12 @@ class Input extends Component {
     this.state = {};
   }
   render() {
-    return <div> AAAAAAAAAAAAA</div>;
+    const { titulo, valor } = this.props;
+    return (
+      <div>
+        <input />
+      </div>
+    );
   }
 }
 

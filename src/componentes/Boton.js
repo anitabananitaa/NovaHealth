@@ -6,7 +6,11 @@ class Boton extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return (
+      <div>
+        <span className="btn">{this.props.titulo}</span>
+      </div>
+    );
   }
 }
 

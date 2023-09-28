@@ -16,22 +16,29 @@ class Formulario extends Component {
         <form action="" onsubmit="mostrarDatos(); return false;">
           <h1>Registro de Pacientes</h1>
           <div class="formulario">
-            <input type="text" id="inputb" placeholder="Name" required />
+            <span>
+              Nombre
+              <input type="text" id="inputb" required />
+            </span>
+          </div>
+
+          <div class="formulario">
+            <span>
+              DNI
+              <input type="text" id="inputc" pattern="[0-9]{8}" required />
+            </span>
           </div>
           <div class="formulario">
-            <input
-              type="text"
-              id="inputc"
-              placeholder="DNI"
-              pattern="[0-9]{8}"
-              required
-            />
+            <span>
+              Fecha Nac.
+              <input type="date" id="inpute" placeholder="FechaNac" required />
+            </span>
           </div>
           <div class="formulario">
-            <input type="date" id="inpute" placeholder="FechaNac" required />
-          </div>
-          <div class="formulario">
-            <input type="text" id="Telefono" placeholder="Telefono" required />
+            <span>
+              Telefono
+              <input type="text" id="Telefono" required />
+            </span>
           </div>
           <button
             type="button"
@@ -40,7 +47,7 @@ class Formulario extends Component {
             id="crear"
             required
           >
-            Create
+            Aceptar
           </button>
           <button
             type="button"
@@ -49,7 +56,7 @@ class Formulario extends Component {
             id="volver"
             required
           >
-            Come Back
+            Cancelar
           </button>
         </form>
       </div>

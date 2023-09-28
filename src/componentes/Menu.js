@@ -6,7 +6,11 @@ class Menu extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return (
+      <div className="App">
+        <h1> esto es un menú</h1>
+      </div>
+    );
   }
 }
 

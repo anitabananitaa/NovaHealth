@@ -22,8 +22,14 @@ class App extends Component {
   }
   render() {
     const { logged } = this.state;
-    return (<div className="App">{!logged && <Login />}</div>);
+    return (
+      <div className="App">
+        <Menu />
+      </div>
+    );
   }
 }
+
+//{!logged && <Login />}
 
 export default App;

@@ -7,6 +7,15 @@ class Login extends Component {
     super(props);
     this.state = {};
   }
+
+  verificarUsuarios() {
+    const usuario = document.getElementById("Usuario").value;
+    const password = document.getElementById("Contraseña").value;
+    {
+      (usuario == "admin" && password == "admin") ? this.props.LoginOK(): alert("error");
+    }
+  }
+
   render() {
     const { usuario, contraseña } = this.state;
     return (
@@ -15,19 +24,18 @@ class Login extends Component {
           <h1>Acceso</h1>
           <div class="formulario">
             Usuario:
-            <Input titulo="Usuario" />
+            <Input id="Usuario" />
           </div>
           <div class="formulario">
             Contraseña:
-            <Input titulo="Contraseña" />
+            <Input id="Contraseña" />
           </div>
           <div className="botonera">
             <Boton
               titulo="Iniciar sesión"
               placeholder="Iniciar sesión"
-              type="submit"
               class="btn"
-              id="logear"
+              onClick={() => this.verificarUsuarios()}
             />
           </div>
         </div>

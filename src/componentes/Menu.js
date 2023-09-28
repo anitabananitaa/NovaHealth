@@ -13,24 +13,17 @@ export default class Menu extends Component {
   render() {
     return (
       <div class="botondesplegable">
-        <div class="botonesmenu">
-          <button onClick={() => this.desplegar()} className="toggle-button">
-            ☰
-          </button>
-          <button>
-            <img url="./assets/zonas.png" />
-          </button>
-        </div>
+        <button onClick={() => this.desplegar()} className="toggle-button">
+          ☰
+        </button>
         {this.state.desplegar && (
-          <div>
-            <ul>
-              <li>Zonas</li>
-              <li>Pacientes</li>
-              <li> Profesionales</li>
-              <li>Llamados</li>
-              <li>Usuarios</li>
-            </ul>
-          </div>
+          <ul>
+            <li>Zonas</li>
+            <li>Pacientes</li>
+            <li> Profesionales</li>
+            <li>Llamados</li>
+            <li>Usuarios</li>
+          </ul>
         )}
       </div>
     );

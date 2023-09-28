@@ -20,16 +20,21 @@ class App extends Component {
       logged: false,
     };
   }
+
+  LoginOK() {
+    this.setState({
+      logged: true,
+    });
+  }
+
   render() {
     const { logged } = this.state;
     return (
       <div className="App">
-        <Menu />
+        {!logged ? <Login LoginOK={() => this.LoginOK()} /> : <Menu />}
       </div>
     );
   }
 }
-
-//{!logged && <Login />}
 
 export default App;

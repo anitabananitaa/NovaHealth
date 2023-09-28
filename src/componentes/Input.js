@@ -8,7 +8,7 @@ class Input extends Component {
     const { titulo, valor } = this.props;
     return (
       <div>
-        <input />
+        <input id={this.props.id} />
       </div>
     );
   }

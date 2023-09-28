@@ -1,6 +1,10 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
 }
 
 body {
@@ -12,6 +16,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: #13181f;
+  margin: 0;
 }
 
 .contenedor {
@@ -82,4 +87,62 @@ body {
   font-weight: 600;
   margin-top: 10px;
   padding: 20px;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #333;
+  color: #fff;
+  transition: left 0.3s;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+}
+
+li:hover {
+  background-color: #9eadbd;
+}
+
+.botondesplegable {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 100vh;
+  padding: 20;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  top: 0;
+  left: 0;
+  background-color: #ccd6e0;
+  margin: 0;
+}
+
+.botonesmenu {
+  display: flex;
+  flex-direction: column;
 }

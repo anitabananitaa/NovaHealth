@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Input from "./Input";
 import "../styles.css";
 
-class FormularioUsuarios extends Component {
+class FormularioZonas extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,38 +14,24 @@ class FormularioUsuarios extends Component {
     return (
       <div class="contenedor">
         <form action="" onsubmit="mostrarDatos(); return false;">
-          <h1>Registro de Usuarios</h1>
+          <h1>Registro de Zonas</h1>
           <div class="formulario">
             <span>
-              Nombre
+              Descripción
               <input type="text" id="inputb" required />
             </span>
           </div>
 
           <div class="formulario">
             <span>
-              Contraseña
-              <input type="password" id="inputc" pattern="[0-9]{8}" required />
-            </span>
-          </div>
-          <div class="formulario">
-            <span>
-              Estado
+              tipo
               <select class="mi-select">
                 <option value="opcion1">Activo</option>
                 <option value="opcion2">Inactivo</option>
               </select>
             </span>
           </div>
-          <div class="formulario">
-            <span>
-              Tipo
-              <select class="mi-select">
-                <option value="opcion1">Administrador</option>
-                <option value="opcion2">Agente</option>
-              </select>
-            </span>
-          </div>
+
           <button
             type="button"
             class="btn"
@@ -69,4 +55,4 @@ class FormularioUsuarios extends Component {
     );
   }
 }
-export default FormularioUsuarios;
+export default FormularioZonas;

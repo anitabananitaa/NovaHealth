@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 class Zonas extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,7 @@ class Zonas extends Component {
   }
   render() {
     const { logged } = this.state;
-    retrn(<div className="App">{!logged && <Zonas />}</div>);
+    return <div className="App">{!logged && <Zonas />}</div>;
   }
 }
 

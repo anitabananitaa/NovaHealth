@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,7 @@ class Menu extends Component {
   }
   render() {
     const { logged } = this.state;
-    retrn(<div className="App">{!logged && <Menu />}</div>);
+    return <div className="App">{!logged && <Menu />}</div>;
   }
 }
 

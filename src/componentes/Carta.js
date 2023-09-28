@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 class Carta extends Component {
   constructor(props) {
     super(props);
@@ -5,9 +6,9 @@ class Carta extends Component {
       logged: false,
     };
   }
-  render (){
+  render() {
     const { logged } = this.state;
-    retrn (<div className="App">{!logged && <Formulario/>}</div>);
+    return <div className="App"></div>;
   }
 }
 

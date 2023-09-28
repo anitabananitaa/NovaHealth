@@ -2,3 +2,43 @@
   font-family: sans-serif;
   text-align: center;
 }
+body {
+  background-color: #13181f;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 400px;
+  margin: 30px;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+}
+.formulario {
+  display: flex;
+  margin: 10px;
+}
+input {
+  width: 300px;
+  height: 25px;
+  border-radius: 0px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+.btn {
+  background-color: #13181f;
+  color: white;
+  height: 50px;
+  width: 100px;
+  margin: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}

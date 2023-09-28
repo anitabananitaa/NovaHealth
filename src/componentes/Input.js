@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 class Input extends Component {
   constructor(props) {
     super(props);
@@ -5,9 +6,8 @@ class Input extends Component {
       logged: false,
     };
   }
-  render (){
-    const { logged } = this.state;
-    retrn (<div className="App">{!logged && <Formulario/>}</div>);
+  render() {
+    return <div className="App"> </div>;
   }
 }
 

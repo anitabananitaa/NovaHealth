@@ -1,5 +1,7 @@
-import Input from "./componentes/Input";
-import "./styles.css";
+import React, { Component } from "react";
+import Input from "./Input";
+import "../styles.css";
+
 class Formulario extends Component {
   constructor(props) {
     super(props);
@@ -12,15 +14,12 @@ class Formulario extends Component {
     return (
       <div class="contenedor">
         <form action="" onsubmit="mostrarDatos(); return false;">
-          <h1>jhrsgbh</h1>
+          <h1>Registro de Pacientes</h1>
           <div class="formulario">
-            <Input type="text" id="inputa" placeholder="Surname" required />
+            <input type="text" id="inputb" placeholder="Name" required />
           </div>
           <div class="formulario">
-            <Input type="text" id="inputb" placeholder="Name" required />
-          </div>
-          <div class="formulario">
-            <Input
+            <input
               type="text"
               id="inputc"
               placeholder="DNI"
@@ -29,26 +28,10 @@ class Formulario extends Component {
             />
           </div>
           <div class="formulario">
-            <Input type="emaiL" id="inputd" placeholder="Email" required />
+            <input type="date" id="inpute" placeholder="FechaNac" required />
           </div>
           <div class="formulario">
-            <Input type="text" id="inpute" placeholder="Direction" required />
-          </div>
-          <div class="formulario">
-            <Input
-              type="password"
-              id="password"
-              placeholder="Password"
-              required
-            />
-          </div>
-          <div class="formulario">
-            <input
-              type="password"
-              id="repeatpassword"
-              placeholder=" Repeat Password"
-              required
-            />
+            <input type="text" id="Telefono" placeholder="Telefono" required />
           </div>
           <button
             type="button"
@@ -73,3 +56,4 @@ class Formulario extends Component {
     );
   }
 }
+export default Formulario;

@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 class Tarjeta extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,7 @@ class Tarjeta extends Component {
   }
   render() {
     const { logged } = this.state;
-    retrn(<div className="App">{!logged && <Tarjeta />}</div>);
+    return <div className="App">{!logged && <Tarjeta />}</div>;
   }
 }
 

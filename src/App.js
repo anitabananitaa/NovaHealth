@@ -1,8 +1,8 @@
-import React {Component} from 'react';
+import React, { Component } from "react";
 import "./styles.css";
-import formulario from "./componentes/Formulario";
+import Formulario from "./componentes/Formulario";
 import Input from "./componentes/Input";
-import Boton from "./componente/Boton";
+import Boton from "./componentes/Boton";
 import Login from "./componentes/Login";
 import Llamados from "./componentes/Llamados";
 import Menu from "./componentes/Menu";
@@ -20,9 +20,9 @@ class App extends Component {
       logged: false,
     };
   }
-  render (){
+  render() {
     const { logged } = this.state;
-    retrn (<div className="App">{!logged && <Formulario/>}</div>);
+    return <div className="App">{!logged && <Formulario />}</div>;
   }
 }
 

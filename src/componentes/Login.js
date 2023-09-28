@@ -1,4 +1,5 @@
-import "./styles.css";
+import React, { Component } from "react";
+import "../styles.css";
 
 class Login extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Login extends Component {
   }
   render() {
     const { logged } = this.state;
-    retrn(<div className="App">{!logged && <Formulario />}</div>);
+    return(<div className="App">{!logged && <Login />}</div>);
   }
 }
 

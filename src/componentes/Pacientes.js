@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 class Pacientes extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,7 @@ class Pacientes extends Component {
   }
   render() {
     const { logged } = this.state;
-    retrn(<div className="App">{!logged && <Pacientes />}</div>);
+    return <div className="App">{!logged && <Pacientes />}</div>;
   }
 }
 

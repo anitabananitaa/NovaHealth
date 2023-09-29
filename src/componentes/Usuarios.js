@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import TarjetaUsuarios from "./TarjetaUsuarios";
+import Carta from "./Carta";
 
 class Usuarios extends Component {
   constructor(props) {
@@ -6,7 +8,13 @@ class Usuarios extends Component {
     this.state = {};
   }
   render() {
-    return <div className="usuarios">USUARIOS</div>;
+    return (
+      <div className="usuarios">
+        <Carta>
+          <TarjetaUsuarios />
+        </Carta>
+      </div>
+    );
   }
 }
 

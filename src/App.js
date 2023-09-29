@@ -33,33 +33,28 @@ class App extends Component {
     };
   }
 
-  // LoginOK() {
-  //   this.setState({
-  //     logged: true,
-  //   });
-  // }
+  LoginOK() {
+    this.setState({
+      logged: true,
+    });
+  }
 
-  // cambiarPantalla(pant) {
-  //   this.setState({
-  //     pantalla: pant,
-  //   });
-  // }
+  cambiarPantalla(pant) {
+    this.setState({
+      pantalla: pant,
+    });
+  }
 
   render() {
-    // const { logged, pantalla } = this.state;
+    const { logged, pantalla } = this.state;
     return (
       <div className="App">
-        {/* <TarjetaLlamados /> */}
-        {/* <TarjetaPacientes /> */}
-        {/* <TarjetaProfesionales /> */}
-        {/* <TarjetaUsuarios />
-        <TarjetaZonas /> */}
-        {/* {!logged ? (
+        {!logged ? (
           <div>
             <Login LoginOK={() => this.LoginOK()} />
           </div>
         ) : (
-          <div class="Pantalla">
+          <div className="Pantalla">
             <Menu cambiarPantalla={(pant) => this.cambiarPantalla(pant)} />
             {pantalla == 1 && <Llamados />}
             {pantalla == 2 && <Zonas />}
@@ -67,7 +62,7 @@ class App extends Component {
             {pantalla == 4 && <Profesionales />}
             {pantalla == 5 && <Usuarios />}
           </div>
-        )} */}
+        )}
       </div>
     );
   }

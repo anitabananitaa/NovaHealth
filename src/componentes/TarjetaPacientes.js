@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import basura from "./assets/basura.png";
 import lapiz from "./assets/lapiz.png";
+import Carta from "./Carta";
 
 class TarjetaPacientes extends Component {
   constructor(props) {

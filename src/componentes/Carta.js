@@ -6,7 +6,14 @@ class Carta extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return (
+      <div className="Carta">
+        <div className="Agregar">
+          <button className="Mas"> + </button>
+        </div>
+        <div className="CartaContenedor">{this.props.children} </div>
+      </div>
+    );
   }
 }
 

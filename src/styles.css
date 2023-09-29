@@ -4,41 +4,44 @@
   font-family: sans-serif;
   text-align: center;
   position: relative;
-  width: 100%;
+  width: calc(100% - 100px);
   min-height: 100vh;
   margin: 0;
+  padding-left: 100px;
+  flex: 1;
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   background-color: rgb(255, 255, 255);
   margin: 0;
+  width: 100vw;
+  min-height: 100vh;
 }
 
-.contenedor {
-  display: flex;
-  flex-direction: center;
+#root {
+  flex: 1;
 }
-
-.logeo {
+.imagen1 {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  width: 420px;
-  height: 300px;
-  background: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+  flex: 1;
+}
+.logeo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 0;
+  width: 80%;
+  height: 579px;
+  box-shadow: 5px 0 10px rgb(0, 0, 0, 0.2);
   background-color: #ffffff;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   padding: 30px 40px;
+  margin-left: -100px;
 }
 
 .logeo .formulario {
@@ -155,12 +158,18 @@ li:hover {
   flex-direction: row;
 }
 
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
 .ContenedorTarjetas {
   display: flex;
   flex-direction: column;
   text-align: left;
   height: auto;
-  width: 400px;
+  width: 200px;
   border-radius: 30px;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
 }
@@ -183,18 +192,52 @@ li:hover {
   background: rgb(28, 37, 54);
   border: none;
   outline: none;
-  border-radius: 40px;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 16px;
   color: #ffffff;
   font-weight: 600;
   margin-top: 10px;
-  padding: 20px;
+
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .imagen {
   filter: invert(100%);
+}
+
+.Carta {
+  height: 100%;
+}
+
+.CartaContenedor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Agregar {
+  height: 70px;
+  width: 100%;
+  text-align: left;
+  margin: 10px;
+}
+
+.Mas {
+  margin-top: 20px;
+  background: rgb(28, 37, 54);
+  border: none;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 600;
+  align-items: center;
 }

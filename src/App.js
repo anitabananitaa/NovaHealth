@@ -9,11 +9,20 @@ import Menu from "./componentes/Menu";
 import Pacientes from "./componentes/Pacientes";
 import Profesionales from "./componentes/Profesionales";
 import Registro from "./componentes/Registro";
-import Tarjeta from "./componentes/Tarjeta";
+import Tarjetazonas from "./componentes/TarjetaZonas";
+import Tarjepacientes from "./componentes/TarjetaPacientes";
+import Tarjetaprofesionales from "./componentes/TarjetaProfesionales";
+import Tarjetausuarios from "./componentes/TarjetaUsuarios";
+import Tarjetallamados from "./componentes/TarjetaLlamados";
 import Usuarios from "./componentes/Usuarios";
 import Zonas from "./componentes/Zonas";
+import TarjetaLlamados from "./componentes/TarjetaLlamados";
+import TarjetaPacientes from "./componentes/TarjetaPacientes";
+import TarjetaProfesionales from "./componentes/TarjetaProfesionales";
+import TarjetaUsuarios from "./componentes/TarjetaUsuarios";
+import TarjetaZonas from "./componentes/TarjetaZonas";
 
-const apiUrl = 'https://hd6v8q-3000.csb.app/api';
+const apiUrl = "https://hd6v8q-3000.csb.app/api";
 
 class App extends Component {
   constructor(props) {
@@ -24,24 +33,28 @@ class App extends Component {
     };
   }
 
+  // LoginOK() {
+  //   this.setState({
+  //     logged: true,
+  //   });
+  // }
 
-  LoginOK() {
-    this.setState({
-      logged: true,
-    });
-  }
-
-  cambiarPantalla(pant) {
-    this.setState({
-      pantalla: pant,
-    });
-  }
+  // cambiarPantalla(pant) {
+  //   this.setState({
+  //     pantalla: pant,
+  //   });
+  // }
 
   render() {
-    const { logged, pantalla } = this.state;
+    // const { logged, pantalla } = this.state;
     return (
       <div className="App">
-        {!logged ? (
+        {/* <TarjetaLlamados /> */}
+        {/* <TarjetaPacientes /> */}
+        {/* <TarjetaProfesionales /> */}
+        {/* <TarjetaUsuarios />
+        <TarjetaZonas /> */}
+        {/* {!logged ? (
           <div>
             <Login LoginOK={() => this.LoginOK()} />
           </div>
@@ -54,7 +67,7 @@ class App extends Component {
             {pantalla == 4 && <Profesionales />}
             {pantalla == 5 && <Usuarios />}
           </div>
-        )}
+        )} */}
       </div>
     );
   }

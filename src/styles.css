@@ -15,7 +15,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #13181f;
+  background-color: rgb(255, 255, 255);
   margin: 0;
 }
 
@@ -47,7 +47,7 @@ body {
   height: 30px;
   margin: 30px 0;
   border: none;
-  border-bottom: 1px solid #13181f;
+  border-bottom: 1px solid rgb(28, 37, 54);
   margin-bottom: 5px;
   outline: none;
 }
@@ -76,7 +76,7 @@ body {
 }
 
 .btn {
-  background: #13181f;
+  background: rgb(28, 37, 54);
   border: none;
   outline: none;
   border-radius: 40px;
@@ -108,7 +108,7 @@ body {
   background: none;
   border: none;
   font-size: 24px;
-  color: #333;
+  color: #ffffff;
   cursor: pointer;
   padding: 10px;
   margin: 0;
@@ -121,10 +121,11 @@ ul {
 
 li {
   padding: 10px;
+  color: #fff;
 }
 
 li:hover {
-  background-color: #9eadbd;
+  background-color: rgb(107, 118, 138);
 }
 
 .botondesplegable {
@@ -137,8 +138,9 @@ li:hover {
   align-items: flex-start;
   top: 0;
   left: 0;
-  background-color: #ccd6e0;
-  margin: 0;
+  background-color: rgb(28, 37, 54);
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .botonesmenu {
@@ -149,4 +151,48 @@ li:hover {
 .pantalla {
   display: flex;
   flex-direction: row;
+}
+
+.ContenedorTarjetas {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  height: auto;
+  width: 400px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+}
+
+.Tarjetas {
+  justify-content: left;
+  font-size: 16px;
+  display: block;
+  margin-left: 40px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.btntarjeta {
+  background: rgb(28, 37, 54);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.imagen {
+  filter: invert(100%);
 }

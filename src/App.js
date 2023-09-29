@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "./styles.css";
 import Formulario from "./componentes/Formulario";
+import FormularioBusqueda from "./componentes/FormularioBusqueda";
 import FormularioProfesionales from "./componentes/FormularioProfesionales";
+import SubFormularioLlamados from "./componentes/SubFormularioLlamados";
 import FormularioUsuarios from "./componentes/FormularioUsuarios";
 import FormularioZonas from "./componentes/FromularioZonas";
+import FormularioLlamados from "./componentes/FormularioLlamados";
 import Input from "./componentes/Input";
 import Boton from "./componentes/Boton";
 import Login from "./componentes/Login";
@@ -25,10 +28,13 @@ class App extends Component {
   }
   render() {
     const { logged } = this.state;
-    // return <div className="App">{!logged && <Formulario />}</div>;
+    return <div className="App">{!logged && <FormularioBusqueda />}</div>;
+    //return <div className="App">{!logged && <Formulario />}</div>;
     //return <div className="App">{!logged && <FormularioProfesionales />}</div>;
-    return <div className="App">{!logged && <FormularioUsuarios />}</div>;
+    // return <div className="App">{!logged && <FormularioUsuarios />}</div>;
     //return <div className="App">{!logged && <FormularioZonas />}</div>;
+    //return <div className="App">{!logged && <FormularioLlamados/>}</div>;
+    //return <div className="App">{!logged && <SubFormularioLlamados />}</div>;
   }
 }
 

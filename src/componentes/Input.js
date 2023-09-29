@@ -5,10 +5,10 @@ class Input extends Component {
     this.state = {};
   }
   render() {
-    const { titulo, valor } = this.props;
+    const { value, onChange } = this.props; //variables heredadas del padre.
     return (
       <div>
-        <input id={this.props.id} />
+        <input value={value} onChange={onChange} />
       </div>
     );
   }

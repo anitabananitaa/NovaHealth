@@ -5,14 +5,17 @@ import Input from "./Input";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      usuario: "",
+      password: "",
+    };
   }
 
   verificarUsuarios() {
-    const usuario = document.getElementById("Usuario").value;
-    const password = document.getElementById("Contraseña").value;
     {
-      (usuario == "admin" && password == "admin") ? this.props.LoginOK(): alert("error");
+      this.state.usuario == "admin" && this.state.password == "admin" //IF
+        ? this.props.LoginOK() //VERDADERO
+        : alert("error"); //FALSO
     }
   }
 
@@ -24,11 +27,17 @@ class Login extends Component {
           <h1>Acceso</h1>
           <div class="formulario">
             Usuario:
-            <Input id="Usuario" />
+            <Input
+              value={this.state.usuario} //ENVIO VARIABLE
+              onChange={(e) => this.setState({ usuario: e.target.value })} //FUNCION QUE ACTUALIZA LA VARIABLE CADA VEZ QUE CAMBIA EL INPUT
+            />
           </div>
           <div class="formulario">
             Contraseña:
-            <Input id="Contraseña" />
+            <Input
+              value={this.state.password}
+              onChange={(e) => this.setState({ password: e.target.value })}
+            />
           </div>
           <div className="botonera">
             <Boton

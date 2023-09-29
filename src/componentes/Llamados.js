@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import TarjetaLlamados from "./TarjetaLlamados";
+import Carta from "./Carta";
 class Llamados extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,9 @@ class Llamados extends Component {
   render() {
     return (
       <div className="llamados">
-        <h1> LLAMADOS</h1>
+        <Carta>
+          <TarjetaLlamados />
+        </Carta>
       </div>
     );
   }

@@ -2,26 +2,27 @@ import React, { Component } from "react";
 import Input from "./Input";
 import "../styles.css";
 
-class Formulario extends Component {
+class FormularioProfesionales extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      logged: false,
     };
   }
 
   render() {
     return (
-      <div class="contenedorFormulario">
-        <h1>Registro de Pacientes</h1>
+      <div class="contenedor2">
+        <h1>Formulario de Profesionales</h1>
         <div class="formulario">
           <span>
-            Apellido
+            DNI
             <input type="text" id="inputb" required />
           </span>
         </div>
         <div class="formulario">
           <span>
-            Nombre
+            Apellido
             <input type="text" id="inputb" required />
           </span>
         </div>
@@ -34,8 +35,11 @@ class Formulario extends Component {
         </div>
         <div class="formulario">
           <span>
-            Fecha Nac.
-            <input type="date" id="inpute" placeholder="FechaNac" required />
+            Especialidad
+            <select class="mi-select">
+              <option value="opcion1">Medico</option>
+              <option value="opcion2">Enfermero</option>
+            </select>
           </span>
         </div>
         <div class="formulario">
@@ -44,16 +48,24 @@ class Formulario extends Component {
             <input type="text" id="Telefono" required />
           </span>
         </div>
-        <div>
-          <button type="button" class="btn" id="crear" required>
-            Aceptar
-          </button>
-          <button type="button" class="btn" id="volver" required>
-            Cancelar
-          </button>
-        </div>
+        <button
+          type="button"
+          class="btn"
+          id="crear"
+          required
+        >
+          Aceptar
+        </button>
+        <button
+          type="button"
+          class="btn"
+          id="volver"
+          required
+        >
+          Cancelar
+        </button>
       </div>
     );
   }
 }
-export default Formulario;
+export default FormularioProfesionales;

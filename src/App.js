@@ -16,13 +16,14 @@ import Tarjetausuarios from "./componentes/TarjetaUsuarios";
 import Tarjetallamados from "./componentes/TarjetaLlamados";
 import Usuarios from "./componentes/Usuarios";
 import Zonas from "./componentes/Zonas";
-import TarjetaLlamados from "./componentes/TarjetaLlamados";
-import TarjetaPacientes from "./componentes/TarjetaPacientes";
-import TarjetaProfesionales from "./componentes/TarjetaProfesionales";
-import TarjetaUsuarios from "./componentes/TarjetaUsuarios";
-import TarjetaZonas from "./componentes/TarjetaZonas";
-
+import FormularioBusqueda from "./componentes/FormularioBusqueda";
+import FormularioProfesionales from "./componentes/FormularioProfesionales";
+import SubFormularioLlamados from "./componentes/SubFormularioLlamados";
+import FormularioUsuarios from "./componentes/FormularioUsuarios";
+import FormularioZonas from "./componentes/FromularioZonas";
+import FormularioLlamados from "./componentes/FormularioLlamados";
 const apiUrl = "https://hd6v8q-3000.csb.app/api";
+
 
 class App extends Component {
   constructor(props) {
@@ -33,33 +34,28 @@ class App extends Component {
     };
   }
 
-  // LoginOK() {
-  //   this.setState({
-  //     logged: true,
-  //   });
-  // }
+  LoginOK() {
+    this.setState({
+      logged: true,
+    });
+  }
 
-  // cambiarPantalla(pant) {
-  //   this.setState({
-  //     pantalla: pant,
-  //   });
-  // }
+  cambiarPantalla(pant) {
+    this.setState({
+      pantalla: pant,
+    });
+  }
 
   render() {
-    // const { logged, pantalla } = this.state;
+    const { logged, pantalla } = this.state;
     return (
       <div className="App">
-        {/* <TarjetaLlamados /> */}
-        {/* <TarjetaPacientes /> */}
-        {/* <TarjetaProfesionales /> */}
-        {/* <TarjetaUsuarios />
-        <TarjetaZonas /> */}
-        {/* {!logged ? (
+        {!logged ? (
           <div>
             <Login LoginOK={() => this.LoginOK()} />
           </div>
         ) : (
-          <div class="Pantalla">
+          <div className="Pantalla">
             <Menu cambiarPantalla={(pant) => this.cambiarPantalla(pant)} />
             {pantalla == 1 && <Llamados />}
             {pantalla == 2 && <Zonas />}
@@ -67,10 +63,16 @@ class App extends Component {
             {pantalla == 4 && <Profesionales />}
             {pantalla == 5 && <Usuarios />}
           </div>
-        )} */}
+        )}
       </div>
+    //return <div className="App">{!logged && <FormularioBusqueda />}</div>;
+    //return <div className="App">{!logged && <Formulario />}</div>;
+    //return <div className="App">{!logged && <FormularioProfesionales />}</div>;
+    // return <div className="App">{!logged && <FormularioUsuarios />}</div>;
+    //return <div className="App">{!logged && <FormularioZonas />}</div>;
+    //return <div className="App">{!logged && <FormularioLlamados/>}</div>;
+    //return <div className="App">{!logged && <SubFormularioLlamados />}</div>;
     );
   }
 }
-
 export default App;

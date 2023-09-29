@@ -6,7 +6,7 @@ class Zonas extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return <div className="zonas">ZONAS</div>;
   }
 }
 

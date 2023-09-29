@@ -10,6 +10,10 @@ export default class Menu extends Component {
   desplegar() {
     this.setState({ desplegar: !this.state.desplegar });
   }
+
+  setPantalla(pant) {
+    this.props.cambiarPantalla(pant);
+  }
   render() {
     return (
       <div class="botondesplegable">
@@ -18,11 +22,11 @@ export default class Menu extends Component {
         </button>
         {this.state.desplegar && (
           <ul>
-            <li>Zonas</li>
-            <li>Pacientes</li>
-            <li> Profesionales</li>
-            <li>Llamados</li>
-            <li>Usuarios</li>
+            <li onClick={() => this.setPantalla(1)}>Llamados</li>
+            <li onClick={() => this.setPantalla(2)}>Zonas</li>
+            <li onClick={() => this.setPantalla(3)}>Pacientes</li>
+            <li onClick={() => this.setPantalla(4)}>Profesionales</li>
+            <li onClick={() => this.setPantalla(5)}>Usuarios</li>
           </ul>
         )}
       </div>

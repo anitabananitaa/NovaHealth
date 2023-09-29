@@ -6,7 +6,7 @@ class Pacientes extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return <div className="pacientes">PACIENTES</div>;
   }
 }
 

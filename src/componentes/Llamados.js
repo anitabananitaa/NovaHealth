@@ -6,7 +6,11 @@ class Llamados extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return (
+      <div className="llamados">
+        <h1> LLAMADOS</h1>
+      </div>
+    );
   }
 }
 

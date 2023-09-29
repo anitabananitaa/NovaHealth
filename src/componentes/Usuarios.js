@@ -6,7 +6,7 @@ class Usuarios extends Component {
     this.state = {};
   }
   render() {
-    return <div className="App"></div>;
+    return <div className="usuarios">USUARIOS</div>;
   }
 }
 

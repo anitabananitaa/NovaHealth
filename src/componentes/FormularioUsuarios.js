@@ -31,16 +31,20 @@ class FormularioUsuarios extends Component {
           <div class="formulario">
             <span>
               Estado
-              <select class="mi-select">
-                <option value="opcion1">Activo</option>
-                <option value="opcion2">Inactivo</option>
+              <select class="miSelect">
+                <option class="edit" value="opcion1">
+                  Activo
+                </option>
+                <option class="edit" value="opcion2">
+                  Inactivo
+                </option>
               </select>
             </span>
           </div>
           <div class="formulario">
             <span>
               Tipo
-              <select class="mi-select">
+              <select class="miSelect">
                 <option value="opcion1">Administrador</option>
                 <option value="opcion2">Agente</option>
               </select>

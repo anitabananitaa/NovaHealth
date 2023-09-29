@@ -74,3 +74,6 @@ select {
   outline: none;
   cursor: pointer;
 }
+.edit {
+  margin: 30px;
+}

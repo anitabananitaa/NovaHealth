@@ -27,8 +27,8 @@ class App extends Component {
     const { logged } = this.state;
     // return <div className="App">{!logged && <Formulario />}</div>;
     //return <div className="App">{!logged && <FormularioProfesionales />}</div>;
-    //return <div className="App">{!logged && <FormularioUsuarios />}</div>;
-    return <div className="App">{!logged && <FormularioZonas />}</div>;
+    return <div className="App">{!logged && <FormularioUsuarios />}</div>;
+    //return <div className="App">{!logged && <FormularioZonas />}</div>;
   }
 }
 

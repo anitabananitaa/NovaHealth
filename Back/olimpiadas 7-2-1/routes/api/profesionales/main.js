@@ -83,7 +83,10 @@ router.delete("/", function(req, res, next){
             const sql = 'DELETE FROM profesionales WHERE ID_profesional = ?'; //Comillas simples
             con.query(sql, [ID_profesional], function(error, result){
                 if (error){
-                    reject(error);
+                    res.json({
+                        status: "error",
+                        error
+                    })
                 }else{
                     res.json({
                         status: "ok",

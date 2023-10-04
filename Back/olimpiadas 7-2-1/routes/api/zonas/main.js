@@ -13,7 +13,8 @@ router.get("/", function(req, res, next){
             })
         }else{
             res.json({
-                status: "zonas ok"
+                status: "zonas ok",
+                result
             })
         }
     })
@@ -83,10 +84,13 @@ router.delete("/", function(req, res, next){
             const sql = 'DELETE FROM zonas WHERE ID_zonas = ?'; //Comillas simples
             con.query(sql, [ID_zonas], function(error, result){
                 if (error){
-                    reject(error);
+                    res.json({
+                        status: "error",
+                        error
+                    })
                 }else{
                     res.json({
-                        status: "ok",
+                        status: "zonas ok",
                         msj:"Eliminado ID #"+ID_zonas
                     })
                 }

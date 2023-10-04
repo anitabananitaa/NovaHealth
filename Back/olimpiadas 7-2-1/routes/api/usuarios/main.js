@@ -77,20 +77,21 @@ const isAdmin = function(token){
 router.post("/", function(req, res, next){
     const {token} = req.headers;
     const {tipo, nombre_usuario, contraseña} = req.body;
-    
-    /* IMPLEMENTAR TOKEN */
 
-    /*isAdmin(token)
-    .then((tipo) => {
-        if (tipo === "admin"){
-            const sql = 'DELETE FROM zonas WHERE ID_zonas = ?'; //Comillas simples
-            con.query(sql, [ID_zonas], function(error, result){
+    isAdmin(token)
+    .then((tipo_ver) => {
+        if (tipo_ver === "admin"){
+            const sql = 'INSERT INTO usuarios (tipo, nombre_usuario, contraseña) VALUES (?, ?, ?)'; //Comillas simples
+            con.query(sql, [tipo, nombre_usuario, contraseña], function(error, result){
                 if (error){
-                    reject(error);
+                    res.json({
+                        status: "error",
+                        error
+                    })
                 }else{
                     res.json({
-                        status: "ok",
-                        msj:"Eliminado ID #"+ID_zonas
+                        status: "usuarios ok",
+                        msj: {tipo, nombre_usuario, contraseña}
                     })
                 }
             })
@@ -107,23 +108,6 @@ router.post("/", function(req, res, next){
             error
         })
     })
-}) */
-
-    const sql = 'INSERT INTO usuarios (tipo, nombre_usuario, contraseña) VALUES (?, ?, ?)'; //Comillas simples
-    con.query(sql, [tipo, nombre_usuario, contraseña], function(error, result){
-        if (error){
-            console.log(error);
-            res.json({
-                status: "error",
-                error
-            })
-        }else{
-            res.json({
-                status: "usuarios ok",
-                msj: {tipo, nombre_usuario, contraseña}
-            })
-        }
-    })
-})
+}) 
 
 module.exports = router;

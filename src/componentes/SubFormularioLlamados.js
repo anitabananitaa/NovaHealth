@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "./Input";
-import "../styles.css";
+
 
 class SubFormularioLlamado extends Component {
   constructor(props) {
@@ -12,50 +12,48 @@ class SubFormularioLlamado extends Component {
 
   render() {
     return (
-      <div class="contenedor2">
+      <div className="contenedor2">
           <h1>Llamado Azul</h1>
-          <div class="formulario">
+          <div className="formulario">
             <span>
               DNI:
-              <input type="text" id="inputb" required />
+              <input type="text"/>
             </span>
           </div>
-          <div class="formulario">
+          <div className="formulario">
             <span>
               Estado :
-              <select class="miSelect">
-                <option class="edit" value="opcion1">
+              <select className="miSelect">
+                <option className="edit" value="opcion1">
                   Activo
                 </option>
-                <option class="edit" value="opcion2">
+                <option className="edit" value="opcion2">
                   Inactivo
                 </option>
               </select>
             </span>
           </div>
-          <div class="formulario">
+          <div className="formulario">
             <span>
               Tipo :
-              <select class="miSelect">
+              <select className="miSelect">
                 <option value="opcion1">Urgente</option>
                 <option value="opcion2">No Urgente</option>
               </select>
             </span>
           </div>
-        <div class="botones">
+        <div className="botones">
           <button
             type="button"
-            class="btn"
-            id="crear"
-            required
+            className="btn"
+      
           >
             Aceptar
           </button>
           <button
             type="button"
-            class="btn"
-            id="volver"
-            required
+            className="btn"
+           
           >
             Cancelar
           </button>

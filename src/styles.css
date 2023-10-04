@@ -213,6 +213,27 @@ li:hover {
 .Carta {
   height: 100%;
 }
+.modal{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0,0,0,0.5);
+  top:0;
+  left:0;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 3;
+  align-items: center;
+  justify-content: center;
+}
+.contenedorFormulario{
+  
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 15px;
+}
 
 .CartaContenedor {
   display: flex;
@@ -269,18 +290,6 @@ select {
   border: none;
   outline: none;
   margin-left: 20px;
-}
-
-.btn {
-  background-color: rgb(28, 37, 54);
-  color: white;
-  height: 50px;
-  width: 100px;
-  margin: 10px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  cursor: pointer;
 }
 
 .edit {

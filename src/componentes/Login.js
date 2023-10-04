@@ -25,6 +25,7 @@ class Login extends Component {
     axios.post(url+'/usuarios/login', datos)
     .then((res)=>{
       console.log(res.data)
+      this.props.LoginOK(res.data.token,res.data.tipo)
     })
     .catch((error)=>{
       console.log(error)

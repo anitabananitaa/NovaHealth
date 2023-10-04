@@ -1,70 +1,76 @@
 import React, { Component } from "react";
 import Input from "./Input";
-import "../styles.css";
 
 class FormularioProfesionales extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logged: false,
+      
     };
+  }
+
+  guardar(){
+    //
+    this.props.salir()
   }
 
   render() {
     return (
-      <div class="contenedor2">
+      <div className="modal">
+      <div className="contenedorFormulario">
         <h1>Formulario de Profesionales</h1>
-        <div class="formulario">
+        <div className="formulario">
           <span>
             DNI
-            <input type="text" id="inputb" required />
+            <input type="text" />
           </span>
         </div>
-        <div class="formulario">
+        <div className="formulario">
           <span>
             Apellido
-            <input type="text" id="inputb" required />
+            <input type="text" />
           </span>
         </div>
 
-        <div class="formulario">
+        <div className="formulario">
           <span>
             DNI
-            <input type="text" id="inputc" pattern="[0-9]{8}" required />
+            <input type="text"  pattern="[0-9]{8}"  />
           </span>
         </div>
-        <div class="formulario">
+        <div className="formulario">
           <span>
             Especialidad
-            <select class="mi-select">
+            <select className="mi-select">
               <option value="opcion1">Medico</option>
               <option value="opcion2">Enfermero</option>
             </select>
           </span>
         </div>
-        <div class="formulario">
+        <div className="formulario">
           <span>
             Telefono
-            <input type="text" id="Telefono" required />
+            <input type="text"   />
           </span>
         </div>
-        <button
-          type="button"
-          class="btn"
-          id="crear"
-          required
-        >
-          Aceptar
-        </button>
-        <button
-          type="button"
-          class="btn"
-          id="volver"
-          required
-        >
-          Cancelar
-        </button>
+        <button 
+            type="button" 
+            className="btn" 
+            
+            onClick={()=> this.guardar()}
+          >
+            Aceptar
+          </button>
+          <button 
+            type="button" 
+            className="btn" 
+             
+            onClick={()=> this.props.salir()}  
+          >
+            Cancelar
+          </button>
       </div>
+      /</div>
     );
   }
 }

@@ -9,7 +9,12 @@ class Carta extends Component {
     return (
       <div className="Carta">
         <div className="Agregar">
-          <button className="Mas"> + </button>
+          <button 
+            onClick={()=> this.props.showFormulario()}
+            className="Mas"
+          > 
+            + 
+          </button>
         </div>
         <div className="CartaContenedor">{this.props.children} </div>
       </div>

@@ -23,7 +23,7 @@ import SubFormularioLlamados from "./componentes/SubFormularioLlamados";
 import FormularioUsuarios from "./componentes/FormularioUsuarios";
 import FormularioZonas from "./componentes/FormularioZonas";
 import FormularioLlamados from "./componentes/FormularioLlamados";
-const apiUrl = "https://hd6v8q-3000.csb.app/api";
+
 
 
 class App extends Component {
@@ -42,7 +42,13 @@ class App extends Component {
       logged: true,
     });
   }
-
+  ZonasOK(descripcion, tipo) {
+    sessionStorage.setItem("descripcion", token)
+    sessionStorage.setItem("tipo", tipo)
+    this.setState({
+      logged: true,
+    });
+  }
   cambiarPantalla(pant) {
     this.setState({
       pantalla: pant,

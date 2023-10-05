@@ -24,11 +24,7 @@ class Zonas extends Component {
         }
         <Carta showFormulario={()=> this.showFormulario()}>
           <TarjetaZonas />
-          <TarjetaZonas />
-          <TarjetaZonas />
-          <TarjetaZonas />
-          <TarjetaZonas />
-          <TarjetaZonas />
+
         </Carta>
       </div>
     );

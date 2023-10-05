@@ -32,7 +32,7 @@ class Formulario extends Component {
         <div className="formulario">
           <span>
             DNI
-            <input type="text"  pattern="[0-9]{8}"  />
+            <input type="text"  pattern="[0-9]"  />
           </span>
         </div>
         <div className="formulario">

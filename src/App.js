@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./styles.css";
 import Login from "./componentes/Login";
 import Input from "./componentes/Input";
 import Boton from "./componentes/Boton";
-import Formulario from "./componentes/Formulario";
+import FormularioPacientes from "./componentes/FormularioPacientes";
 import Llamados from "./componentes/Llamados";
 import Menu from "./componentes/Menu";
 import Pacientes from "./componentes/Pacientes";
@@ -20,7 +21,7 @@ import FormularioBusqueda from "./componentes/FormularioBusqueda";
 import FormularioProfesionales from "./componentes/FormularioProfesionales";
 import SubFormularioLlamados from "./componentes/SubFormularioLlamados";
 import FormularioUsuarios from "./componentes/FormularioUsuarios";
-import FormularioZonas from "./componentes/FromularioZonas";
+import FormularioZonas from "./componentes/FormularioZonas";
 import FormularioLlamados from "./componentes/FormularioLlamados";
 const apiUrl = "https://hd6v8q-3000.csb.app/api";
 
@@ -34,7 +35,9 @@ class App extends Component {
     };
   }
 
-  LoginOK() {
+  LoginOK(token, tipo) {
+    sessionStorage.setItem("token", token)
+    sessionStorage.setItem("tipo", tipo)
     this.setState({
       logged: true,
     });
@@ -52,7 +55,7 @@ class App extends Component {
       <div className="App">
         {!logged ? (
           <div>
-            <Login LoginOK={() => this.LoginOK()} />
+            <Login LoginOK={(token, tipo) => this.LoginOK(token, tipo)} />
           </div>
         ) : (
           <div className="Pantalla">

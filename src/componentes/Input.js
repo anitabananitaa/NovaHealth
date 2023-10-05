@@ -5,10 +5,14 @@ class Input extends Component {
     this.state = {};
   }
   render() {
-    const { titulo, valor } = this.props;
+    const { titulo, valor, onChange, password } = this.props;
     return (
       <div>
-        <input id={this.props.id} />
+        <input 
+          type={password ? "password" : "text"}
+          value={valor}
+          onChange={(e) => onChange(e.target.value)}
+        />
       </div>
     );
   }

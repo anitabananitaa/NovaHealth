@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "./Input";
-import "../styles.css";
+
 
 class FormularioBusqueda extends Component {
   constructor(props) {
@@ -12,20 +12,21 @@ class FormularioBusqueda extends Component {
 
   render() {
     return (
-      <div class="contenedorFormulario">
+      <div className="contenedorFormulario">
         <h1>Busqueda DNI</h1>
-        <div class="formulario">
+        <div className="formulario">
           <span>
             DNI:
-            <input type="text" id="inputb" required />
+            <input type="text" 
+          />
           </span>
         </div>
 
         <div>
-          <button type="button" class="btn" id="crear" required>
+          <button type="button" className="btn" >
             Buscar
           </button>
-          <button type="button" class="btn" id="crear" required>
+          <button type="button" className="btn" >
             Cancelar
           </button>
         </div>

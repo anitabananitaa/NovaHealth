@@ -3,7 +3,9 @@ import React, { Component } from "react";
 class Registro extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      
+    };
   }
   render() {
     return <div className="App"></div>;

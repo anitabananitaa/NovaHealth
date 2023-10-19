@@ -5,7 +5,7 @@ import Input from "./Input";
 import ilustracion from "./assets/ilustracion.png";
 
 //const url="http://192.168.0.129:3000/api"//
-const url="http://localhost:3000/api"
+const url="http://localhost:3000/api";
 
 class Login extends Component {
   constructor(props) {

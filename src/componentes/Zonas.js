@@ -4,12 +4,13 @@ import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
 
-const url="http://192.168.0.129:3000/api" // Define la URL de la API a la que accederá
+const url="http://192.168.0.129:3000/api"
+
 class Zonas extends Component { 
   constructor(props) {
     super(props);
     this.state = {
-      showFormulario: false // Muestra la visibilidad del componente o formulario, cuando "showFormulario" es "false" significa que el formulario está oculto.
+      showFormulario: false,
     };
 
   }

@@ -14,4 +14,8 @@ router.use("/profesionales", profesionalesRouter)
 router.use("/usuarios", usuariosRouter)
 router.use("/zonas", zonasRouter)
 
+router.get("/",function(req,res,next){
+    res.send("ok")
+})
+
 module.exports = router;

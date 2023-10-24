@@ -5,11 +5,12 @@ import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
 
 const url="http://192.168.0.129:3000/api"
-class Zonas extends Component {
+
+class Zonas extends Component { 
   constructor(props) {
     super(props);
     this.state = {
-      showFormulario: false
+      showFormulario: false,
     };
 
   }

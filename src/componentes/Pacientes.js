@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TarjetaPacientes from "./TarjetaPacientes";
 import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
+
 class Pacientes extends Component {
   constructor(props) {
     super(props);

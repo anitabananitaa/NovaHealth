@@ -6,7 +6,10 @@ import axios from 'axios';
 
 // const url="http://192.168.0.129:3000/api"
 
-const url="http://192.168.1.16:3000/api"
+// const url="http://192.168.1.16:3000/api"
+
+
+const url="http://192.168.0.188:3201/api"
 
 class Zonas extends Component { 
   constructor(props) {

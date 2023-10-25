@@ -6,6 +6,8 @@ class Llamados extends Component {
     super(props);
     this.state = {};
   }
+
+  
   render() {
     return (
       <div className="llamados">

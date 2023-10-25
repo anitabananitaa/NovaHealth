@@ -4,10 +4,9 @@ import Boton from "./Boton";
 import Input from "./Input";
 import ilustracion from "./assets/ilustracion.png";
 
-// const url="http://192.168.0.129:3000/api"
+// const url="http://192.168.1.16:3000/api"
 
-const url="http://192.168.1.16:3000/api"
-
+const url="http://192.168.0.188:3201/api"
 
 class Login extends Component {
   constructor(props) {

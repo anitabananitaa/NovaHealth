@@ -10,25 +10,39 @@ class FormularioBusqueda extends Component {
     };
   }
 
+  guardar(){
+    //
+    this.props.salir()
+  }
+
   render() {
     return (
-      <div className="contenedorFormulario">
-        <h1>Busqueda DNI</h1>
-        <div className="formulario">
-          <span>
-            DNI:
-            <input type="text" 
-          />
-          </span>
-        </div>
+      <div className="modal">
+        <div className="contenedorFormulario">
+          <h1>Busqueda DNI</h1>
+          <div className="formulario">
+            <span>
+              DNI:
+              <input type="text" 
+            />
+            </span>
+          </div>
 
-        <div>
-          <button type="button" className="btn" >
-            Buscar
-          </button>
-          <button type="button" className="btn" >
-            Cancelar
-          </button>
+          
+            <button 
+            type="button" 
+            className="btn"
+            onClick={()=> this.guardar()}
+            >
+              Buscar
+            </button>
+            <button 
+            type="button" 
+            className="btn" 
+            onClick={()=> this.props.salir()}>
+              Cancelar
+            </button>
+        
         </div>
       </div>
     );

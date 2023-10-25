@@ -19,7 +19,7 @@ body {
   margin: 0;
   width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
+
 }
 
 #root {
@@ -329,4 +329,10 @@ select {
 
 .edit {
   margin: 30px;
+}
+
+h4{
+margin-top: 20px;
+margin-bottom: 0%;
+
 }

@@ -10,8 +10,8 @@ class TarjetaLlamados extends Component {
   }
   render() {
     return (
-      <div class="ContenedorTarjetas">
-        <div class="Tarjetas">
+      <div className="ContenedorTarjetas">
+        <div className="Tarjetas">
           <h4>Estado:</h4>
           <span></span>
           <h4>Tipo:</h4>
@@ -33,11 +33,11 @@ class TarjetaLlamados extends Component {
           <h4>Origen:</h4>
           <span></span>
         </div>
-        <div class="botones">
-          <button class="btntarjeta">
+        <div className="botones">
+          <button className="btntarjeta">
             <img src={basura} className="imagen" />
           </button>
-          <button class="btntarjeta">
+          <button className="btntarjeta">
             <img src={lapiz} className="imagen" />
           </button>
         </div>

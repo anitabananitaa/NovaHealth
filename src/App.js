@@ -74,13 +74,7 @@ class App extends Component {
           </div>
         )}
       </div>
-    //return <div className="App">{!logged && <FormularioBusqueda />}</div>;
-    //return <div className="App">{!logged && <Formulario />}</div>;
-    //return <div className="App">{!logged && <FormularioProfesionales />}</div>;
-    // return <div className="App">{!logged && <FormularioUsuarios />}</div>;
-    //return <div className="App">{!logged && <FormularioZonas />}</div>;
-    //return <div className="App">{!logged && <FormularioLlamados/>}</div>;
-    //return <div className="App">{!logged && <SubFormularioLlamados />}</div>;
+
     );
   }
 }

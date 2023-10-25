@@ -11,7 +11,7 @@ class Carta extends Component {
         <div className="Agregar">
           <button 
             onClick={()=> this.props.showFormulario()}
-            className="Mas"
+            className="BotonDeAgregar"
           > 
             + 
           </button>

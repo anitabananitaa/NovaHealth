@@ -10,12 +10,6 @@ const getToken = function(){
     return rand() + rand();
 };
 
-router.get("/", function(req, res, next){
-    res.json({
-        status: "usuarios ok"
-    })
-})
-
 const getUsuario = function(user, pass){
     return new Promise((resolve, reject) => {
         const sql = 'SELECT * FROM usuarios WHERE nombre_usuario = ? AND contraseña = ?';
@@ -36,6 +30,12 @@ const setToken = function(ID_usuario, newToken){
         })
     })
 }
+
+router.get("/", function(req, res, next){
+    res.json({
+        status: "usuarios ok"
+    })
+})
 
 router.post("/login", function(req, res, next){
     const {user, pass} = req.body;
@@ -90,6 +90,113 @@ router.post("/", function(req, res, next){
                     })
                 }else{
                     res.json({
+                        status: "usuarios ok"
+                    })
+                }
+            })
+        }else{
+            res.json({
+                status: "error",
+                error:"Sin autorización"
+            })
+        }
+    })
+    .catch((error) => {
+        res.json({
+            status: "error",
+            error
+        })
+    })
+}) 
+
+router.put("/", function(req, res, next){
+    const {ID_usuario} = req.query;
+    const {token} = req.headers;
+    const {tipo, nombre_usuario, contraseña} = req.body;
+
+    isAdmin(token)
+    .then((tipo_ver) => {
+        if (tipo_ver === "admin"){
+            const sql = 'UPDATE usuarios SET tipo = ?, nombre_usuario = ?, contraseña = ? WHERE ID_usuario = ?' //Comillas simples
+            con.query(sql, [tipo, nombre_usuario, contraseña, ID_usuario], function(error, result){
+                if (error){
+                    res.json({
+                        status: "error",
+                        error
+                    })
+                }else{
+                    res.json({
+                        status: "usuarios ok"
+                    })
+                }
+            })
+        }else{
+            res.json({
+                status: "error",
+                error:"Sin autorización"
+            })
+        }
+    })
+    .catch((error) => {
+        res.json({
+            status: "error",
+            error
+        })
+    })
+}) 
+
+router.delete("/", function(req, res, next){
+    const {token} = req.headers;
+    const {ID_usuario} = req.query;
+    
+    isAdmin(token)
+    .then((tipo) => {
+        if (tipo === "admin"){
+            const sql = 'DELETE FROM usuarios WHERE ID_usuario = ?'; //Comillas simples
+            con.query(sql, [ID_usuario], function(error, result){
+                if (error){
+                    res.json({
+                        status: "error",
+                        error
+                    })
+                }else{
+                    res.json({
+                        status: "usuarios ok",
+                        msj:"Eliminado ID #"+ID_usuario
+                    })
+                }
+            })
+        }else{
+            res.json({
+                status: "error",
+                error:"Sin autorización"
+            })
+        }
+    })
+    .catch((error) => {
+        res.json({
+            status: "error",
+            error
+        })
+    })
+})
+
+/* router.get("/", function(req, res, next){
+    const {token} = req.headers;
+    const {tipo, nombre_usuario, contraseña} = req.body;
+
+    isAdmin(token)
+    .then((tipo_ver) => {
+        if (tipo_ver === "admin"){
+            const sql = 'SELECT * FROM usuarios'; //Comillas simples
+            con.query(sql, [tipo, nombre_usuario, contraseña], function(error, result){
+                if (error){
+                    res.json({
+                        status: "error",
+                        error
+                    })
+                }else{
+                    res.json({
                         status: "usuarios ok",
                         msj: {tipo, nombre_usuario, contraseña}
                     })
@@ -108,6 +215,6 @@ router.post("/", function(req, res, next){
             error
         })
     })
-}) 
+})  */
 
 module.exports = router;

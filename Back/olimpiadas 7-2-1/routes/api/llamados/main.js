@@ -37,7 +37,7 @@ router.get("/", function(req, res, next){
         }else{
             res.json({
                 status: "llamados ok",
-                llamados: result
+                result
             })
         }
     })

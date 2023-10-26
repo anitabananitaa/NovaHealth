@@ -21,7 +21,7 @@ router.get("/", function(req, res, next){
         }else{
             res.json({
                 status: "pacientes ok",
-                pacientes:result
+                result
             })
         }
     })

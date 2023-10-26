@@ -13,7 +13,8 @@ router.get("/", function(req, res, next){
             })
         }else{
             res.json({
-                status: "profesionales ok"
+                status: "profesionales ok",
+                result
             })
         }
     })

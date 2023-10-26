@@ -4,62 +4,62 @@ import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
 
-// const url="http://192.168.0.129:3000/api"
+const url = "http://10.0.5.13:3201/api";
 
 // const url="http://192.168.1.16:3000/api"
 
-
-const url="http://192.168.0.188:3201/api"
 
 class Zonas extends Component { 
   constructor(props) {
     super(props);
     this.state = {
       showFormulario: false,
+      datosZonas: [] // Inicializado como un array vacío
     };
-
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.obtenerDatos();
   }
-  
-  showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario})
+
+  showFormulario() {
+    this.setState({ showFormulario: !this.state.showFormulario });// llama a showFormulario del this.state
   }
 
-  obtenerDatos(){
-      const datos={
-        descripcion: this.state.descripcion,
-        tipo: this.state.tipo
-      }
-      console.log(this.state.descripcion)
-      console.log(this.state.tipo)
-      axios.get(url+'/zonas')
-      .then((res)=>{
-        console.log(res.data)
+  obtenerDatos() {
+    axios.get(url + '/zonas')
+      .then((res) => {
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
+        this.setState({ datosZonas: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(this.state.datosZonas);//verifica que datosZonas se guardo correctamente en la consola
       })
-      .catch((error)=>{
-        console.log(error)
-      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
   render() {
+    const datosZonas = this.state.datosZonas;// llama datosZonas del this.state
     return (
       <div className="zonas">
         {this.state.showFormulario &&
           <FormularioZonas
-            salir={()=>this.showFormulario()}
+            salir={() => this.showFormulario()}
           />
         }
-        <Carta showFormulario={()=> this.showFormulario()}>
-          <TarjetaZonas />
-
+        <Carta showFormulario={() => this.showFormulario()}>
+          {datosZonas.map((zona, index) => (//crea una carta por cada objeto en el arry datosZonas
+            <TarjetaZonas
+              key={index}
+              tipo={zona.tipo}
+              descripcion={zona.descripcion}
+              disponibilidad={zona.disponibilidad}
+            />
+          ))}
         </Carta>
       </div>
     );
   }
-  
 }
-
 
 export default Zonas;

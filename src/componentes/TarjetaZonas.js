@@ -5,16 +5,23 @@ import Carta from "./Carta";
 class TarjetaZonas extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      
+    };
   }
   render() {
+    const{ tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
+    const traducirDisponibilidad = (disponibilidad) => {
+      return disponibilidad === 1 ? "disponible" : "ocupada";};
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
           <h4>Tipo:</h4>
-          <span></span>
+          <span>{tipo}</span>
           <h4>Descripción:</h4>
-          <span></span>
+          <span> {descripcion}</span>
+          <h4>disponibilidad:</h4>
+          <span> {traducirDisponibilidad(disponibilidad)}</span>
         </div>
         <div className="botones">
           <button className="btntarjeta">

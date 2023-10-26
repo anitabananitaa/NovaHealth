@@ -16,7 +16,7 @@ export default class Menu extends Component {
   }
   render() {
     return (
-      <div class="botondesplegable">
+      <div className="botondesplegable">
         <button onClick={() => this.desplegar()} className="toggle-button">
           ☰
         </button>

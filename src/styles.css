@@ -19,6 +19,7 @@ body {
   margin: 0;
   width: 100vw;
   min-height: 100vh;
+
 }
 
 #root {
@@ -52,8 +53,7 @@ body {
   height: 30px;
   margin: 30px 0;
   border: none;
-  border-bottom: 1px solid rgb(99, 102, 241);;
-  margin-bottom: px;
+  border-bottom: 1px solid #6389f1;
   outline: none;
 }
 .formulario input {
@@ -81,7 +81,7 @@ body {
 }
 
 .btn {
-  background: rgb(99, 102, 241);;
+  background: #1c2536;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -92,10 +92,25 @@ body {
   font-weight: 600;
   margin-top: 10px;
   padding: 20px;
+  transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+  background-color: #0d131f;
+}
+
+
+.logeo .botonera .btn {
+  background-color: #6389f1;
+  transition: background-color 0.3s ease; 
+}
+
+.logeo .botonera .btn:hover {
+  background-color: #456fe0;
 }
 
 .sidebar {
-  width: 250px;
+  width: 330px;
   height: 100%;
   position: fixed;
   top: 0;
@@ -117,7 +132,14 @@ body {
   cursor: pointer;
   padding: 10px;
   margin: 0;
+  /* transition: background-color 0.3s ease;  */
 }
+/* 
+.toggle-button:hover {
+  color: #0d131f;
+} */
+
+
 
 ul {
   list-style-type: none;
@@ -125,12 +147,12 @@ ul {
 }
 
 li {
-  padding: 10px;
+  padding: 20px;
   color: #fff;
 }
 
 li:hover {
-  background-color: rgb(107, 118, 138);
+  background-color: #0d131f;
 }
 
 .botondesplegable {
@@ -144,8 +166,8 @@ li:hover {
   top: 0;
   left: 0;
   background-color: rgb(28, 37, 54);
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
 }
 
 .botonesmenu {
@@ -201,10 +223,15 @@ li:hover {
   color: #ffffff;
   font-weight: 600;
   margin-top: 10px;
-
   margin-left: 20px;
   margin-right: 20px;
+  transition: background-color 0.3s ease; 
 }
+
+.btntarjeta:hover {
+  background-color: #0d131f;
+}
+
 
 .imagen {
   filter: invert(100%);
@@ -245,7 +272,7 @@ li:hover {
   margin: 10px;
 }
 
-.Mas {
+.BotonDeAgregar {
   margin-top: 20px;
   background: rgb(28, 37, 54);
   border: none;
@@ -258,6 +285,17 @@ li:hover {
   color: #ffffff;
   font-weight: 600;
   align-items: center;
+  transition: background-color 0.3s ease; 
+}
+
+.BotonDeAgregar:hover {
+  background-color: #0d131f;
+}
+
+
+.contenedor .imagen1 img{
+  width: 99%;
+  margin-top: 70px;
 }
 
 
@@ -291,4 +329,10 @@ select {
 
 .edit {
   margin: 30px;
+}
+
+h4{
+margin-top: 20px;
+margin-bottom: 0%;
+
 }

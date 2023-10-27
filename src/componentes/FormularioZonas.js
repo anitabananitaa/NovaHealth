@@ -24,13 +24,18 @@ class FormularioZonas extends Component {
               <input type="text"/>
             </span>
           </div>
-
           <div className="formulario">
             <span>
-              tipo
+              Tipo
+              <input type="text"/>
+            </span>
+          </div>
+          <div className="formulario">
+            <span>
+              Disponibilidad
               <select className="mi-select">
-                <option value="opcion1">Activo</option>
-                <option value="opcion2">Inactivo</option>
+                <option value="opcion1">Disponible</option>
+                <option value="opcion2">Ocupada</option>
               </select>
             </span>
           </div>

@@ -12,6 +12,8 @@ class Pacientes extends Component {
   }
 
   
+
+  
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
   }

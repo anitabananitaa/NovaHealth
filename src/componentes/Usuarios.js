@@ -46,11 +46,10 @@ class Usuarios extends Component {
         <Carta showFormulario={()=> this.showFormulario()}>
           {datosUsuarios.map((usuario, index)=> ( 
           <TarjetaUsuarios 
-          key={index}
-          tipo={usuarios.tipo}
-          nombre_usuario={usuarios.nombre}
-          contraceña={usuarios.contraceña}
-          estado={usuarios.estado}
+            key={index}
+            tipo={usuario.tipo}
+            nombre_usuario={usuario.nombre}
+            estado={usuario.estado}
           />
           ))}
         </Carta>

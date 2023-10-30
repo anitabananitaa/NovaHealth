@@ -8,6 +8,7 @@ class TarjetaZonas extends Component {
     super(props);
     this.state = {};
   }
+  
   render() {
     const{ tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
     const traducirDisponibilidad = (disponibilidad) => {

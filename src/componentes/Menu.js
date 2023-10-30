@@ -21,7 +21,7 @@ export default class Menu extends Component {
           ☰
         </button>
         {this.state.desplegar && (
-          <ul>
+          <ul className="alinear-texto">
             <li onClick={() => this.setPantalla(1)}>Llamados</li>
             <li onClick={() => this.setPantalla(2)}>Zonas</li>
             <li onClick={() => this.setPantalla(3)}>Pacientes</li>

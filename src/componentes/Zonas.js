@@ -3,10 +3,13 @@ import TarjetaZonas from "./TarjetaZonas";
 import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
-const url="http://192.168.0.76:3201/api";
-//const url = "http://10.0.5.13:3201/api";
 
-class Zonas extends Component {
+const url="http://192.168.0.76:3201/api";
+
+// const url="http://192.168.1.16:3000/api"
+
+
+class Zonas extends Component { 
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +48,7 @@ class Zonas extends Component {
           />
         }
         <Carta showFormulario={() => this.showFormulario()}>
-          {datosZonas.map((zona, index) => (//crea una carta por cada objeto en el arry datosZonas
+          {datosZonas.map((zona, index) => (//crea una carta por cada objeto en el array datosZonas
             <TarjetaZonas
               key={index}
               tipo={zona.tipo}

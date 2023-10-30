@@ -19,6 +19,8 @@ class Pacientes extends Component {
     this.obtenerDatos();
   }
   
+
+  
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
   }

@@ -56,8 +56,7 @@ class Pacientes extends Component {
           apellido={paciente.apellido}
           fecNa={paciente.fecha_nac}
           dni={paciente.dni}
-          telefono={paciente.telefono}
-           />
+          telefono={paciente.telefono} />
       ))}
         </Carta>
       </div>

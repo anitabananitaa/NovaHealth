@@ -9,23 +9,24 @@ class TarjetaProfesionales extends Component {
     this.state = {};
   }
   render() {
+    const {nombre, apellido, dni, especialidad, telefono} = this.props;// recibe los datos como propiedades
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
           <h4>Nombre:</h4>
-          <span></span>
+          <span>{nombre}</span>
 
           <h4>Apellido:</h4>
-          <span></span>
+          <span>{apellido}</span>
 
           <h4>DNI:</h4>
-          <span></span>
+          <span>{dni}</span>
 
           <h4>Especialidad:</h4>
-          <span></span>
+          <span>{especialidad}</span>
 
           <h4>Teléfono:</h4>
-          <span></span>
+          <span>{telefono}</span>
         </div>
         <div className="botones">
           <button className="btntarjeta">

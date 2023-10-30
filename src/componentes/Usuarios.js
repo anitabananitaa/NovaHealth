@@ -44,7 +44,7 @@ class Usuarios extends Component {
           />
         }
         <Carta showFormulario={()=> this.showFormulario()}>
-          {datosUsuarios.map((usuario, index)=> ( ))}
+          {datosUsuarios.map((usuario, index)=> ( 
           <TarjetaUsuarios 
           key={index}
           tipo={usuarios.tipo}
@@ -52,6 +52,7 @@ class Usuarios extends Component {
           contraceña={usuarios.contraceña}
           estado={usuarios.estado}
           />
+          ))}
         </Carta>
       </div>
     );

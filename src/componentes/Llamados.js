@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
-import FormularioBusqueda from "./FormularioBusqueda"
+import FormularioBusqueda from "./FormularioBusqueda";
+
 class Llamados extends Component {
   constructor(props) {
     super(props);

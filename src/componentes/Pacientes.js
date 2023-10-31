@@ -4,7 +4,8 @@ import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
 import axios from 'axios';
 
-const url="http://192.168.0.76:3201/api";
+const url = "http://10.0.14.190:3201/api";
+
 
 class Pacientes extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Pacientes extends Component {
   
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
+    this.obtenerDatos();
   }
 
   obtenerDatos() {

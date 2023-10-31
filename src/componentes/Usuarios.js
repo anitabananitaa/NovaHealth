@@ -21,12 +21,13 @@ class Usuarios extends Component {
   }
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
+    this.obtenerDatos()
   }
   obtenerDatos(){
     axios.get(url + '/usuarios')
     .then((res) => {
       console.log(res.data);
-      this.setState({datosUsuarios: res.data.result});
+      this.setState({ datosUsuarios: res.data.result });
       console.log(this.state.datosUsuarios)
     })
     .catch((error) => {
@@ -38,7 +39,7 @@ class Usuarios extends Component {
     const datosUsuarios= this.state.datosUsuarios;
     return (
       <div className="usuarios">
-         {this.state.showFormulario &&
+        {this.state.showFormulario &&
           <FormularioUsuarios
             salir={()=>this.showFormulario()}
           />
@@ -48,7 +49,7 @@ class Usuarios extends Component {
           <TarjetaUsuarios 
             key={index}
             tipo={usuario.tipo}
-            nombre_usuario={usuario.nombre}
+            nombre={usuario.nombre_usuario}
             estado={usuario.estado}
           />
           ))}

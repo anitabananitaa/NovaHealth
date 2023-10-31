@@ -9,7 +9,7 @@ class TarjetaUsuarios extends Component {
     this.state = {};
   }
   render() {
-    const {tipo, nombre_usuario, estado}= this.props;
+    const {tipo, nombre, estado}= this.props;
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -17,10 +17,7 @@ class TarjetaUsuarios extends Component {
           <span>{tipo}</span>
 
           <h4>Nombre de usuario:</h4>
-          <span>{nombre_usuario}</span>
-
-          <h4>Contraseña:</h4>
-          <span></span>
+          <span>{nombre}</span>
 
           <h4>Estado:</h4>
           <span>{estado}</span>

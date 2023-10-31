@@ -1,18 +1,49 @@
 import React, { Component } from "react";
 import Input from "./Input";
+//const url = "http://192.168.0.76:3201/api";
+const url="http://10.0.14.190:3201/api";
+import axios from 'axios';
+
 
 class FormularioProfesionales extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      nombre:"",
+      apellido:"",
+      dni:"",
+      especialidad:"",
+      telefono:""
     };
   }
 
   guardar(){
-    //
+    const profesional = {
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      dni: this.state.dni,
+      especialidad: this.state.especialidad,
+      telefono: this.state.telefono
+    }
+  axios.post(url + '/profesionales', profesional)
+    .then((res) => {
+      console.log(profesional);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("profesional registrada con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar al profesional:", error);
     this.props.salir()
+  });
   }
+
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
 
   render() {
     return (
@@ -21,27 +52,35 @@ class FormularioProfesionales extends Component {
         <h1>Formulario de Profesionales</h1>
         <div className="formulario">
           <span>
-            DNI
-            <input type="text" />
+            Nombre
+            <input type="text" name="nombre"
+                value={this.state.nombre}
+                onChange={this.handleInputChange} />
           </span>
         </div>
         <div className="formulario">
           <span>
             Apellido
-            <input type="text" />
+            <input type="text" name="apellido"
+                value={this.state.apellido}
+                onChange={this.handleInputChange}/>
           </span>
         </div>
 
         <div className="formulario">
           <span>
             DNI
-            <input type="text"  pattern="[0-9]{8}"  />
+            <input type="text"  pattern="[0-9]{8}"name="dni"
+                value={this.state.dni}
+                onChange={this.handleInputChange}  />
           </span>
         </div>
         <div className="formulario">
           <span>
             Especialidad
-            <select className="mi-select">
+            <select className="mi-select" name="especialidad"
+                value={this.state.especialidad}
+                onChange={this.handleInputChange}>
               <option value="opcion1">Medico</option>
               <option value="opcion2">Enfermero</option>
             </select>
@@ -50,7 +89,9 @@ class FormularioProfesionales extends Component {
         <div className="formulario">
           <span>
             Telefono
-            <input type="text"   />
+            <input type="text" name="telefono"
+                value={this.state.telefono}
+                onChange={this.handleInputChange}   />
           </span>
         </div>
         <button 
@@ -64,7 +105,6 @@ class FormularioProfesionales extends Component {
           <button 
             type="button" 
             className="btn" 
-             
             onClick={()=> this.props.salir()}  
           >
             Cancelar

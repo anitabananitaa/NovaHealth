@@ -9,13 +9,14 @@ class TarjetaLlamados extends Component {
     this.state = {};
   }
   render() {
+    const{estado, tipo, fecha_hora_llamado, fecha_hora_atencion, origen, profesional} = this.props;
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
           <h4>Estado:</h4>
-          <span></span>
+          <span>{estado}</span>
           <h4>Tipo:</h4>
-          <span></span>
+          <span>{tipo}</span>
           <h4>DNI:</h4>
           <span></span>
           <h4>Nombre:</h4>
@@ -25,13 +26,13 @@ class TarjetaLlamados extends Component {
           <h4>Zona:</h4>
           <span></span>
           <h4>Fecha/hora del llamado:</h4>
-          <span></span>
+          <span>{fecha_hora_llamado}</span>
           <h4>Fecha/hora de atención:</h4>
-          <span></span>
+          <span>{fecha_hora_atencion}</span>
           <h4>Profesional:</h4>
-          <span></span>
+          <span>{profesional}</span>
           <h4>Origen:</h4>
-          <span></span>
+          <span>{origen}</span>
         </div>
         <div className="botones">
           <button className="btntarjeta">

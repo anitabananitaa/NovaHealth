@@ -6,7 +6,6 @@ import ilustracion from "./assets/ilustracion.png";
 
 const url = "http://10.0.14.190:3201/api";
 
-
 class Login extends Component {
   constructor(props) {
     super(props);

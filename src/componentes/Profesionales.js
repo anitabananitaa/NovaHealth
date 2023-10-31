@@ -21,7 +21,8 @@ class Profesionales extends Component {
   }
   
   showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario})
+    this.setState({showFormulario: !this.state.showFormulario});
+    this.obtenerDatos();
   }
 
   obtenerDatos() {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "./Input";
-const url = "http://192.168.0.76:3201/api";
+//const url = "http://192.168.0.76:3201/api";
+const url="http://10.0.14.190:3201/api";
 import axios from 'axios';
 
 class FormularioZonas extends Component {
@@ -31,7 +32,6 @@ class FormularioZonas extends Component {
     console.error("Error al registrar la zona:", error);
     this.props.salir()
   });
-
   }
 
   handleInputChange = (event) => {

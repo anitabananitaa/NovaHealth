@@ -1,16 +1,51 @@
 import React, { Component } from "react";
 import Input from "./Input";
+import axios from 'axios';
+
+// const url = "http://192.168.0.76:3201/api";
+const url = "http://10.0.14.190:3201/api";
+
+
 class Formulario extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      apellido: "",
+      nombre: "",
+      dni: "",
+      fecha_nac: "",
+      telefono: "",
+
     };
   }
 
   guardar(){
-    //
+    const paciente = {
+    apellido: this.state.apellido,
+    nombre: this.state.nombre,
+    dni: this.state.dni,
+    fecha_nac: this.state.fecha_nac,
+    telefono: this.state.telefono
+    }
+    axios.post(url + '/Pacientes', paciente)
+    .then((res) => {
+    console.log(paciente);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("paciente registrado con éxito:", res.data);
+    this.props.salir();
+    })
+    .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar la paciente:", error);
     this.props.salir()
+    });
   }
+
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
 
   render() {
     return (
@@ -20,32 +55,42 @@ class Formulario extends Component {
           <div className="formulario">
             <span>
               Apellido
-              <input type="text"/>
+              <input type="text"  name="apellido"
+                value={this.state.apellido}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
           <div className="formulario">
             <span>
               Nombre
-              <input type="text"  />
+              <input type="text"   name="nombre"
+                value={this.state.nombre}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
 
           <div className="formulario">
             <span>
               DNI
-              <input type="text"  pattern="[0-9]"  />
+              <input type="text"  pattern="[0-9]"   name="dni"
+                value={this.state.dni}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
           <div className="formulario">
             <span>
               Fecha Nac.
-              <input type="date"  placeholder="FechaNac" />
+              <input type="date"  placeholder="FechaNac"  name="fecha_nac"
+                value={this.state.fecha_nac}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
           <div className="formulario">
             <span>
               Telefono
-              <input type="text"  />
+              <input type="text"   name="telefono"
+                value={this.state.telefono}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
 

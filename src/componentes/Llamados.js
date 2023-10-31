@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioBusqueda from "./FormularioBusqueda";
-import axios from 'axios';
-
-const url = "http://192.168.0.76:3201/api";
 
 class Llamados extends Component {
   constructor(props) {

@@ -44,15 +44,18 @@ class Zonas extends Component {
       params:{ID_zonas: id},
       headers:{token:sessionStorage.getItem("token")}
     }
+    console.log(config)
     axios.delete(`${url}/zonas/`, config)//Usar funciones de flecha asegura que el contexto de this se mantenga y que this.props.onEliminarTarjeta y this.actualizarTarjetas funcionen correctamente
       .then((res) => {
-        this.actualizarTarjetas(id);
+        this.obtenerDatos();
       })
       .catch((error) => {
+        alert("error")
         console.error("Error al eliminar la tarjeta:", error);
       });
   }
 
+  /*
   actualizarTarjetas = (id) => {
     // Filtra las tarjetas y excluye la que tiene el ID proporcionado
     const nuevasTarjetas = this.state.datosZonas.filter((zona) => zona.id !== id);
@@ -60,7 +63,7 @@ class Zonas extends Component {
     // Actualiza el estado con las tarjetas actualizadas
     this.setState({ datosZonas: nuevasTarjetas });
   }
-
+*/
 
   render() {
     const datosZonas = this.state.datosZonas;// llama datosZonas del this.state
@@ -75,11 +78,11 @@ class Zonas extends Component {
           {datosZonas.map((zona, index) => (//crea una carta por cada objeto en el array datosZonas
             <TarjetaZonas
                 key={index}
-  id={zona.id}
-  tipo={zona.tipo}
-  descripcion={zona.descripcion}
-  disponibilidad={zona.disponibilidad}
-  onEliminarTarjeta={this.eliminarTarjeta}
+                id={zona.ID_zonas}
+                tipo={zona.tipo}
+                descripcion={zona.descripcion}
+                disponibilidad={zona.disponibilidad}
+                onEliminarTarjeta={this.eliminarTarjeta}
             />
           ))}
         </Carta>

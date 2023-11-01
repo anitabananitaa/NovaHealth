@@ -75,7 +75,7 @@ router.get("/", function(req, res, next){
     isAdmin(token)
     .then((tipo_ver) => {
         if (tipo_ver === "admin"){
-            const sql = 'SELECT tipo, nombre_usuario, estado FROM usuarios'; //Comillas simples
+            const sql = 'SELECT tipo, nombre_usuario FROM usuarios WHERE activo = TRUE'; //Comillas simples
             con.query(sql, function(error, result){
                 if (error){
                     res.json({
@@ -142,13 +142,13 @@ router.post("/", function(req, res, next){
 router.put("/", function(req, res, next){
     const {ID_usuario} = req.query;
     const {token} = req.headers;
-    const {tipo, nombre_usuario, contraseña, estado} = req.body;
+    const {tipo, nombre_usuario, contraseña} = req.body;
 
     isAdmin(token)
     .then((tipo_ver) => {
         if (tipo_ver === "admin"){
-            const sql = 'UPDATE usuarios SET tipo = ?, nombre_usuario = ?, contraseña = ?, estado = ? WHERE ID_usuario = ?' //Comillas simples
-            con.query(sql, [tipo, nombre_usuario, contraseña, estado, ID_usuario], function(error, result){
+            const sql = 'UPDATE usuarios SET tipo = ?, nombre_usuario = ?, contraseña = ? WHERE ID_usuario = ?' //Comillas simples
+            con.query(sql, [tipo, nombre_usuario, contraseña, ID_usuario], function(error, result){
                 if (error){
                     res.json({
                         status: "error",
@@ -182,7 +182,7 @@ router.delete("/", function(req, res, next){
     isAdmin(token)
     .then((tipo) => {
         if (tipo === "admin"){
-            const sql = 'DELETE FROM usuarios WHERE ID_usuario = ?'; //Comillas simples
+            const sql = 'UPDATE usuarios SET activo = FALSE WHERE ID_usuario = ?'; //Comillas simples
             con.query(sql, [ID_usuario], function(error, result){
                 if (error){
                     res.json({

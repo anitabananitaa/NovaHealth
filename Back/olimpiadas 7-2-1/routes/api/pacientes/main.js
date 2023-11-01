@@ -6,9 +6,9 @@ router.get("/", function(req, res, next){
     const {documento} = req.query;
     let sql = ""; 
     if(documento!== undefined && documento !== null) {
-        sql = 'SELECT * FROM pacientes WHERE dni = ?'; //Comillas simples
+        sql = 'SELECT * FROM pacientes WHERE activo = TRUE AND dni = ?'; //Comillas simples
     } else {
-        sql = 'SELECT * FROM pacientes'; //Comillas simples
+        sql = 'SELECT * FROM pacientes WHERE activo = TRUE'; //Comillas simples
     }
     
     con.query(sql, [documento], function(error, result){
@@ -90,7 +90,7 @@ router.delete("/", function(req, res, next){
     isAdmin(token)
     .then((tipo) => {
         if (tipo === "admin"){
-            const sql = 'DELETE FROM pacientes WHERE ID_paciente = ?'; //Comillas simples
+            const sql = 'UPDATE pacientes SET activo = FALSE WHERE ID_paciente = ?'; //Comillas simples
             con.query(sql, [ID_paciente], function(error, result){
                 if (error){
                     res.json({

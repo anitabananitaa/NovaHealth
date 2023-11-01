@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import Input from "./Input";
+import axios from "axios";
+
+
+const url = "http://192.168.0.189:3201/api";
 
 class FormularioUsuarios extends Component {
   constructor(props) {
@@ -23,7 +27,7 @@ class FormularioUsuarios extends Component {
   .then((res) => {
     console.log(usuario);
   // Maneja la respuesta del servidor si es necesario
-  console.log("usuario registrado con éxito:", res.data);
+  console.log("Usuario registrado con éxito:", res.data);
   this.props.salir();
 })
 .catch((error) => {

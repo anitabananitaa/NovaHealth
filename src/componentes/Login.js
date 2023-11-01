@@ -5,7 +5,7 @@ import Input from "./Input";
 import ilustracion from "./assets/ilustracion.png";
 
 
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.189:3201/api";
 
 
 class Login extends Component {
@@ -27,7 +27,8 @@ class Login extends Component {
     axios.post(url+'/usuarios/login', datos)
     .then((res)=>{
       console.log(res.data)
-      this.props.LoginOK(res.data.token,res.data.tipo)
+      // this.props.LoginOK(res.data.user[0].newToken,res.data.tipo)
+      this.props.LoginOK(res.data.user.newToken,res.data.user.tipo)
     })
     .catch((error)=>{
       console.log(error)

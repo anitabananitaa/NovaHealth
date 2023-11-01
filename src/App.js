@@ -36,6 +36,7 @@ class App extends Component {
   }
 
   LoginOK(token, tipo) {
+    console.log(token);
     sessionStorage.setItem("token", token)
     sessionStorage.setItem("tipo", tipo)
     this.setState({

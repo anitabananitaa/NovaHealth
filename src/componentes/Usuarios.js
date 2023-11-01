@@ -4,7 +4,7 @@ import Carta from "./Carta";
 import FormularioUsuarios from "./FormularioUsuarios";
 import axios from 'axios';
 
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.189:3201/api";
 
 
 class Usuarios extends Component {
@@ -24,10 +24,17 @@ class Usuarios extends Component {
     this.obtenerDatos();
   }
   obtenerDatos(){
-    axios.get(url + '/usuarios')
+
+    const config = {
+      headers: {
+        token: sessionStorage.getItem("token")
+      }
+    }
+    axios.get(url + '/usuarios', config)
     .then((res) => {
       console.log(res.data);
-      this.setState({datosUsuarios: res.data.result});
+      if (res.data.result!=null)
+        this.setState({datosUsuarios: res.data.result});
       console.log(this.state.datosUsuarios)
     })
     .catch((error) => {

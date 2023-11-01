@@ -4,7 +4,8 @@ import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
 
-const url = "http://10.0.3.91:3201/api";
+
+const url = "http://192.168.0.189:3201/api";
 
 
 

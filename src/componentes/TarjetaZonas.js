@@ -6,9 +6,15 @@ import Carta from "./Carta";
 class TarjetaZonas extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isFormOpen: false
+    };
   }
   
+  openForm = () => {
+    this.setState({ isFormOpen: true });
+  };
+
   render() {
     const{ tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
     const traducirDisponibilidad = (disponibilidad) => {

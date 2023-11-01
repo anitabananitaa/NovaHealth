@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import basura from "./assets/basura.png";
 import lapiz from "./assets/lapiz.png";
 import Carta from "./Carta";
+import FormularioZonas from "./FormularioZonas";
 
 class TarjetaZonas extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      descripcion: "",
-      tipo: "",
-      disponibilidad: "Disponible"
+    
     };
   }
   
+
+
   render() {
     const{ id, tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
     const traducirDisponibilidad = (disponibilidad) => {

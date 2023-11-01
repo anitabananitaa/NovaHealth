@@ -3,9 +3,7 @@ import TarjetaZonas from "./TarjetaZonas";
 import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
-
-const url = "http://10.0.14.190:3201/api";
-
+const url = "http://10.0.3.91:3201/api";
 
 class Zonas extends Component { 
   constructor(props) {
@@ -53,15 +51,6 @@ class Zonas extends Component {
       });
   }
 
-  /*
-  actualizarTarjetas = (id) => {
-    // Filtra las tarjetas y excluye la que tiene el ID proporcionado
-    const nuevasTarjetas = this.state.datosZonas.filter((zona) => zona.id !== id);
-
-    // Actualiza el estado con las tarjetas actualizadas
-    this.setState({ datosZonas: nuevasTarjetas });
-  }
-*/
 
   render() {
     const datosZonas = this.state.datosZonas;// llama datosZonas del this.state

@@ -40,6 +40,7 @@ router.post("/login", function(req, res, next){
         const newToken = getToken();
         await setToken(user.ID_usuario, newToken);
         user.newToken = newToken;
+        delete user.token;
         delete user.contraseña;
         res.json({
             status: "usuarios ok",

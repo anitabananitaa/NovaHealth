@@ -100,7 +100,6 @@ handleInputChange = (event) => {
         <button 
             type="button" 
             className="btn" 
-             
             onClick={()=> this.props.salir()}  
           >
             Cancelar

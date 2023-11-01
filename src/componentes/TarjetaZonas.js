@@ -6,11 +6,15 @@ import Carta from "./Carta";
 class TarjetaZonas extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    };
   }
   
   render() {
-    const{ tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
+    const{ id, tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
     const traducirDisponibilidad = (disponibilidad) => {
       return disponibilidad === 1 ? "disponible" : "ocupada";};
     return (
@@ -24,7 +28,7 @@ class TarjetaZonas extends Component {
           <span> {traducirDisponibilidad(disponibilidad)}</span>
         </div>
         <div className="botones">
-          <button className="btntarjeta">
+          <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
             <img src={basura} className="imagen" />
           </button>
           <button className="btntarjeta">
@@ -35,5 +39,4 @@ class TarjetaZonas extends Component {
     );
   }
 }
-
 export default TarjetaZonas;

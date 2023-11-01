@@ -70,13 +70,12 @@ const isAdmin = function(token){
 
 router.get("/", function(req, res, next){
     const {token} = req.headers;
-    const {tipo, nombre_usuario, estado} = req.body;
 
     isAdmin(token)
     .then((tipo_ver) => {
         if (tipo_ver === "admin"){
-            const sql = 'SELECT tipo, nombre_usuario, estado FROM zonas'; //Comillas simples
-            con.query(sql, [tipo, nombre_usuario, estado], function(error, result){
+            const sql = 'SELECT tipo, nombre_usuario, estado FROM usuarios'; //Comillas simples
+            con.query(sql, function(error, result){
                 if (error){
                     res.json({
                         status: "error",

@@ -4,7 +4,9 @@ import Carta from "./Carta";
 import FormularioProfesionales from "./FormularioProfesionales";
 import axios from 'axios';
 
-const url = "http://10.0.14.190:3201/api";
+
+const url = "http://10.0.3.91:3201/api";
+
 
 
 class Profesionales extends Component {

@@ -4,7 +4,7 @@ import Carta from "./Carta";
 import FormularioUsuarios from "./FormularioUsuarios";
 import axios from 'axios';
 
-const url = "http://10.0.14.190:3201/api";
+const url = "http://10.0.3.91:3201/api";
 
 
 class Usuarios extends Component {
@@ -21,6 +21,7 @@ class Usuarios extends Component {
   }
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
+    this.obtenerDatos();
   }
   obtenerDatos(){
     axios.get(url + '/usuarios')

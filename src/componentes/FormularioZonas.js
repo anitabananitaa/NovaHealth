@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Input from "./Input";
 import axios from 'axios';
 
-const url = "http://10.0.14.190:3201/api";
+
+const url = "http://10.0.3.91:3201/api";
+
 
 
 class FormularioZonas extends Component {
@@ -16,7 +18,7 @@ class FormularioZonas extends Component {
   }
 
   guardar(){
-        const zona = {
+      const zona = {
       descripcion: this.state.descripcion,
       tipo: this.state.tipo,
       disponibilidad: this.state.disponibilidad

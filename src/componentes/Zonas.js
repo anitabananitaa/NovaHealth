@@ -4,7 +4,9 @@ import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
 
+
 const url = "http://192.168.0.189:3201/api";
+
 
 
 class Zonas extends Component { 

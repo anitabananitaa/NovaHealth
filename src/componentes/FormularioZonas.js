@@ -5,7 +5,6 @@ const url = "http://192.168.0.189:3201/api";
 import axios from 'axios';
 
 
-
 class FormularioZonas extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,7 @@ class FormularioZonas extends Component {
   }
 
   guardar(){
-        const zona = {
+      const zona = {
       descripcion: this.state.descripcion,
       tipo: this.state.tipo,
       disponibilidad: this.state.disponibilidad

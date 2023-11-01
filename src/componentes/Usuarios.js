@@ -19,10 +19,16 @@ class Usuarios extends Component {
   }
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
-    this.obtenerDatos()
+    this.obtenerDatos();
   }
   obtenerDatos(){
-    axios.get(url + '/usuarios')
+
+    const config = {
+      headers: {
+        token: sessionStorage.getItem("token")
+      }
+    }
+    axios.get(url + '/usuarios', config)
     .then((res) => {
       console.log(res.data);
       this.setState({ datosUsuarios: res.data.result });

@@ -31,12 +31,6 @@ const setToken = function(ID_usuario, newToken){
     })
 }
 
-router.get("/", function(req, res, next){
-    res.json({
-        status: "usuarios ok"
-    })
-})
-
 router.post("/login", function(req, res, next){
     const {user, pass} = req.body;
 
@@ -73,6 +67,42 @@ const isAdmin = function(token){
         })
     })
 }
+
+router.get("/", function(req, res, next){
+    const {token} = req.headers;
+    const {tipo, nombre_usuario, estado} = req.body;
+
+    isAdmin(token)
+    .then((tipo_ver) => {
+        if (tipo_ver === "admin"){
+            const sql = 'SELECT tipo, nombre_usuario, estado FROM zonas'; //Comillas simples
+            con.query(sql, [tipo, nombre_usuario, estado], function(error, result){
+                if (error){
+                    res.json({
+                        status: "error",
+                        error
+                    })
+                }else{
+                    res.json({
+                        status: "usuarios ok",
+                        result
+                    })
+                }
+            })
+        }else{
+            res.json({
+                status: "error",
+                error:"Sin autorización"
+            })
+        }
+    })
+    .catch((error) => {
+        res.json({
+            status: "error",
+            error
+        })
+    })
+})
 
 router.post("/", function(req, res, next){
     const {token} = req.headers;
@@ -112,13 +142,13 @@ router.post("/", function(req, res, next){
 router.put("/", function(req, res, next){
     const {ID_usuario} = req.query;
     const {token} = req.headers;
-    const {tipo, nombre_usuario, contraseña} = req.body;
+    const {tipo, nombre_usuario, contraseña, estado} = req.body;
 
     isAdmin(token)
     .then((tipo_ver) => {
         if (tipo_ver === "admin"){
-            const sql = 'UPDATE usuarios SET tipo = ?, nombre_usuario = ?, contraseña = ? WHERE ID_usuario = ?' //Comillas simples
-            con.query(sql, [tipo, nombre_usuario, contraseña, ID_usuario], function(error, result){
+            const sql = 'UPDATE usuarios SET tipo = ?, nombre_usuario = ?, contraseña = ?, estado = ? WHERE ID_usuario = ?' //Comillas simples
+            con.query(sql, [tipo, nombre_usuario, contraseña, estado, ID_usuario], function(error, result){
                 if (error){
                     res.json({
                         status: "error",
@@ -180,41 +210,5 @@ router.delete("/", function(req, res, next){
         })
     })
 })
-
-/* router.get("/", function(req, res, next){
-    const {token} = req.headers;
-    const {tipo, nombre_usuario, contraseña} = req.body;
-
-    isAdmin(token)
-    .then((tipo_ver) => {
-        if (tipo_ver === "admin"){
-            const sql = 'SELECT * FROM usuarios'; //Comillas simples
-            con.query(sql, [tipo, nombre_usuario, contraseña], function(error, result){
-                if (error){
-                    res.json({
-                        status: "error",
-                        error
-                    })
-                }else{
-                    res.json({
-                        status: "usuarios ok",
-                        msj: {tipo, nombre_usuario, contraseña}
-                    })
-                }
-            })
-        }else{
-            res.json({
-                status: "error",
-                error:"Sin autorización"
-            })
-        }
-    })
-    .catch((error) => {
-        res.json({
-            status: "error",
-            error
-        })
-    })
-})  */
 
 module.exports = router;

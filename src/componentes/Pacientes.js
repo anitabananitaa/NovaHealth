@@ -4,7 +4,7 @@ import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
 import axios from 'axios';
 
-const url = "http://192.168.0.189:3201/api";
+const url = "http://10.0.3.91:3201/api";
 
 
 class Pacientes extends Component {
@@ -19,8 +19,6 @@ class Pacientes extends Component {
   componentDidMount() {
     this.obtenerDatos();
   }
-  
-
   
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario})
@@ -39,6 +37,23 @@ class Pacientes extends Component {
       });
   }
 
+
+  eliminarTarjeta = (id) => {
+    const config = {
+      params:{ID_paciente: id},
+      headers:{token:sessionStorage.getItem("token")}
+    }
+    console.log(config)
+    axios.delete(`${url}/pacientes/`, config)//Usar funciones de flecha asegura que el contexto de this se mantenga y que this.props.onEliminarTarjeta y this.actualizarTarjetas funcionen correctamente
+      .then((res) => {
+        this.obtenerDatos();
+      })
+      .catch((error) => {
+        alert("error")
+        console.error("Error al eliminar la tarjeta:", error);
+      });
+  }
+
   
   render() {
     const datosPacientes = this.state.datosPacientes; //llama a datosProfecionales del this.state
@@ -54,11 +69,13 @@ class Pacientes extends Component {
       {datosPacientes.map((paciente, index) => (//crea una carta por cada objeto en el arry datosPacientes
           <TarjetaPacientes
           key={index}
+          id={paciente.ID_paciente}
           nombre={paciente.nombre}
           apellido={paciente.apellido}
           fecNa={paciente.fecha_nac}
           dni={paciente.dni}
-          telefono={paciente.telefono} />
+          telefono={paciente.telefono} 
+          onEliminarTarjeta={this.eliminarTarjeta}/>
       ))}
         </Carta>
       </div>

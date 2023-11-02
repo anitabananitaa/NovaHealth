@@ -13,10 +13,6 @@ class TarjetaZonas extends Component {
     };
   }
   
-  openForm = () => {
-    this.setState({ isFormOpen: true });
-  };
-
   render() {
     const{ id, tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
     const traducirDisponibilidad = (disponibilidad) => {

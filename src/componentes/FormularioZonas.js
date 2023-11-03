@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "./Input";
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.76:3201/api";
 
 import axios from 'axios';
 
@@ -9,13 +9,26 @@ class FormularioZonas extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ID_zonas:null,
       descripcion: "",
       tipo: "",
       disponibilidad: "Disponible"
     };
   }
 
+  componentDidMount(){
+    if(this.props.datos !== null){
+      this.setState({
+        ID_zonas:this.props.datos.id,
+        descripcion:this.props.datos.descripcion,
+        tipo:this.props.datos.tipo,
+        disponibilidad:this.props.datos.disponibilidad
+      })
+    }
+  }
+
   guardar(){
+    // verificar id en props
       const zona = {
       descripcion: this.state.descripcion,
       tipo: this.state.tipo,

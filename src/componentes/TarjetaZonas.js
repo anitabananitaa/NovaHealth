@@ -13,6 +13,32 @@ class TarjetaZonas extends Component {
     };
   }
   
+
+editarDatos(){
+  const zona = {
+    descripcion: this.state.descripcion,
+    tipo: this.state.tipo,
+    disponibilidad: this.state.disponibilidad
+  }
+  const config ={
+    params:{ ID_zonas: t}
+  }
+  axios.put(url + '/zonas', zona)
+  .then((res) => {
+    console.log(zona);
+  // Maneja la respuesta del servidor si es necesario
+  console.log("Zona editada con éxito:", res.data);
+  this.props.salir();
+})
+.catch((error) => {
+  // Maneja errores si es necesario
+  console.error("Error al editar la zona:", error);
+  this.props.salir()
+});
+}
+
+
+
   render() {
     const{ id, tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
     const traducirDisponibilidad = (disponibilidad) => {
@@ -31,7 +57,7 @@ class TarjetaZonas extends Component {
           <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
             <img src={basura} className="imagen" />
           </button>
-          <button className="btntarjeta">
+          <button className="btntarjeta"  onClick={() => this.props.onEditarDatos(this.props)}>
             <img src={lapiz} className="imagen" />
           </button>
         </div>

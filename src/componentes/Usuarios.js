@@ -3,7 +3,7 @@ import TarjetaUsuarios from "./TarjetaUsuarios";
 import Carta from "./Carta";
 import FormularioUsuarios from "./FormularioUsuarios";
 import axios from 'axios';
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.76:3201/api";
 
 class Usuarios extends Component {
   constructor(props) {

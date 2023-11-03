@@ -3,12 +3,13 @@ import TarjetaZonas from "./TarjetaZonas";
 import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.76:3201/api";
 
 class Zonas extends Component { 
   constructor(props) {
     super(props);
     this.state = {
+      datosFormulario:null,
       showFormulario: false,
       datosZonas: [] // Inicializado como un array vacío
     };
@@ -35,6 +36,12 @@ class Zonas extends Component {
       });
   }
 
+  editarTarjeta=(datos) =>{
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
+
+
+  }
+
   eliminarTarjeta = (id) => {
     const config = {
       params:{ID_zonas: id},
@@ -58,6 +65,8 @@ class Zonas extends Component {
       <div className="zonas">
         {this.state.showFormulario &&
           <FormularioZonas
+            datos={this.state.datosFormulario}
+            
             salir={() => this.showFormulario()}
           />
         }
@@ -70,6 +79,7 @@ class Zonas extends Component {
                 descripcion={zona.descripcion}
                 disponibilidad={zona.disponibilidad}
                 onEliminarTarjeta={this.eliminarTarjeta}
+                onEditarDatos={this.editarTarjeta}
             />
           ))}
         </Carta>

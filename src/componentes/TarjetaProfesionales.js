@@ -6,10 +6,16 @@ import Carta from "./Carta";
 class TarjetaProfesionales extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      nombre:"",
+      apellido:"",
+      dni:"",
+      especialidad:"",
+      telefono:""
+    };
   }
   render() {
-    const {nombre, apellido, dni, especialidad, telefono} = this.props;// recibe los datos como propiedades
+    const { id, nombre, apellido, dni, especialidad, telefono} = this.props;// recibe los datos como propiedades
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -28,7 +34,7 @@ class TarjetaProfesionales extends Component {
           <h4>Teléfono:</h4>
           <span>{telefono}</span>
         </div>
-        <div className="botones">
+        <div className="botones" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
           <button className="btntarjeta">
             <img src={basura} className="imagen" />
           </button>

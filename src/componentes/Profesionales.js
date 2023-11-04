@@ -35,6 +35,23 @@ class Profesionales extends Component {
       });
   }
 
+  eliminarTarjeta = (id) => {
+    const config = {
+      params:{ID_profesional: id},
+      headers:{token:sessionStorage.getItem("token")}
+    }
+    console.log(config)
+    axios.delete(`${url}/profesionales/`, config)//Usar funciones de flecha asegura que el contexto de this se mantenga y que this.props.onEliminarTarjeta y this.actualizarTarjetas funcionen correctamente
+      .then((res) => {
+        this.obtenerDatos();
+      })
+      .catch((error) => {
+        alert("error")
+        console.error("Error al eliminar la tarjeta:", error);
+      });
+  }
+
+
   render() {
     const datosProfesionales = this.state.datosProfesionales; //llama datosProfesionales del this.state
     return (
@@ -49,11 +66,13 @@ class Profesionales extends Component {
         {datosProfesionales.map((profesional, index) => (//crea una carta por cada objeto en el arry datosProfesionales
           <TarjetaProfesionales
           key={index}
+          id={profesional.ID_profesional}
           nombre={profesional.nombre}
           apellido={profesional.apellido}
           dni={profesional.dni}
           especialidad={profesional.especialidad}
           telefono={profesional.telefono}
+          onEliminarTarjeta={this.eliminarTarjeta}
           />
         ))}
         </Carta>

@@ -7,12 +7,37 @@ class TarjetaPacientes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nombre:"",
-      apellido:"",
-      fechNa:"",
-      dni:"",
-      telefono:""
+      // nombre:"",
+      // apellido:"",
+      // fechNa:"",
+      // dni:"",
+      // telefono:""
     };
+  }
+  
+  editarDatos(){
+    const paciente = {
+    apellido: this.state.apellido,
+    nombre: this.state.nombre,
+    dni: this.state.dni,
+    fecha_nac: this.state.fecha_nac,
+    telefono: this.state.telefono
+    }
+    const config ={
+      params:{ ID_pacientes: t}
+    }
+    axios.put(url + '/Pacientes', paciente)
+    .then((res) => {
+      console.log(paciente);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("paciente editado con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al editar el paciente:", error);
+    this.props.salir()
+  });
   }
 
   render() {
@@ -39,7 +64,7 @@ class TarjetaPacientes extends Component {
           <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
             <img src={basura} className="imagen" />
           </button>
-          <button className="btntarjeta">
+          <button className="btntarjeta" onClick={() => this.props.onEditarDatos(this.props)}>
             <img src={lapiz} className="imagen" />
           </button>
         </div>

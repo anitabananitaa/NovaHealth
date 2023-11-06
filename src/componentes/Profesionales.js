@@ -3,12 +3,13 @@ import TarjetaProfesionales from "./TarjetaProfesionales";
 import Carta from "./Carta";
 import FormularioProfesionales from "./FormularioProfesionales";
 import axios from 'axios';
-const url = "http://10.0.14.190:3201/api";
+const url = "http://192.168.1.16:3201/api";
 
 class Profesionales extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      datosFormulario:null,
       showFormulario: false,
       datosProfesionales: []
     };
@@ -34,6 +35,12 @@ class Profesionales extends Component {
         console.log(error);
       });
   }
+  
+  editarTarjeta=(datos) =>{
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
+
+
+  }
 
   eliminarTarjeta = (id) => {
     const config = {
@@ -58,6 +65,7 @@ class Profesionales extends Component {
       <div className="profesionales">
         {this.state.showFormulario &&
           <FormularioProfesionales
+            datos={this.state.datosFormulario}
             salir={()=>this.showFormulario()}
           />
         }
@@ -73,6 +81,7 @@ class Profesionales extends Component {
           especialidad={profesional.especialidad}
           telefono={profesional.telefono}
           onEliminarTarjeta={this.eliminarTarjeta}
+          onEditarDatos={this.editarTarjeta}
           />
         ))}
         </Carta>

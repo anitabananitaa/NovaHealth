@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Input from "./Input";
 import axios from 'axios';
-const url = "http://10.0.14.190:3201/api";
+const url = "http://192.168.1.16:3201/api";
 
 class Formulario extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ID_zonas:null,
       apellido: "",
       nombre: "",
       dni: "",
@@ -14,6 +15,18 @@ class Formulario extends Component {
       telefono: "",
 
     };
+  }
+  componentDidMount(){
+    if(this.props.datos !== null){
+      this.setState({
+        ID_paciente:this.props.datos.id,
+        nombre:this.props.datos.nombre,
+        apellido:this.props.datos.apellido,
+        dni:this.props.datos.dni,
+        fecha_nac:this.props.datos.fecha_nac,
+        telefono:this.props.datos.telefono
+      })
+    }
   }
 
   guardar(){

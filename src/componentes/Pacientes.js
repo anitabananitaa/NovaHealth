@@ -3,12 +3,13 @@ import TarjetaPacientes from "./TarjetaPacientes";
 import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
 import axios from 'axios';
-const url = "http://10.0.14.190:3201/api";
+const url = "http://192.168.1.16:3201/api";
 
 class Pacientes extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      datosFormulario:null,
       showFormulario: false,
       datosPacientes: []
     };
@@ -35,6 +36,11 @@ class Pacientes extends Component {
       });
   }
 
+  editarTarjeta=(datos) =>{
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
+
+
+  }
 
   eliminarTarjeta = (id) => {
     const config = {
@@ -59,7 +65,8 @@ class Pacientes extends Component {
       <div className="pacientes"> 
       {this.state.showFormulario &&
         <FormularioPacientes
-          salir={()=>this.showFormulario()}
+        datos={this.state.datosFormulario}
+        salir={()=>this.showFormulario()}
         />
       }
       <Carta showFormulario={()=> this.showFormulario()}>
@@ -72,8 +79,11 @@ class Pacientes extends Component {
           apellido={paciente.apellido}
           fecNa={paciente.fecha_nac}
           dni={paciente.dni}
-          telefono={paciente.telefono} 
-          onEliminarTarjeta={this.eliminarTarjeta}/>
+          telefono={paciente.telefono}
+          onEliminarTarjeta={this.eliminarTarjeta}
+          onEditarDatos={this.editarTarjeta}
+          />
+          
       ))}
         </Carta>
       </div>

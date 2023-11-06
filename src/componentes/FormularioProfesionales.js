@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Input from "./Input";
 import axios from 'axios';
-const url = "http://10.0.14.190:3201/api";
+const url = "http://192.168.1.16:3201/api";
 
 class FormularioProfesionales extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ID_profesional:null,
       nombre:"",
       apellido:"",
       dni:"",
@@ -14,7 +15,18 @@ class FormularioProfesionales extends Component {
       telefono:""
     };
   }
-
+  componentDidMount(){
+    if(this.props.datos !== null){
+      this.setState({
+        ID_profesional:this.props.datos.id,
+        nombre:this.props.datos.nombre,
+        apellido:this.props.datos.apellido,
+        dni:this.props.datos.dni,
+        especialidad:this.props.datos.especialidad,
+        telefono:this.props.datos.telefono
+      })
+    }
+  }
   guardar(){
     const profesional = {
       nombre: this.state.nombre,

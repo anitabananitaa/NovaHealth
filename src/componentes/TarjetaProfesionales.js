@@ -7,13 +7,34 @@ class TarjetaProfesionales extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nombre:"",
-      apellido:"",
-      dni:"",
-      especialidad:"",
-      telefono:""
+     
     };
   }
+  editarDatos(){
+    const profesional = {
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      dni: this.state.dni,
+      especialidad: this.state.especialidad,
+      telefono: this.state.telefono
+    }
+    const config ={
+      params:{ ID_profesional: t}
+    }
+    axios.put(url + '/profesionales', profesional)
+    .then((res) => {
+      console.log(profesional);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("profesional editado con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al editar el profesional:", error);
+    this.props.salir()
+  });
+  }
+  
   render() {
     const { id, nombre, apellido, dni, especialidad, telefono} = this.props;// recibe los datos como propiedades
     return (
@@ -34,11 +55,11 @@ class TarjetaProfesionales extends Component {
           <h4>Teléfono:</h4>
           <span>{telefono}</span>
         </div>
-        <div className="botones" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
-          <button className="btntarjeta">
+        <div className="botones" >
+        <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
             <img src={basura} className="imagen" />
           </button>
-          <button className="btntarjeta">
+          <button className="btntarjeta"  onClick={() => this.props.onEditarDatos(this.props)}>
             <img src={lapiz} className="imagen" />
           </button>
         </div>

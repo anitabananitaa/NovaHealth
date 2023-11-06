@@ -38,12 +38,20 @@ class Login extends Component {
         <div className="logeo">
           <h1>Acceso</h1>
           <div className="formulario">
-            Usuario:
-            <Input value={user} onChange={(valor)=> this.setState({user: valor})}/>
+            <Input 
+         
+            value={user} 
+            onChange={(valor)=> this.setState({user: valor})}/>
+            <label className="OrdenarLabelEnInput">
+              <h1> Usuario</h1>
+            </label>
           </div>
           <div className="formulario">
-            Contraseña:
+            
             <Input password value={pass} onChange={(valor)=> this.setState({pass: valor})}/>
+            <label className="OrdenarLabelEnInput"> 
+              <h1> Contraseña</h1>
+            </label>
           </div>
           <div className="botonera">
             <Boton

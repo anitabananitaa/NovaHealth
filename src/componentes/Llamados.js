@@ -37,6 +37,7 @@ class Llamados extends Component {
     const datosLlamados = this.state.datosLlamados;
     return (
       <div className="llamados">
+        {/* <h1>Llamados</h1> */}
       {this.state.showFormulario &&
         <FormularioBusqueda
           salir={()=>this.showFormulario()}

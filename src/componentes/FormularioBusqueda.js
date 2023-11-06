@@ -19,7 +19,7 @@ class FormularioBusqueda extends Component {
     return (
       <div className="modal">
         <div className="contenedorFormulario">
-          <h1>Busqueda DNI</h1>
+          <h1>Búsqueda del DNI</h1>
           <div className="formulario">
             <span>
               DNI:

@@ -22,7 +22,6 @@ class Usuarios extends Component {
     this.obtenerDatos();
   }
   obtenerDatos(){
-
     const config = {
       headers: {
         token: sessionStorage.getItem("token")
@@ -37,6 +36,22 @@ class Usuarios extends Component {
     .catch((error) => {
       console.log(error);
     });
+  }
+
+  eliminarTarjeta = (id) => {
+    const config = {
+      params:{ID_usuario: id},
+      headers:{token:sessionStorage.getItem("token")}
+    }
+    console.log(config)
+    axios.delete(`${url}/usuarios/`, config)//Usar funciones de flecha asegura que el contexto de this se mantenga y que this.props.onEliminarTarjeta y this.actualizarTarjetas funcionen correctamente
+      .then((res) => {
+        this.obtenerDatos();
+      })
+      .catch((error) => {
+        alert("error")
+        console.error("Error al eliminar la tarjeta:", error);
+      });
   }
 
   render() {
@@ -55,6 +70,7 @@ class Usuarios extends Component {
             tipo={usuario.tipo}
             nombre={usuario.nombre_usuario}
             estado={usuario.estado}
+            onEliminarTarjeta={this.eliminarTarjeta}
           />
           ))}
         </Carta>

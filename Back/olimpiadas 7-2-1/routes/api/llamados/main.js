@@ -24,7 +24,8 @@ router.get("/", function(req, res, next){
         valor = [estado];
         sql = 'SELECT * FROM llamados WHERE estado = ?'; //Comillas simples
     }else {
-        sql = 'SELECT * FROM llamados'; //Comillas simples
+        //sql = 'SELECT * FROM llamados'; //Comillas simples
+        sql = 'SELECT * FROM `llamados`, `zonas`, `pacientes`, `profesionales` WHERE llamados.ID_zona = zonas.ID_zonas AND llamados.ID_paciente = pacientes.ID_paciente AND llamados.ID_profesional = profesionales.ID_profesional'; //Comillas simples
     }
 
     con.query(sql, valor, function(error, result){

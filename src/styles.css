@@ -363,10 +363,16 @@ li:hover {
   background-color: #6d4486;
 }
 
+/* .imagen1 img{
+  width: 100%:
+  min-heih
+} */
 
 .contenedor .imagen1 img{
-  width: 99%;
-  margin-top: 70px;
+  position: absolute;
+  height: 100%;
+  width: 800px;
+  left: 570px;
 }
 
 /* .llamados h1{
@@ -395,14 +401,18 @@ span {
 }
 
 select {
-  color:hsl(0, 0%, 0%, 0.7);
+  color:hsla(0, 0%, 0%, 0.801);
   width: 310px;
   height: 25px;
   border-radius: 0px;
   border: none;
   outline: none;
   margin-left: 20px;
+  font-family: 'Sora', sans-serif;
+  
 }
+
+
 
 .contenedorFormulario .formulario {
   display: flex;

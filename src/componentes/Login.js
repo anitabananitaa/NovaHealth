@@ -36,7 +36,7 @@ class Login extends Component {
     return (
       <div className="contenedor">
         <div className="logeo">
-          <h1>Acceso</h1>
+          <h1>Bienvenido a Nova Health</h1>
           <div className="formulario">
             <Input 
             value={user} 

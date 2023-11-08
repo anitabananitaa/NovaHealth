@@ -30,10 +30,11 @@ body {
 .logeo h1{
   color: #3d3d3d;
   transition: 0.5s ease; 
+  cursor: pointer;
 }
 
 .logeo h1:hover{
-  color: #456fe0;
+  color: #a67ac4;
 }
 
 
@@ -100,7 +101,7 @@ input{
 }
 
 .logeo .formulario input:focus {
-  outline:  solid #6389f1; 
+  outline:  solid #a67ac4; 
 
 }
 
@@ -115,8 +116,7 @@ input{
 .OrdenarLabelEnInput h1{
   position: absolute;
   top: 15%;
-
-  left: 138px;
+  left: 125px;
   pointer-events: none;
   font-size: 14px;
   color: #6c737f;
@@ -134,7 +134,7 @@ input{
 }
 
 .btn {
-  background: #1c2536;
+  background: #a67ac4;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -146,22 +146,22 @@ input{
   margin-top: 10px;
   padding: 20px;
   font-family: 'Sora', sans-serif;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.5s ease; 
 }
 
 .btn:hover {
-  background-color: #0d131f;
+  background-color: #6d4486;
 }
 
 
 .logeo .botonera .btn {
   
-  background-color: #6389f1;
+  background-color: #a67ac4;
   transition: background-color 0.3s ease; 
 }
 
 .logeo .botonera .btn:hover {
-  background-color: #456fe0;
+  background-color: #9A67B8 ;
 }
 
 .sidebar {
@@ -191,7 +191,7 @@ input{
 }
 /* 
 .toggle-button:hover {
-  color: #0d131f;
+  color: #6d4486;
 } */
 
 
@@ -207,7 +207,7 @@ li {
 }
 
 li:hover {
-  background-color: #0d131f;
+  background-color: #6d4486;
 }
 
 .botondesplegable {
@@ -220,7 +220,7 @@ li:hover {
   align-items: flex-start;
   top: 0;
   left: 0;
-  background-color: rgb(28, 37, 54);
+  background-color: #a67ac4;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   
@@ -269,7 +269,7 @@ li:hover {
 }
 
 .btntarjeta {
-  background: rgb(28, 37, 54);
+  background: #a67ac4;
   border: none;
   outline: none;
   border-radius: 100%;
@@ -287,7 +287,7 @@ li:hover {
 }
 
 .btntarjeta:hover {
-  background-color: #0d131f;
+  background-color: #6d4486;
 }
 
 
@@ -331,7 +331,7 @@ li:hover {
 
 .BotonDeAgregar {
   margin-top: 20px;
-  background: rgb(28, 37, 54);
+  background: #a67ac4;
   border: none;
   border-radius: 100%;
   width: 30px;
@@ -346,13 +346,19 @@ li:hover {
 }
 
 .BotonDeAgregar:hover {
-  background-color: #0d131f;
+  background-color: #6d4486;
 }
 
+/* .imagen1 img{
+  width: 100%:
+  min-heih
+} */
 
 .contenedor .imagen1 img{
-  width: 99%;
-  margin-top: 70px;
+  position: absolute;
+  height: 100%;
+  width: 800px;
+  left: 570px;
 }
 
 /* .llamados h1{
@@ -381,14 +387,18 @@ span {
 }
 
 select {
-  color:hsl(0, 0%, 0%, 0.7);
+  color:hsla(0, 0%, 0%, 0.801);
   width: 310px;
   height: 25px;
   border-radius: 0px;
   border: none;
   outline: none;
   margin-left: 20px;
+  font-family: 'Sora', sans-serif;
+  
 }
+
+
 
 .contenedorFormulario .formulario {
   display: flex;

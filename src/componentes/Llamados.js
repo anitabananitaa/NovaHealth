@@ -48,11 +48,11 @@ class Llamados extends Component {
         <TarjetaLlamados 
           key={index}
           estado={llamados.estado}
-          tipo={llamados.tipo}
-          dni={llamados.dni_paciente}
-          nombre={llamados.nombre_paciente}
-          apellido={llamados.apellido_paciente}
-          descripcion={llamados.descripcion}
+          tipo={llamados.zona.tipo}
+          dni={llamados.paciente.dni}
+          nombre={llamados.paciente.nombre}
+          apellido={llamados.paciente.apellido}
+          descripcion={llamados.zona.descripcion}
           fecha_hora_llamado={llamados.fecha_hora_llamado}
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}

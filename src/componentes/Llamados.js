@@ -3,7 +3,7 @@ import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioBusqueda from "./FormularioBusqueda";
 import axios from 'axios'; 
-const url = "http://192.168.1.16:3201/api";
+const url = "http://10.0.3.91:3201/api";
 
 class Llamados extends Component {
   constructor(props) {
@@ -49,12 +49,14 @@ class Llamados extends Component {
           key={index}
           estado={llamados.estado}
           tipo={llamados.tipo}
-          fecha_hora_llamado={llamados.fecha_hora_llamado
-          }
-          fecha_hora_atencion={llamados.fecha_hora_atencion
-          }
+          dni={llamados.dni_paciente}
+          nombre={llamados.nombre_paciente}
+          apellido={llamados.apellido_paciente}
+          descripcion={llamados.descripcion}
+          fecha_hora_llamado={llamados.fecha_hora_llamado}
+          fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
-          profesional={llamados.ID_profesional}
+          profesional={llamados.nombre_profesional}
         />
         ))}
       </Carta>

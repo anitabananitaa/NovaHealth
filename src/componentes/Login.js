@@ -4,7 +4,7 @@ import Boton from "./Boton";
 import Input from "./Input";
 import ilustracion from "./assets/ilustracion.png";
 // const url = "http://192.168.1.16:3201/api";
-const url = "http://10.0.3.91:3201/api";
+const url = "http://10.0.9.210:3201/api";
 
 class Login extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class Login extends Component {
     return (
       <div className="contenedor">
         <div className="logeo">
-          <h1>Acceso</h1>
+          <h1>Bienvenido a Nova Health</h1>
           <div className="formulario">
             <Input 
          

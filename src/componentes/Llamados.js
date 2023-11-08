@@ -3,8 +3,7 @@ import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioBusqueda from "./FormularioBusqueda";
 import axios from 'axios'; 
-// const url = "http://192.168.1.16:3201/api";
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.76:3201/api";
 
 class Llamados extends Component {
   constructor(props) {

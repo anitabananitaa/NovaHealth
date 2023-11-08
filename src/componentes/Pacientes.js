@@ -3,8 +3,7 @@ import TarjetaPacientes from "./TarjetaPacientes";
 import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
 import axios from 'axios';
-// const url = "http://192.168.1.16:3201/api";
-const url = "http://10.0.3.91:3201/api";
+const url = "http://192.168.0.76:3201/api";
 
 class Pacientes extends Component {
   constructor(props) {

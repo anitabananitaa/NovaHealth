@@ -9,6 +9,50 @@ Put (estado: Atendido): ID_profesional, fecha_hora_atencion
 Put (estado: Finalizado): diagnostico, tratamiento
 */
 
+const getZona = function(ID_zonas){
+    return new Promise((resolve, reject) => {
+        const sql = 'SELECT * FROM zonas WHERE ID_zonas = ?'; //Comillas simples
+        con.query(sql, [ID_zonas], function(error, result){
+            if(error) return reject(error);
+            resolve(result[0]);
+        })
+    })
+}
+
+const getPaciente = function(ID_paciente){
+    return new Promise((resolve, reject) => {
+        const sql = 'SELECT * FROM pacientes WHERE ID_paciente = ?'; //Comillas simples
+        con.query(sql, [ID_paciente], function(error, result){
+            if(error) return reject(error);
+            resolve(result[0]);
+        })
+    })
+}
+
+const getProfesional = function(ID_profesional){
+    return new Promise((resolve, reject) => {
+        const sql = 'SELECT * FROM profesionales WHERE ID_profesional = ?'; //Comillas simples
+        con.query(sql, [ID_profesional], function(error, result){
+            if(error) return reject(error);
+            resolve(result[0]);
+        })
+    })
+}
+
+const completarLlamado = function(llamado){
+    return new Promise(async(resolve, reject) => {
+        try {
+            llamado.zona = await getZona(llamado.ID_zona);
+            llamado.paciente = await getPaciente(llamado.ID_paciente);
+            llamado.profesional = await getProfesional(llamado.ID_profesional);
+            resolve(llamado)
+        } catch (error) {
+            reject(error)
+        }
+
+    })
+}
+
 router.get("/", function(req, res, next){
     const {ID_zona, tipo_de_llamado, estado} = req.query;
     let sql = "";
@@ -24,11 +68,10 @@ router.get("/", function(req, res, next){
         valor = [estado];
         sql = 'SELECT * FROM llamados WHERE estado = ?'; //Comillas simples
     }else {
-        //sql = 'SELECT * FROM llamados'; //Comillas simples
-        sql = 'SELECT * FROM `llamados`, `zonas`, `pacientes`, `profesionales` WHERE llamados.ID_zona = zonas.ID_zonas AND llamados.ID_paciente = pacientes.ID_paciente AND llamados.ID_profesional = profesionales.ID_profesional'; //Comillas simples
+        sql = 'SELECT * FROM llamados'; //Comillas simples
     }
 
-    con.query(sql, valor, function(error, result){
+    con.query(sql, valor, async function(error, result){
         if (error){
             console.log(error);
             res.json({
@@ -36,6 +79,10 @@ router.get("/", function(req, res, next){
                 error
             })
         }else{
+            for (let i = 0; i < result.length; i++) {
+                result[i] = await completarLlamado(result[i]); 
+            }
+            console.log(result)
             res.json({
                 status: "llamados ok",
                 result

@@ -6,7 +6,9 @@ import Carta from "./Carta";
 class TarjetaUsuarios extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      
+    };
   }
   render() {
     const {tipo, nombre, estado}= this.props;
@@ -23,7 +25,7 @@ class TarjetaUsuarios extends Component {
           <span>{estado}</span>
         </div>
         <div className="botones">
-          <button className="btntarjeta">
+          <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
             <img src={basura} className="imagen" />
           </button>
           <button className="btntarjeta">

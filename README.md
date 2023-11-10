@@ -1,2 +1,0 @@
-# olimpiadas
-Created with CodeSandbox

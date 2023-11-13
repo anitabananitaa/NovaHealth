@@ -36,9 +36,6 @@ class TarjetaLlamados extends Component {
         </div>
         <div className="botones">
           <button className="btntarjeta">
-            <img src={basura} className="imagen" />
-          </button>
-          <button className="btntarjeta">
             <img src={lapiz} className="imagen" />
           </button>
         </div>

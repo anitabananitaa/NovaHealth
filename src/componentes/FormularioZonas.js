@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Input from "./Input";
 import axios from 'axios';
-const url = "http://192.168.0.76:3201/api";
-
+const url = "https://72a.ctpoba.ar/api";
 class FormularioZonas extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +40,7 @@ class FormularioZonas extends Component {
   }
 
   guardarPut(zona){
+    console.log(zona);
     axios.put(url + '/zonas', zona)
     .then((res) => {
       console.log(zona);
@@ -56,16 +56,26 @@ class FormularioZonas extends Component {
   }
 
   guardar(){
-    // verificar id en props
+
+if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
+{
+  const zona = {
+    ID_zonas:this.state.ID_zonas,
+    descripcion: this.state.descripcion,
+    tipo: this.state.tipo,
+    disponibilidad: this.state.disponibilidad
+  }
+  this.guardarPut(zona)
+}    
+    else
+    {
       const zona = {
-      descripcion: this.state.descripcion,
-      tipo: this.state.tipo,
-      disponibilidad: this.state.disponibilidad
-    }
-   if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
-      this.guardarPut(zona)
-    else  
+        descripcion: this.state.descripcion,
+        tipo: this.state.tipo,
+        disponibilidad: this.state.disponibilidad
+      }
       this.guardarPost(zona)
+    }  
   }
 
   handleInputChange = (event) => {

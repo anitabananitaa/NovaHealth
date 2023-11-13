@@ -3,9 +3,8 @@ import TarjetaZonas from "./TarjetaZonas";
 import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
-// const url = "http://192.168.1.16:3201/api";
 
-const url = "http://192.168.0.76:3201/api";
+const url = "https://72a.ctpoba.ar/api";
 
 class Zonas extends Component { 
   constructor(props) {
@@ -29,8 +28,8 @@ class Zonas extends Component {
   obtenerDatos() {
     axios.get(url + '/zonas')
       .then((res) => {
-        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
-        this.setState({ datosZonas: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el array aparte)
+        this.setState({ datosZonas: res.data.result });// trae los resultados(array) guardados en el state
         console.log(this.state.datosZonas);//verifica que datosZonas se guardo correctamente en la consola
       })
       .catch((error) => {

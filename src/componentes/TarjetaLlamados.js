@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import basura from "./assets/basura.png";
 import lapiz from "./assets/lapiz.png";
 import Carta from "./Carta";
 
@@ -35,9 +34,7 @@ class TarjetaLlamados extends Component {
           <span>{origen}</span>
         </div>
         <div className="botones">
-          <button className="btntarjeta">
-            <img src={basura} className="imagen" />
-          </button>
+
           <button className="btntarjeta">
             <img src={lapiz} className="imagen" />
           </button>

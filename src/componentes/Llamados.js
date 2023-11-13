@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
-import FormularioBusqueda from "./FormularioBusqueda";
+import FormularioLlamados from "./FormularioLlamados";
 import axios from 'axios'; 
-// const url = "http://192.168.1.16:3201/api";
 
-const url = "http://192.168.0.76:3201/api";
+const url = "https://72a.ctpoba.ar/api";
 
 class Llamados extends Component {
   constructor(props) {
@@ -41,7 +40,7 @@ class Llamados extends Component {
       <div className="llamados">
         {/* <h1>Llamados</h1> */}
       {this.state.showFormulario &&
-        <FormularioBusqueda
+        <FormularioLlamados
           salir={()=>this.showFormulario()}
         />
       }
@@ -57,6 +56,7 @@ class Llamados extends Component {
           }
           origen={llamados.origen}
           profesional={llamados.ID_profesional}
+          
         />
         ))}
       </Carta>

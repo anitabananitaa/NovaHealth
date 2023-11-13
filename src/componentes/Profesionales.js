@@ -3,9 +3,8 @@ import TarjetaProfesionales from "./TarjetaProfesionales";
 import Carta from "./Carta";
 import FormularioProfesionales from "./FormularioProfesionales";
 import axios from 'axios';
-// const url = "http://192.168.1.16:3201/api";
 
-const url = "http://192.168.0.76:3201/api";
+const url = "https://72a.ctpoba.ar/api";
 
 class Profesionales extends Component {
   constructor(props) {

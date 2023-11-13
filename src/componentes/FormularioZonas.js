@@ -40,8 +40,11 @@ class FormularioZonas extends Component {
   }
 
   guardarPut(zona){
+    const config = {
+      params: {ID_zonas: zona.ID_zonas}
+    }
     console.log(zona);
-    axios.put(url + '/zonas', zona)
+    axios.put(url + '/zonas', zona, config)
     .then((res) => {
       console.log(zona);
     // Maneja la respuesta del servidor si es necesario

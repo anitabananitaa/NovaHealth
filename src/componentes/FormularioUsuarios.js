@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Input from "./Input";
 import axios from "axios";
-
 const url = "https://72a.ctpoba.ar/api";
 
 class FormularioUsuarios extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ID_usuario:null,
       nombre: "",
       contraseña: "",
       estado: "",
@@ -15,6 +15,20 @@ class FormularioUsuarios extends Component {
 
     };
   }
+
+  componentDidMount(){
+    if(this.props.datos !== null){
+      this.setState({
+        ID_usuario:this.props.datos.id,
+        tipo:this.props.datos.tipo,
+        nombre:this.props.datos.nombre,
+        estado:this.props.datos.estado
+      })
+    }
+  }
+
+
+
   guardar(){
     const usuario = {
     nombre: this.state.nombre,

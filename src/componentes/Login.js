@@ -3,8 +3,6 @@ import axios from "axios";
 import Boton from "./Boton";
 import Input from "./Input";
 import ilustracion from "./assets/ilustracion.png";
-// const url = "http://192.168.1.16:3201/api";
-
 const url = "https://72a.ctpoba.ar/api";
 
 class Login extends Component {
@@ -41,7 +39,6 @@ class Login extends Component {
           <h1>Bienvenido a Nova Health</h1>
           <div className="formulario">
             <Input 
-         
             value={user} 
             onChange={(valor)=> this.setState({user: valor})}/>
             <label className="OrdenarLabelEnInput">

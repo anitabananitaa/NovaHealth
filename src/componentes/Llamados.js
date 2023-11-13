@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
-import FormularioLlamados from "./FormularioLlamados";
+import FormularioLamados from "./FormularioLlamados";
 import axios from 'axios'; 
-
 const url = "https://72a.ctpoba.ar/api";
 
 class Llamados extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      datosFormulario:null,
       showFormulario: false,
       datosLlamados: []
     };
@@ -20,7 +20,8 @@ class Llamados extends Component {
   } 
 
   showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario})
+    this.setState({showFormulario: !this.state.showFormulario});
+    this.obtenerDatos()
   }
   obtenerDatos() {
     axios.get(url + '/llamados')
@@ -34,13 +35,17 @@ class Llamados extends Component {
     });
   }
 
+
+
   render() {
     const datosLlamados = this.state.datosLlamados;
     return (
       <div className="llamados">
         {/* <h1>Llamados</h1> */}
       {this.state.showFormulario &&
-        <FormularioLlamados
+        <FormularioLamados
+          datos={this.state.datosFormulario}
+
           salir={()=>this.showFormulario()}
         />
       }
@@ -49,14 +54,16 @@ class Llamados extends Component {
         <TarjetaLlamados 
           key={index}
           estado={llamados.estado}
-          tipo={llamados.tipo}
-          fecha_hora_llamado={llamados.fecha_hora_llamado
-          }
-          fecha_hora_atencion={llamados.fecha_hora_atencion
-          }
+          tipo={llamados.zona.tipo}
+          dni={llamados.paciente.dni}
+          nombre={llamados.paciente.nombre}
+          apellido={llamados.paciente.apellido}
+          descripcion={llamados.zona.descripcion}
+          fecha_hora_llamado={llamados.fecha_hora_llamado}
+          fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
-          profesional={llamados.ID_profesional}
-          
+          profesional={llamados.nombre_profesional}
+
         />
         ))}
       </Carta>

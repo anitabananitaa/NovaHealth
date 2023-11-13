@@ -3,13 +3,12 @@ import TarjetaUsuarios from "./TarjetaUsuarios";
 import Carta from "./Carta";
 import FormularioUsuarios from "./FormularioUsuarios";
 import axios from 'axios';
-
 const url = "https://72a.ctpoba.ar/api";
-
 class Usuarios extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      datosFormulario:null,
       showFormulario: false,
       datosUsuarios: []
     };
@@ -61,6 +60,8 @@ class Usuarios extends Component {
       <div className="usuarios">
         {this.state.showFormulario &&
           <FormularioUsuarios
+          datos={this.state.datosFormulario}
+
             salir={()=>this.showFormulario()}
           />
         }
@@ -72,6 +73,7 @@ class Usuarios extends Component {
             nombre={usuario.nombre_usuario}
             estado={usuario.estado}
             onEliminarTarjeta={this.eliminarTarjeta}
+            onEditarDatos={this.editarTarjeta}
           />
           ))}
         </Carta>

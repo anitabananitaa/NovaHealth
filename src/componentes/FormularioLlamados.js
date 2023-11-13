@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Input from "./Input";
-import axios from 'axios';
-
+import axios from "axios";
+const url = "https://72a.ctpoba.ar/api";
 
 class FormularioLlamados extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class FormularioLlamados extends Component {
 
   render() {
     return (
-      <div className="modal"> 
+      <div className="modal">
         <div className="contenedorFormulario">
           <h1>Registro de Llamados</h1>
           <div className="formulario">
@@ -102,10 +102,10 @@ class FormularioLlamados extends Component {
             </span>
           </div>
 
-          <button type="button" className="btn" onClick={()=> this.guardar()}>
+          <button type="button" className="btn" >
             Aceptar
           </button>
-          <button type="button" className="btn" onClick={()=> this.props.salir()}>
+          <button type="button" className="btn" >
             Cancelar
           </button>
         </div> 

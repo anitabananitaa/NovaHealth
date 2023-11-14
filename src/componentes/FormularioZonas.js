@@ -59,8 +59,7 @@ class FormularioZonas extends Component {
   }
 
   guardar(){
-
-if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
+  if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
 {
   const zona = {
     ID_zonas:this.state.ID_zonas,

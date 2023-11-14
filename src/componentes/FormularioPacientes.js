@@ -7,12 +7,12 @@ class Formulario extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID_zonas:null,
+      ID_paciente:null,
+      nombre: "", 
       apellido: "",
-      nombre: "",
       dni: "",
       fecha_nac: "",
-      telefono: "",
+      telefono: ""
 
     };
   }
@@ -29,26 +29,64 @@ class Formulario extends Component {
     }
   }
 
-  guardar(){
-    const paciente = {
-    apellido: this.state.apellido,
-    nombre: this.state.nombre,
-    dni: this.state.dni,
-    fecha_nac: this.state.fecha_nac,
-    telefono: this.state.telefono
-    }
-    axios.post(url + '/Pacientes', paciente)
+  guardarPost(paciente){
+    axios.post(url + '/paciente', paciente)
     .then((res) => {
-    console.log(paciente);
+      console.log(paciente);
     // Maneja la respuesta del servidor si es necesario
     console.log("paciente registrado con éxito:", res.data);
     this.props.salir();
-    })
-    .catch((error) => {
+  })
+  .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar la paciente:", error);
     this.props.salir()
-    });
+  });
+  }
+
+  guardarPut(paciente){
+    const config = {
+      params: {ID_paciente: paciente.ID_paciente}
+    }
+    console.log(paciente);
+    axios.put(url + '/pacientes', paciente, config)
+    .then((res) => {
+      console.log(paciente);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("paciente registrado con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar la paciente:", error);
+    this.props.salir()
+  });
+  }
+
+  guardar(){
+  if (this.state.ID_paciente !== undefined && this.state.ID_paciente !==null)
+{
+  const paciente = {
+    ID_paciente:this.state.ID_paciente,
+    nombre: this.state.nombre,
+    apellido: this.state.apellido,
+    dni: this.state.dni,
+    fecha_nac: this.state.fecha_nac,
+    telefono: this.state.telefono
+  }
+  this.guardarPut(paciente)
+}    
+    else
+    {
+      const paciente = {
+        nombre: this.state.nombre,
+        apellido: this.state.apellido,
+        dni: this.state.dni,
+        fecha_nac: this.state.fecha_nac,
+        telefono: this.state.telefono
+      }
+      this.guardarPost(paciente)
+    }  
   }
 
   handleInputChange = (event) => {
@@ -61,7 +99,7 @@ class Formulario extends Component {
     return (
       <div className="modal">
         <div className="contenedorFormulario">
-          <h1>Registro de Pacientes</h1>
+          <h1>Registro de paciente</h1>
           <div className="formulario">
             <span>
               Apellido

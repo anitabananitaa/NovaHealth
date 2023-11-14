@@ -26,13 +26,7 @@ class FormularioZonas extends Component {
     }
   }
 
-  guardar(){
-    // verificar id en props
-      const zona = {
-      descripcion: this.state.descripcion,
-      tipo: this.state.tipo,
-      disponibilidad: this.state.disponibilidad
-    }
+  guardarPost(zona){
     axios.post(url + '/zonas', zona)
     .then((res) => {
       console.log(zona);
@@ -45,6 +39,48 @@ class FormularioZonas extends Component {
     console.error("Error al registrar la zona:", error);
     this.props.salir()
   });
+  }
+
+  guardarPut(zona){
+    const config = {
+      params: {ID_zonas: zona.ID_zonas}
+    }
+    console.log(zona);
+    axios.put(url + '/zonas', zona, config)
+    .then((res) => {
+      console.log(zona);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("Zona registrada con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar la zona:", error);
+    this.props.salir()
+  });
+  }
+
+  guardar(){
+
+if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
+{
+  const zona = {
+    ID_zonas:this.state.ID_zonas,
+    descripcion: this.state.descripcion,
+    tipo: this.state.tipo,
+    disponibilidad: this.state.disponibilidad
+  }
+  this.guardarPut(zona)
+}    
+    else
+    {
+      const zona = {
+        descripcion: this.state.descripcion,
+        tipo: this.state.tipo,
+        disponibilidad: this.state.disponibilidad
+      }
+      this.guardarPost(zona)
+    }  
   }
 
   handleInputChange = (event) => {

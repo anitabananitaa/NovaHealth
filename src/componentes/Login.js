@@ -41,7 +41,6 @@ class Login extends Component {
           <h1>Bienvenido a Nova Health</h1>
           <div className="formulario">
             <Input 
-         
             value={user} 
             onChange={(valor)=> this.setState({user: valor})}/>
             <label className="OrdenarLabelEnInput">

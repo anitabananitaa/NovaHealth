@@ -252,9 +252,23 @@ li:hover {
   border-radius: 30px;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
   margin: 8px;
+
 }
 
+.ContenedorTarjetas.Llamados {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  height: auto;
+  width: 200px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+
 .Tarjetas {
+  
   justify-content: left;
   font-size: 12px;
   display: block;
@@ -348,11 +362,6 @@ li:hover {
 .BotonDeAgregar:hover {
   background-color: #6d4486;
 }
-
-/* .imagen1 img{
-  width: 100%:
-  min-heih
-} */
 
 .contenedor .imagen1 img{
   position: absolute;

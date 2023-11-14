@@ -27,19 +27,31 @@ class FormularioProfesionales extends Component {
       })
     }
   }
-  guardar(){
-    const profesional = {
-      nombre: this.state.nombre,
-      apellido: this.state.apellido,
-      dni: this.state.dni,
-      especialidad: this.state.especialidad,
-      telefono: this.state.telefono
-    }
-  axios.post(url + '/profesionales', profesional)
+  guardarPost(profesional){
+    axios.post(url + '/profesionales', profesional)
     .then((res) => {
       console.log(profesional);
     // Maneja la respuesta del servidor si es necesario
-    console.log("profesional registrada con éxito:", res.data);
+    console.log("Profesional registrado con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar el Profesional:", error);
+    this.props.salir()
+  });
+  }
+
+  guardarPut(profesional){
+    const config = {
+      params: {ID_profesional: profesional.ID_profesional}
+    }
+    console.log(profesional);
+    axios.put(url + '/profesionales', profesional, config)
+    .then((res) => {
+      console.log(profesional);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("Profesional registrado con éxito:", res.data);
     this.props.salir();
   })
   .catch((error) => {
@@ -48,6 +60,33 @@ class FormularioProfesionales extends Component {
     this.props.salir()
   });
   }
+  guardar(){
+
+    if (this.state.ID_profesional !== undefined && this.state.ID_profesional !==null)
+    {
+      const profesional = {
+        ID_profesional:this.state.ID_profesional,
+        nombre:this.state.nombre,
+        apellido:this.state.apellido,
+        dni:this.state.dni,
+        especialidad:this.state.especialidad,
+        telefono:this.state.telefono
+      }
+      this.guardarPut(profesional)
+    }    
+        else
+        {
+          const profesional = {
+            nombre:this.state.nombre,
+            apellido:this.state.apellido,
+            dni:this.state.dni,
+            especialidad:this.state.especialidad,
+            telefono:this.state.telefono
+          }
+          this.guardarPost(profesional)
+        }  
+      }
+    
 
   handleInputChange = (event) => {
     const { name, value } = event.target;

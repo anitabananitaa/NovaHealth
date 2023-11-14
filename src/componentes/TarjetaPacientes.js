@@ -7,11 +7,7 @@ class TarjetaPacientes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // nombre:"",
-      // apellido:"",
-      // fechNa:"",
-      // dni:"",
-      // telefono:""
+
     };
   }
   

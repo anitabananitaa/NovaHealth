@@ -38,8 +38,6 @@ class Zonas extends Component {
 
   editarTarjeta=(datos) =>{
     this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
-
-
   }
 
   eliminarTarjeta = (id) => {

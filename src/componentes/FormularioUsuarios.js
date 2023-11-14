@@ -12,7 +12,6 @@ class FormularioUsuarios extends Component {
       contraseña: "",
       estado: "",
       tipo: ""
-
     };
   }
 
@@ -28,14 +27,7 @@ class FormularioUsuarios extends Component {
   }
 
 
-
-  guardar(){
-    const usuario = {
-    nombre: this.state.nombre,
-    contraseña: this.state.contraseña,
-    tipo: this.state.tipo,
-    estado: this.state.estado
-  }
+  guardarPost(usuario){
   axios.post(url + '/usuarios', usuario)
   .then((res) => {
     console.log(usuario);
@@ -50,12 +42,54 @@ class FormularioUsuarios extends Component {
 });
 }
 
+guardarPut(usuario){
+  const config = {
+    params: {ID_usuario: zona.ID_usuario}
+  }
+  console.log(usuario);
+  axios.put(url + '/usuarios', usuario, config)
+  .then((res) => {
+    console.log(usuario);
+  // Maneja la respuesta del servidor si es necesario
+  console.log("usuario registrada con éxito:", res.data);
+  this.props.salir();
+})
+.catch((error) => {
+  // Maneja errores si es necesario
+  console.error("Error al registrar la usuario:", error);
+  this.props.salir()
+});
+}
+
+  guardar(){
+
+if (this.state.ID_usuario !== undefined && this.state.ID_usuario !==null)
+{
+  const usuario = {
+    ID_usuario:this.state.ID_usuario,
+    nombre: this.state.nombre,
+    contraseña: this.state.contraseña,
+    tipo: this.state.tipo,
+    estado: this.state.estado
+  }
+  this.guardarPut(usuario)
+}
+    else
+    {
+    const usuario = {
+      nombre: this.state.nombre,
+      contraseña: this.state.contraseña,
+      tipo: this.state.tipo,
+      estado: this.state.estado
+    }
+    this.guardarPost(usuario)
+  }
+}
+
 handleInputChange = (event) => {
   const { name, value } = event.target;
   this.setState({ [name]: value });
 };
-
-
 
   render() {
     return (

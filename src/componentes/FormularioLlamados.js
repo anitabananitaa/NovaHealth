@@ -148,30 +148,58 @@ class FormularioLlamados extends Component {
           </div>
 
           <div className="formulario">
-            <span>
+          <span>
               Nombre:
-              <input type="text" i/>
+              <select className="miSelect">
+                <option className="edit" value="opcion1">
+                pruebaPaciente1
+                </option>
+                <option className="edit" value="opcion2">
+                pruebaPaciente2
+                </option>
+              </select>
             </span>
           </div>
 
           <div className="formulario">
-            <span>
+          <span>
               Apellido:
-              <input type="text"/>
+              <select className="miSelect">
+                <option className="edit" value="opcion1">
+                pruebaPaciente1
+                </option>
+                <option className="edit" value="opcion2">
+                pruebaPaciente2
+                </option>
+              </select>
             </span>
           </div>
 
           <div className="formulario">
-            <span>
+          <span>
               DNI:
-              <input type="text" />
+              <select className="miSelect">
+                <option className="edit" value="opcion1">
+                  pruebaPaciente1
+                </option>
+                <option className="edit" value="opcion2">
+                pruebaPaciente2
+                </option>
+              </select>
             </span>
           </div>
 
           <div className="formulario">
-            <span>
+          <span>
               Zona:
-              <input type="text"  />
+              <select className="miSelect">
+                <option className="edit" value="opcion1">
+                  pruebaZona1
+                </option>
+                <option className="edit" value="opcion2">
+                  pruebaZona2
+                </option>
+              </select>
             </span>
           </div>
 
@@ -190,16 +218,17 @@ class FormularioLlamados extends Component {
           </div>
 
           <div className="formulario">
-            <span>
+          <span>
               Profesional:
-              <input type="text"/>
-            </span>
-          </div>
+              <select className="miSelect">
 
-          <div className="formulario">
-            <span>
-              Origen:
-              <input type="text" />
+                <option className="edit" value="opcion1">
+                  pruebaProfesional1
+                </option>
+                <option className="edit" value="opcion2">
+                  pruebaProfesional2
+                </option>
+              </select>
             </span>
           </div>
 

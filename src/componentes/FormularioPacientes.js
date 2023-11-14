@@ -30,7 +30,7 @@ class Formulario extends Component {
   }
 
   guardarPost(paciente){
-    axios.post(url + '/paciente', paciente)
+    axios.post(url + '/pacientes', paciente)
     .then((res) => {
       console.log(paciente);
     // Maneja la respuesta del servidor si es necesario
@@ -39,7 +39,7 @@ class Formulario extends Component {
   })
   .catch((error) => {
     // Maneja errores si es necesario
-    console.error("Error al registrar la paciente:", error);
+    console.error("Error al registrar el paciente:", error);
     this.props.salir()
   });
   }
@@ -58,7 +58,7 @@ class Formulario extends Component {
   })
   .catch((error) => {
     // Maneja errores si es necesario
-    console.error("Error al registrar la paciente:", error);
+    console.error("Error al registrar el paciente:", error);
     this.props.salir()
   });
   }

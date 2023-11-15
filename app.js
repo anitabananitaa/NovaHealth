@@ -22,6 +22,12 @@ app.use((req, res, next) => {
 
 app.use('/api', apiRouter);
 
+app.use('/', express.static(path.join(__dirname, 'public')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -28,7 +28,9 @@ class FormularioUsuarios extends Component {
 
 
   guardarPost(usuario){
-  axios.post(url + '/usuarios', usuario)
+    const config = {
+      headers:{token:sessionStorage.getItem("token")}}
+  axios.post(url + '/usuarios', usuario, config)
   .then((res) => {
     console.log(usuario);
   // Maneja la respuesta del servidor si es necesario
@@ -44,7 +46,8 @@ class FormularioUsuarios extends Component {
 
 guardarPut(usuario){
   const config = {
-    params: {ID_usuario: zona.ID_usuario}
+    params: {ID_usuario: usuario.ID_usuario},
+    headers:{token:sessionStorage.getItem("token")}
   }
   console.log(usuario);
   axios.put(url + '/usuarios', usuario, config)
@@ -67,7 +70,7 @@ if (this.state.ID_usuario !== undefined && this.state.ID_usuario !==null)
 {
   const usuario = {
     ID_usuario:this.state.ID_usuario,
-    nombre: this.state.nombre,
+    nombre_usuario: this.state.nombre,
     contraseña: this.state.contraseña,
     tipo: this.state.tipo,
     estado: this.state.estado
@@ -77,7 +80,7 @@ if (this.state.ID_usuario !== undefined && this.state.ID_usuario !==null)
     else
     {
     const usuario = {
-      nombre: this.state.nombre,
+      nombre_usuario: this.state.nombre,
       contraseña: this.state.contraseña,
       tipo: this.state.tipo,
       estado: this.state.estado

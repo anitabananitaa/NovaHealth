@@ -57,6 +57,7 @@ class FormularioZonas extends Component {
     console.error("Error al registrar la zona:", error);
     this.props.salir()
   });
+  //pasar datosFormulario a null en Zonas.js 
   }
 
   guardar(){

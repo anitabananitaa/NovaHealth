@@ -35,6 +35,11 @@ class Llamados extends Component {
     });
   }
 
+  editarTarjeta=(datos) =>{
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
+
+
+  }
 
 
   render() {
@@ -63,7 +68,7 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-
+          onEditarDatos={this.editarTarjeta}
         />
         ))}
       </Carta>

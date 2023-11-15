@@ -10,8 +10,7 @@ class FormularioUsuarios extends Component {
       ID_usuario:null,
       nombre: "",
       contraseña: "",
-      estado: "",
-      tipo: ""
+      tipo: "agente"
     };
   }
 
@@ -19,8 +18,8 @@ class FormularioUsuarios extends Component {
     this.setState({
       ID_usuario: null,
       nombre: "",
-      tipo: "",
-      estado: ""
+      contraseña: "",
+      tipo: "agente"
     });
     this.props.salir();
   };
@@ -32,7 +31,6 @@ class FormularioUsuarios extends Component {
         ID_usuario:this.props.datos.id,
         tipo:this.props.datos.tipo,
         nombre:this.props.datos.nombre,
-        estado:this.props.datos.estado
       })
     }
   }
@@ -77,10 +75,10 @@ guardarPut(usuario){
 
 limpiarFormulario() {
   this.setState({
-    ID_zonas: null,
-    descripcion: "",
-    tipo: "",
-    disponibilidad: "Disponible"
+    ID_usuario: null,
+    nombre: "",
+    contraseña:"",    
+    tipo: ""
   });
   this.props.salir();
 }
@@ -93,8 +91,7 @@ if (this.state.ID_usuario !== undefined && this.state.ID_usuario !==null)
     ID_usuario:this.state.ID_usuario,
     nombre_usuario: this.state.nombre,
     contraseña: this.state.contraseña,
-    tipo: this.state.tipo,
-    estado: this.state.estado
+    tipo: this.state.tipo
   }
   this.guardarPut(usuario)
 }
@@ -103,8 +100,7 @@ if (this.state.ID_usuario !== undefined && this.state.ID_usuario !==null)
     const usuario = {
       nombre_usuario: this.state.nombre,
       contraseña: this.state.contraseña,
-      tipo: this.state.tipo,
-      estado: this.state.estado
+      tipo: this.state.tipo
     }
     this.guardarPost(usuario)
   }
@@ -128,7 +124,6 @@ handleInputChange = (event) => {
                 onChange={this.handleInputChange}/>
           </span>
         </div>
-
         <div className="formulario">
           <span>
             Contraseña
@@ -139,27 +134,12 @@ handleInputChange = (event) => {
         </div>
         <div className="formulario">
           <span>
-            Estado
-            <select className="miSelect" name="estado"
-                value={this.state.estado}
-                onChange={this.handleInputChange}>
-              <option className="edit" value="opcion1">
-                Activo
-              </option>
-              <option className="edit" value="opcion2">
-                Inactivo
-              </option>
-            </select>
-          </span>
-        </div>
-        <div className="formulario">
-          <span>
             Tipo
             <select className="miSelect" name="tipo"
                 value={this.state.tipo}
                 onChange={this.handleInputChange}>
-              <option value="opcion1">Administrador</option>
-              <option value="opcion2">Agente</option>
+              <option value="agente">Agente</option>
+              <option value="admin">Administrador</option>
             </select>
           </span>
         </div>

@@ -31,7 +31,7 @@ class Formulario extends Component {
 
   salir = () => {
     this.setState({
-      ID_paciente: null,
+      ID_paciente:null,
       nombre: "", 
       apellido: "",
       dni: "",
@@ -78,7 +78,7 @@ class Formulario extends Component {
 
   limpiarFormulario() {
     this.setState({
-      ID_paciente: null,
+      ID_paciente:null,
       nombre: "", 
       apellido: "",
       dni: "",

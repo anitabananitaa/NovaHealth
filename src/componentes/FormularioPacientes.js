@@ -12,7 +12,7 @@ class Formulario extends Component {
       apellido: "",
       dni: "",
       fecha_nac: "",
-      telefono: "",
+      telefono: ""
     };
   }
 
@@ -31,10 +31,12 @@ class Formulario extends Component {
 
   salir = () => {
     this.setState({
-      ID_zonas: null,
-      descripcion: "",
-      tipo: "",
-      disponibilidad: "Disponible"
+      ID_paciente: null,
+      nombre: "", 
+      apellido: "",
+      dni: "",
+      fecha_nac: "",
+      telefono: ""
     });
     this.props.salir();
   };
@@ -76,10 +78,12 @@ class Formulario extends Component {
 
   limpiarFormulario() {
     this.setState({
-      ID_zonas: null,
-      descripcion: "",
-      tipo: "",
-      disponibilidad: "Disponible"
+      ID_paciente: null,
+      nombre: "", 
+      apellido: "",
+      dni: "",
+      fecha_nac: "",
+      telefono: ""
     });
     this.props.salir();
   }

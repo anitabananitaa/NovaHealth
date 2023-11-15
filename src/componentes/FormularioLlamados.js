@@ -16,8 +16,7 @@ class FormularioLlamados extends Component {
       descripcion:"",
       fecha_hora_llamado: "",
       fecha_hora_atencion:"",
-      profesional: "",
-      origen: ""
+      profesional: ""
     };
   }
   guardar(){
@@ -36,8 +35,7 @@ class FormularioLlamados extends Component {
         descripcion: this.props.datos.descripcion,
         fecha_hora_llamado: this.props.datos.fecha_hora_llamado,
         fecha_hora_atencion: this.props.datos.fecha_hora_atencion,
-        profesional: this.props.datos.profesional,
-        origen: this.props.datos.origen
+        profesional: this.props.datos.profesional
       })
     }
   }
@@ -88,8 +86,7 @@ class FormularioLlamados extends Component {
     descripcion: this.state.descripcion,
     fecha_hora_llamado: this.state.fecha_hora_llamado,
     fecha_hora_atencion: this.state.fecha_hora_atencion,
-    profesional: this.state.profesional,
-    origen: this.state.origen
+    profesional: this.state.profesional
   }
   this.guardarPut(llamado)
 }    
@@ -104,8 +101,7 @@ class FormularioLlamados extends Component {
         descripcion: this.state.descripcion,
         fecha_hora_llamado: this.state.fecha_hora_llamado,
         fecha_hora_atencion: this.state.fecha_hora_atencion,
-        profesional: this.state.profesional,
-        origen: this.state.origen
+        profesional: this.state.profesional
       }
       this.guardarPost(llamado)
     }  

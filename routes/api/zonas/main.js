@@ -21,9 +21,9 @@ router.get("/", function(req, res, next){
 })
 
 router.post("/", function(req, res, next){
-    const {descripcion, tipo} = req.body;
-    const sql = 'INSERT INTO zonas (descripcion, tipo) VALUES (?, ?)'; //Comillas simples
-    con.query(sql, [descripcion, tipo], function(error, result){
+    const {descripcion, tipo, disponibilidad} = req.body;
+    const sql = 'INSERT INTO zonas (descripcion, tipo,  disponibilidad) VALUES (?, ?, ?)'; //Comillas simples
+    con.query(sql, [descripcion, tipo, disponibilidad], function(error, result){
         if (error){
             console.log(error);
             res.json({
@@ -33,7 +33,7 @@ router.post("/", function(req, res, next){
         }else{
             res.json({
                 status: "zonas ok",
-                msj: {descripcion, tipo}
+                msj: {descripcion, tipo, disponibilidad}
             })
         }
     })
@@ -41,10 +41,10 @@ router.post("/", function(req, res, next){
 
 router.put("/", function(req, res, next){
     const {ID_zonas} = req.query;
-    const {descripcion, tipo} = req.body;
-    const sql = 'UPDATE zonas SET descripcion = ?, tipo = ? WHERE ID_zonas = ?' //Comillas simples
+    const {descripcion, tipo, disponibilidad} = req.body;
+    const sql = 'UPDATE zonas SET descripcion = ?, tipo = ?, disponibilidad = ? WHERE ID_zonas = ?' //Comillas simples
     
-    con.query(sql, [descripcion, tipo, ID_zonas], function(error, result){
+    con.query(sql, [descripcion, tipo, disponibilidad, ID_zonas], function(error, result){
         if (error){
             console.log(error);
             res.json({
@@ -54,7 +54,7 @@ router.put("/", function(req, res, next){
         }else{
             res.json({
                 status: "zonas ok",
-                msj: {ID_zonas, descripcion, tipo}
+                msj: {ID_zonas, descripcion, tipo, disponibilidad}
             })
         }
     })

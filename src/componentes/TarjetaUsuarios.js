@@ -22,7 +22,7 @@ class TarjetaUsuarios extends Component {
 
 
   render() {
-    const {id, tipo, nombre, estado}= this.props;
+    const {id, tipo, nombre }= this.props;
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -30,8 +30,6 @@ class TarjetaUsuarios extends Component {
           <span>{nombre}</span>
           <h4>Tipo:</h4>
           <span>{tipo}</span>
-          <h4>Estado:</h4>
-          <span>{estado}</span>
         </div>
         <div className="botones">
           <button className="btntarjeta" onClick={this.confirmarEliminacion}>

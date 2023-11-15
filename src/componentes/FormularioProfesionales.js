@@ -11,17 +11,19 @@ class FormularioProfesionales extends Component {
       nombre:"",
       apellido:"",
       dni:"",
-      especialidad:"",
+      especialidad:"enfermero",
       telefono:""
     };
   }
 
   salir = () => {
     this.setState({
-      ID_zonas: null,
-      descripcion: "",
-      tipo: "",
-      disponibilidad: "Disponible"
+      ID_profesional: null,
+      nombre: "",
+      apellido: "",
+      dni:"",
+      especialidad:"enfermero",
+      telefono:""
     });
     this.props.salir();
   };
@@ -75,10 +77,12 @@ class FormularioProfesionales extends Component {
 
   limpiarFormulario() {
     this.setState({
-      ID_zonas: null,
-      descripcion: "",
-      tipo: "",
-      disponibilidad: "Disponible"
+      ID_profesional: null,
+      nombre: "",
+      apellido: "",
+      dni:"",
+      especialidad:"enfermero",
+      telefono:""
     });
     this.props.salir();
   }
@@ -153,8 +157,8 @@ class FormularioProfesionales extends Component {
             <select className="mi-select" name="especialidad"
                 value={this.state.especialidad}
                 onChange={this.handleInputChange}>
-              <option value="opcion1">Medico</option>
-              <option value="opcion2">Enfermero</option>
+              <option value="enfermero">Enfermero</option>
+              <option value="medico">Medico</option>
             </select>
           </span>
         </div>

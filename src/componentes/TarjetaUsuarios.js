@@ -12,6 +12,15 @@ class TarjetaUsuarios extends Component {
     
     };
   }
+
+  confirmarEliminacion = () => {
+    const confirmacion = window.confirm("¿Estás seguro que quieres eliminar este usuario?");
+    if (confirmacion) {
+      this.props.onEliminarTarjeta(this.props.id);
+    }
+  };
+
+
   render() {
     const {id, tipo, nombre, estado}= this.props;
     return (
@@ -25,7 +34,7 @@ class TarjetaUsuarios extends Component {
           <span>{estado}</span>
         </div>
         <div className="botones">
-          <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
+          <button className="btntarjeta" onClick={this.confirmarEliminacion}>
             <img src={basura} className="imagen" />
           </button>
           <button className="btntarjeta"  onClick={() => this.props.onEditarDatos(this.props)}>

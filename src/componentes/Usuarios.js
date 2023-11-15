@@ -19,10 +19,11 @@ class Usuarios extends Component {
     this.obtenerDatos();
   }
 
-  showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario});
-    this.obtenerDatos()
+  showFormulario() {
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario: null });
+    this.obtenerDatos();
   }
+
 
   obtenerDatos(){
     const config = {

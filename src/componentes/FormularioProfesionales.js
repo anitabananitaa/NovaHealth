@@ -15,6 +15,18 @@ class FormularioProfesionales extends Component {
       telefono:""
     };
   }
+
+  salir = () => {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    });
+    this.props.salir();
+  };
+
+
   componentDidMount(){
     if(this.props.datos !== null){
       this.setState({
@@ -33,7 +45,7 @@ class FormularioProfesionales extends Component {
       console.log(profesional);
     // Maneja la respuesta del servidor si es necesario
     console.log("Profesional registrado con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
@@ -52,7 +64,7 @@ class FormularioProfesionales extends Component {
       console.log(profesional);
     // Maneja la respuesta del servidor si es necesario
     console.log("Profesional registrado con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
@@ -60,6 +72,17 @@ class FormularioProfesionales extends Component {
     this.props.salir()
   });
   }
+
+  limpiarFormulario() {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    });
+    this.props.salir();
+  }
+
   guardar(){
 
     if (this.state.ID_profesional !== undefined && this.state.ID_profesional !==null)
@@ -154,12 +177,12 @@ class FormularioProfesionales extends Component {
           <button 
             type="button" 
             className="btn" 
-            onClick={()=> this.props.salir()}  
+            onClick={()=> this.salir()}  
           >
             Cancelar
           </button>
       </div>
-      /</div>
+      </div>
     );
   }
 }

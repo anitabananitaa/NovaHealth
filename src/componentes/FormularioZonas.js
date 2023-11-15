@@ -25,18 +25,29 @@ class FormularioZonas extends Component {
     }
   }
 
+  salir = () => {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    });
+    this.props.salir();
+  };
+
+
   guardarPost(zona){
     axios.post(url + '/zonas', zona)
     .then((res) => {
       console.log(zona);
     // Maneja la respuesta del servidor si es necesario
     console.log("Zona registrada con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar la zona:", error);
-    this.props.salir()
+    this.props.salir();
   });
   }
 
@@ -50,15 +61,24 @@ class FormularioZonas extends Component {
       console.log(zona);
     // Maneja la respuesta del servidor si es necesario
     console.log("Zona registrada con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar la zona:", error);
-    this.props.salir()
+    this.props.salir();
   });
-  //pasar datosFormulario a null en Zonas.js 
-  }
+  //pasar datos Formulario en Zonas.js 
+}  
+limpiarFormulario() {
+  this.setState({
+    ID_zonas: null,
+    descripcion: "",
+    tipo: "",
+    disponibilidad: "Disponible"
+  });
+  this.props.salir();
+}
 
   guardar(){
 
@@ -131,7 +151,7 @@ if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
           <button 
             type="button" 
             className="btn" 
-            onClick={()=> this.props.salir()}  
+            onClick={() => this.salir()}  
           >
             Cancelar
           </button>

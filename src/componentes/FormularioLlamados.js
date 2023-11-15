@@ -101,7 +101,7 @@ class FormularioLlamados extends Component {
           <button type="button" className="btn" >
             Aceptar
           </button>
-          <button type="button" className="btn" >
+          <button type="button" className="btn"  >
             Cancelar
           </button>
         </div> 

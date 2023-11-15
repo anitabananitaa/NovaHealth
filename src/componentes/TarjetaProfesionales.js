@@ -11,6 +11,13 @@ class TarjetaProfesionales extends Component {
     };
   }
 
+  confirmarEliminacion = () => {
+    const confirmacion = window.confirm("¿Estás seguro que quieres eliminar este profecional");
+    if (confirmacion) {
+      this.props.onEliminarTarjeta(this.props.id);
+    }
+  };
+
   
   render() {
     const { id, nombre, apellido, dni, especialidad, telefono} = this.props;// recibe los datos como propiedades
@@ -33,7 +40,7 @@ class TarjetaProfesionales extends Component {
           <span>{telefono}</span>
         </div>
         <div className="botones" >
-        <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
+        <button className="btntarjeta"  onClick={this.confirmarEliminacion}>
             <img src={basura} className="imagen" />
           </button>
           <button className="btntarjeta"  onClick={() => this.props.onEditarDatos(this.props)}>

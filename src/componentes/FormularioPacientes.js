@@ -13,9 +13,20 @@ class Formulario extends Component {
       dni: "",
       fecha_nac: "",
       telefono: "",
-
     };
   }
+
+  salir = () => {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    });
+    this.props.salir();
+  };
+
+
   componentDidMount(){
     if(this.props.datos !== null){
       this.setState({
@@ -42,7 +53,7 @@ class Formulario extends Component {
     console.log(paciente);
     // Maneja la respuesta del servidor si es necesario
     console.log("paciente registrado con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
     })
     .catch((error) => {
     // Maneja errores si es necesario

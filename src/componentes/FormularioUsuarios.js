@@ -15,6 +15,17 @@ class FormularioUsuarios extends Component {
     };
   }
 
+  salir = () => {
+    this.setState({
+      ID_usuario: null,
+      nombre: "",
+      tipo: "",
+      estado: ""
+    });
+    this.props.salir();
+  };
+
+
   componentDidMount(){
     if(this.props.datos !== null){
       this.setState({
@@ -35,7 +46,7 @@ class FormularioUsuarios extends Component {
     console.log(usuario);
   // Maneja la respuesta del servidor si es necesario
   console.log("Usuario registrado con éxito:", res.data);
-  this.props.salir();
+  this.limpiarFormulario();
 })
 .catch((error) => {
   // Maneja errores si es necesario
@@ -55,13 +66,23 @@ guardarPut(usuario){
     console.log(usuario);
   // Maneja la respuesta del servidor si es necesario
   console.log("usuario registrada con éxito:", res.data);
-  this.props.salir();
+  this.limpiarFormulario();
 })
 .catch((error) => {
   // Maneja errores si es necesario
   console.error("Error al registrar la usuario:", error);
   this.props.salir()
 });
+}
+
+limpiarFormulario() {
+  this.setState({
+    ID_zonas: null,
+    descripcion: "",
+    tipo: "",
+    disponibilidad: "Disponible"
+  });
+  this.props.salir();
 }
 
   guardar(){
@@ -148,7 +169,7 @@ handleInputChange = (event) => {
         <button 
             type="button" 
             className="btn" 
-            onClick={()=> this.props.salir()}  
+            onClick={() => this.salir()}  
           >
             Cancelar
           </button>

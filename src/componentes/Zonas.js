@@ -20,8 +20,8 @@ class Zonas extends Component {
   }
 
   showFormulario() {
-    this.setState({ showFormulario: !this.state.showFormulario });// llama a showFormulario del this.state
-    this.obtenerDatos()
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario: null });
+    this.obtenerDatos();
   }
 
   obtenerDatos() {

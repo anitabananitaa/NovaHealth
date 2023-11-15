@@ -17,7 +17,8 @@ class FormularioLlamados extends Component {
       fecha_hora_llamado: "",
       fecha_hora_atencion:"",
       profesional: "",
-      origen: ""
+      origen: "",
+      ID_zonas: null
     };
   }
   guardar(){
@@ -192,13 +193,12 @@ class FormularioLlamados extends Component {
           <div className="formulario">
           <span>
               Zona:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                  pruebaZona1
-                </option>
-                <option className="edit" value="opcion2">
-                  pruebaZona2
-                </option>
+              <select className="miSelect" value={this.state.ID_zonas} onChange={(e)=>this.setState({ID_zonas:e.target.value})}>
+                {this.props.zonas.map( (zona, index) => 
+                  <option key={zona.ID_zonas}  className="edit" value={zona.ID_zonas}>
+                    {zona.tipo}
+                  </option>
+                )}
               </select>
             </span>
           </div>

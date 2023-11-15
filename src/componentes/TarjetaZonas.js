@@ -22,8 +22,6 @@ class TarjetaZonas extends Component {
 
   render() {
     const{ id, tipo, descripcion, disponibilidad } = this.props; // Recibe los datos como propiedades
-    const traducirDisponibilidad = (disponibilidad) => {
-      return disponibilidad === 1 ? "disponible" : "ocupada";};
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -32,7 +30,7 @@ class TarjetaZonas extends Component {
           <h4>Descripción:</h4>
           <span> {descripcion}</span>
           <h4>disponibilidad:</h4>
-          <span> {traducirDisponibilidad(disponibilidad)}</span>
+          <span> {disponibilidad}</span>
         </div>
         <div className="botones">
           <button className="btntarjeta" onClick={this.confirmarEliminacion}>

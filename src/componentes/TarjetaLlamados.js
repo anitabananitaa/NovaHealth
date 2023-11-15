@@ -68,7 +68,8 @@ class TarjetaLlamados extends Component {
         </div>
         <div className="botones">
           <button className="btntarjeta" onClick={() => this.props.onEditarDatos(this.props)}>
-            <img src={lapiz} className="imagen" />
+            {/* <img src={lapiz} className="imagen" /> */}
+            Atender
           </button>
         </div>
       </div>

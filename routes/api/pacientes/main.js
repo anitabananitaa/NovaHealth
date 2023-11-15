@@ -53,7 +53,7 @@ router.put("/", function(req, res, next){
     const {apellido, nombre, fecha_nac, dni, telefono} = req.body;
     const sql = 'UPDATE pacientes SET apellido = ?, nombre = ?, fecha_nac = ?, dni = ?, telefono = ? WHERE ID_paciente = ?' //Comillas simples
     
-    con.query(sql, [descripcion, tipo, ID_paciente], function(error, result){
+    con.query(sql, [apellido, nombre, fecha_nac, dni, telefono, ID_paciente], function(error, result){
         if (error){
             console.log(error);
             res.json({

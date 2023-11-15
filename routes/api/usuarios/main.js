@@ -75,7 +75,7 @@ router.get("/", function(req, res, next){
     isAdmin(token)
     .then((tipo_ver) => {
         if (tipo_ver === "admin"){
-            const sql = 'SELECT tipo, nombre_usuario FROM usuarios WHERE activo = TRUE'; //Comillas simples
+            const sql = 'SELECT ID_usuario, tipo, nombre_usuario FROM usuarios WHERE activo = TRUE'; //Comillas simples
             con.query(sql, function(error, result){
                 if (error){
                     res.json({

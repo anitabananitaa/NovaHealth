@@ -29,26 +29,38 @@ class Formulario extends Component {
     }
   }
 
-  guardar(){
-    const paciente = {
-    apellido: this.state.apellido,
-    nombre: this.state.nombre,
-    dni: this.state.dni,
-    fecha_nac: this.state.fecha_nac,
-    telefono: this.state.telefono
-    }
-    axios.post(url + '/Pacientes', paciente)
+  guardarPost(paciente){
+    axios.post(url + '/pacientes', paciente)
     .then((res) => {
-    console.log(paciente);
+      console.log(paciente);
     // Maneja la respuesta del servidor si es necesario
     console.log("paciente registrado con éxito:", res.data);
     this.props.salir();
-    })
-    .catch((error) => {
+  })
+  .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar la paciente:", error);
     this.props.salir()
-    });
+  });
+  }
+
+  guardarPut(paciente){
+    const config = {
+      params: {ID_paciente: paciente.ID_paciente}
+    }
+    console.log(paciente);
+    axios.put(url + '/pacientes', paciente, config)
+    .then((res) => {
+      console.log(paciente);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("paciente registrado con éxito:", res.data);
+    this.props.salir();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar la paciente:", error);
+    this.props.salir()
+  });
   }
 
   handleInputChange = (event) => {
@@ -90,7 +102,7 @@ class Formulario extends Component {
           <div className="formulario">
             <span>
               Fecha Nac.
-              <input type="date"  placeholder="FechaNac"  name="fecha_nac"
+              <input type="date"  name="fecha_nac"
                 value={this.state.fecha_nac}
                 onChange={this.handleInputChange}/>
             </span>

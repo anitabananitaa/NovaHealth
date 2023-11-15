@@ -114,17 +114,16 @@ limpiarFormulario() {
           <h1>Registro de Zonas</h1>
           <div className="formulario">
             <span>
-              Descripción
-              <input type="text" name="descripcion"
-                value={this.state.descripcion}
-                onChange={this.handleInputChange}/>
-            </span>
-          </div>
-          <div className="formulario">
-            <span>
               Tipo
               <input type="text" name="tipo"
                 value={this.state.tipo}
+                onChange={this.handleInputChange}/>
+            </span>
+          </div> <div className="formulario">
+            <span>
+              Descripción
+              <input type="text" name="descripcion"
+                value={this.state.descripcion}
                 onChange={this.handleInputChange}/>
             </span>
           </div>

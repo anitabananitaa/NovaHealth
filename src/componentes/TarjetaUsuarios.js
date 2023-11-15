@@ -26,10 +26,10 @@ class TarjetaUsuarios extends Component {
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
-          <h4>Tipo:</h4>
-          <span>{tipo}</span>
           <h4>Nombre de usuario:</h4>
           <span>{nombre}</span>
+          <h4>Tipo:</h4>
+          <span>{tipo}</span>
           <h4>Estado:</h4>
           <span>{estado}</span>
         </div>

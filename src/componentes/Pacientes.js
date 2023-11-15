@@ -77,7 +77,7 @@ class Pacientes extends Component {
           id={paciente.ID_paciente}
           nombre={paciente.nombre}
           apellido={paciente.apellido}
-          fecha_nac={paciente.fecha_nac}
+          fecha_nac={paciente.fecha_nac.substr(0, 10)}
           dni={paciente.dni}
           telefono={paciente.telefono}
           onEliminarTarjeta={this.eliminarTarjeta}

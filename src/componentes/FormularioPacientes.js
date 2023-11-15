@@ -63,6 +63,32 @@ class Formulario extends Component {
   });
   }
 
+  guardar(){
+    if (this.state.ID_paciente !== undefined && this.state.ID_paciente !==null)
+  {
+    const paciente = {
+      ID_paciente:this.state.ID_paciente,
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      dni: this.state.dni,
+      fecha_nac: this.state.fecha_nac,
+      telefono: this.state.telefono
+    }
+    this.guardarPut(paciente)
+  }    
+      else
+      {
+        const paciente = {
+          nombre: this.state.nombre,
+          apellido: this.state.apellido,
+          dni: this.state.dni,
+          fecha_nac: this.state.fecha_nac,
+          telefono: this.state.telefono
+        }
+        this.guardarPost(paciente)
+      }  
+    }
+
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });

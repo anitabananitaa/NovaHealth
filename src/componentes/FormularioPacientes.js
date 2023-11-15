@@ -16,17 +16,6 @@ class Formulario extends Component {
     };
   }
 
-  salir = () => {
-    this.setState({
-      ID_zonas: null,
-      descripcion: "",
-      tipo: "",
-      disponibilidad: "Disponible"
-    });
-    this.props.salir();
-  };
-
-
   componentDidMount(){
     if(this.props.datos !== null){
       this.setState({
@@ -39,6 +28,17 @@ class Formulario extends Component {
       })
     }
   }
+
+  salir = () => {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    });
+    this.props.salir();
+  };
+
 
   guardarPost(paciente){
     axios.post(url + '/pacientes', paciente)
@@ -65,13 +65,23 @@ class Formulario extends Component {
       console.log(paciente);
     // Maneja la respuesta del servidor si es necesario
     console.log("paciente registrado con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar el paciente:", error);
     this.props.salir()
   });
+  }
+
+  limpiarFormulario() {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "Disponible"
+    });
+    this.props.salir();
   }
 
   guardar(){
@@ -165,7 +175,7 @@ class Formulario extends Component {
               type="button" 
               className="btn" 
               
-              onClick={()=> this.props.salir()}  
+              onClick={()=> this.salir()}  
             >
               Cancelar
             </button>

@@ -3,7 +3,8 @@ import TarjetaZonas from "./TarjetaZonas";
 import Carta from "./Carta";
 import FormularioZonas from "./FormularioZonas";
 import axios from 'axios';
-const url = "http://192.168.0.76:3201/api";
+
+const url = "https://72a.ctpoba.ar/api";
 
 class Zonas extends Component { 
   constructor(props) {

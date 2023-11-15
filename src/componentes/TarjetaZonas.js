@@ -12,33 +12,7 @@ class TarjetaZonas extends Component {
     };
   }
   
-  /*
 
-editarDatos = (id) =>{
-  const zona = {
-    descripcion: this.state.descripcion,
-    tipo: this.state.tipo,
-    disponibilidad: this.state.disponibilidad
-  }
-  const config ={
-    params:{ ID_zonas: id},
-    headers:{token:sessionStorage.getItem("token")}
-  }
-  console.log(config)
-  axios.put(`${url}/zonas/`,config)
-  .then((res) => {
-    console.log(zona);
-  // Maneja la respuesta del servidor si es necesario
-  console.log("Zona editada con éxito:", res.data);
-  this.props.salir();
-})
-.catch((error) => {
-  // Maneja errores si es necesario
-  console.error("Error al editar la zona:", error);
-  this.props.salir()
-});
-}
-*/
 
 
   render() {

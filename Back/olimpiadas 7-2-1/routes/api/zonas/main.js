@@ -3,7 +3,7 @@ var con = require("../conexion");
 var router = express.Router();
 
 router.get("/", function(req, res, next){
-    const sql = 'SELECT * FROM zonas'; //Comillas simples
+    const sql = 'SELECT * FROM zonas WHERE activo = TRUE'; //Comillas simples
     con.query(sql, function(error, result){
         if (error){
             console.log(error);
@@ -77,11 +77,11 @@ const isAdmin = function(token){
 router.delete("/", function(req, res, next){
     const {token} = req.headers;
     const {ID_zonas} = req.query;
-    
+
     isAdmin(token)
     .then((tipo) => {
         if (tipo === "admin"){
-            const sql = 'DELETE FROM zonas WHERE ID_zonas = ?'; //Comillas simples
+            const sql = 'UPDATE zonas SET activo = FALSE WHERE ID_zonas = ?'; 
             con.query(sql, [ID_zonas], function(error, result){
                 if (error){
                     res.json({

@@ -4,8 +4,7 @@ import Boton from "./Boton";
 import Input from "./Input";
 import ilustracion from "./assets/ilustracion.png";
 
-const url = "http://192.168.0.76:3201/api";
-
+const url = "https://72a.ctpoba.ar/api";
 
 class Login extends Component {
   constructor(props) {

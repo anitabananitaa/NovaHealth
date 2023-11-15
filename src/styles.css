@@ -434,3 +434,18 @@ margin-bottom: 0%;
 .alinear-texto{
   text-align: left;
 }
+
+/* Estilos para la tarjeta en estado pendiente */
+.pendiente {
+  background: linear-gradient(to bottom, #FF6347); /* Rojo a Amarillo */
+}
+
+/* Estilos para la tarjeta en estado finalizado */
+.finalizado {
+  background: linear-gradient(to bottom, #32CD32); /* Verde a Verde Oscuro */
+}
+
+/* Estilos para la tarjeta en estado atendiendo */
+.atendiendo {
+  background: linear-gradient(to bottom, #FFA500); /* Amarillo a Rojo Oscuro */
+}

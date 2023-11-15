@@ -4,8 +4,7 @@ import Carta from "./Carta";
 import FormularioLamados from "./FormularioLlamados";
 import axios from 'axios'; 
 
-const url = "http://192.168.0.76:3201/api";
-
+const url = "https://72a.ctpoba.ar/api";
 
 class Llamados extends Component {
   constructor(props) {
@@ -13,7 +12,8 @@ class Llamados extends Component {
     this.state = {
       datosFormulario:null,
       showFormulario: false,
-      datosLlamados: []
+      datosLlamados: [],
+  
     };
   }
 
@@ -36,7 +36,6 @@ class Llamados extends Component {
       console.log(error);
     });
   }
-
 
 
   render() {

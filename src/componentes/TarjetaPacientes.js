@@ -43,7 +43,7 @@ class TarjetaPacientes extends Component {
   }
 
   render() {
-    const {id,nombre, apellido, fecNa, dni, telefono} = this.props;// recibe los datos como propiedades
+    const {id,nombre, apellido, fecha_nac, dni, telefono} = this.props;// recibe los datos como propiedades
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -54,7 +54,7 @@ class TarjetaPacientes extends Component {
           <span>{apellido}</span>
 
           <h4>Fecha Nac.:</h4>
-          <span>{fecNa}</span>
+          <span>{fecha_nac}</span>
 
           <h4>DNI:</h4>
           <span>{dni}</span>

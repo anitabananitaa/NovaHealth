@@ -79,7 +79,6 @@ class Usuarios extends Component {
             id={usuario.ID_usuario}
             tipo={usuario.tipo}
             nombre={usuario.nombre_usuario}
-            estado={usuario.estado}
             onEliminarTarjeta={this.eliminarTarjeta}
             onEditarDatos={this.editarTarjeta}
           />

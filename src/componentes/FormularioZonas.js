@@ -10,7 +10,7 @@ class FormularioZonas extends Component {
       ID_zonas:null,
       descripcion: "",
       tipo: "",
-      disponibilidad: "Disponible"
+      disponibilidad: "disponible"
     };
   }
 
@@ -30,7 +30,7 @@ class FormularioZonas extends Component {
       ID_zonas: null,
       descripcion: "",
       tipo: "",
-      disponibilidad: "Disponible"
+      disponibilidad: "disponible"
     });
     this.props.salir();
   };
@@ -68,14 +68,13 @@ class FormularioZonas extends Component {
     console.error("Error al registrar la zona:", error);
     this.props.salir();
   });
-  //pasar datos Formulario en Zonas.js 
 }  
 limpiarFormulario() {
   this.setState({
     ID_zonas: null,
     descripcion: "",
     tipo: "",
-    disponibilidad: "Disponible"
+    disponibilidad: "disponible"
   });
   this.props.salir();
 }
@@ -133,8 +132,8 @@ limpiarFormulario() {
               <select className="mi-select" name="disponibilidad"
                 value={this.state.disponibilidad}
                 onChange={this.handleInputChange}>
-                <option value="opcion1">Disponible</option>
-                <option value="opcion2">Ocupada</option>
+                <option value="disponible">Disponible</option>
+                <option value="ocupada">Ocupada</option>
               </select>
             </span>
           </div>

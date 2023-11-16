@@ -8,7 +8,7 @@ class FormularioLlamados extends Component {
     super(props);
     this.state = {
       ID_llamado:null,
-      estado: "",
+      estado: "Pendiente",
       tipo:"",
       dni: "",
       nombre: "",
@@ -16,7 +16,9 @@ class FormularioLlamados extends Component {
       descripcion:"",
       fecha_hora_llamado: "",
       fecha_hora_atencion:"",
-      profesional: ""
+      profesional: "",
+      origen: "",
+      ID_zonas: null
     };
   }
   guardar(){
@@ -119,22 +121,6 @@ class FormularioLlamados extends Component {
           <h1>Registro de Llamados</h1>
           <div className="formulario">
             <span>
-              Estado:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                  Pendiente
-                </option>
-                <option className="edit" value="opcion2">
-                  Atendido
-                </option>
-                <option className="edit" value="opcion2">
-                  Finalizado
-                </option>
-              </select>
-            </span>
-          </div>
-          <div className="formulario">
-            <span>
               Tipo:
               <select className="miSelect">
                 <option value="opcion1">Urgente</option>
@@ -188,28 +174,13 @@ class FormularioLlamados extends Component {
           <div className="formulario">
           <span>
               Zona:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                  pruebaZona1
-                </option>
-                <option className="edit" value="opcion2">
-                  pruebaZona2
-                </option>
+              <select className="miSelect" value={this.state.ID_zonas} onChange={(e)=>this.setState({ID_zonas:e.target.value})}>
+                {this.props.zonas.map( (zona, index) => 
+                  <option key={zona.ID_zonas}  className="edit" value={zona.ID_zonas}>
+                    {zona.tipo}
+                  </option>
+                )}
               </select>
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Fecha-Hora del Llamado:
-              <input type="text"  />
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Fecha-Hora de Atencion:
-              <input type="text" />
             </span>
           </div>
 

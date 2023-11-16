@@ -30,7 +30,7 @@ class FormularioUsuarios extends Component {
       this.setState({
         ID_usuario:this.props.datos.id,
         tipo:this.props.datos.tipo,
-        nombre:this.props.datos.nombre,
+        nombre:this.props.datos.nombre
       })
     }
   }

@@ -71,7 +71,6 @@ class Usuarios extends Component {
             key={index}
             tipo={usuario.tipo}
             nombre={usuario.nombre_usuario}
-            estado={usuario.estado}
             onEliminarTarjeta={this.eliminarTarjeta}
             onEditarDatos={this.editarTarjeta}
           />

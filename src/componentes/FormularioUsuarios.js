@@ -10,7 +10,6 @@ class FormularioUsuarios extends Component {
       ID_usuario:null,
       nombre: "",
       contraseña: "",
-      estado: "",
       tipo: ""
 
     };
@@ -21,8 +20,7 @@ class FormularioUsuarios extends Component {
       this.setState({
         ID_usuario:this.props.datos.id,
         tipo:this.props.datos.tipo,
-        nombre:this.props.datos.nombre,
-        estado:this.props.datos.estado
+        nombre:this.props.datos.nombre
       })
     }
   }
@@ -33,8 +31,7 @@ class FormularioUsuarios extends Component {
     const usuario = {
     nombre: this.state.nombre,
     contraseña: this.state.contraseña,
-    tipo: this.state.tipo,
-    estado: this.state.estado
+    tipo: this.state.tipo
   }
   axios.post(url + '/usuarios', usuario)
   .then((res) => {
@@ -77,21 +74,6 @@ handleInputChange = (event) => {
             <input type="password" pattern="[0-9]{8}" name="contraseña"
                 value={this.state.contraseña}
                 onChange={this.handleInputChange}/>
-          </span>
-        </div>
-        <div className="formulario">
-          <span>
-            Estado
-            <select className="miSelect" name="estado"
-                value={this.state.estado}
-                onChange={this.handleInputChange}>
-              <option className="edit" value="opcion1">
-                Activo
-              </option>
-              <option className="edit" value="opcion2">
-                Inactivo
-              </option>
-            </select>
           </span>
         </div>
         <div className="formulario">

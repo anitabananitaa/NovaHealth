@@ -11,7 +11,7 @@ class TarjetaUsuarios extends Component {
     };
   }
   render() {
-    const {tipo, nombre, estado}= this.props;
+    const {tipo, nombre}= this.props;
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -20,9 +20,6 @@ class TarjetaUsuarios extends Component {
 
           <h4>Nombre de usuario:</h4>
           <span>{nombre}</span>
-
-          <h4>Estado:</h4>
-          <span>{estado}</span>
         </div>
         <div className="botones">
           <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>

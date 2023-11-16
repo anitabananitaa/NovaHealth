@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import basura from "./assets/basura.png";
 import lapiz from "./assets/lapiz.png";
 import Carta from "./Carta";
+import FormularioProfesionales from "./FormularioProfesionales";
 
 class TarjetaProfesionales extends Component {
   constructor(props) {
@@ -9,30 +10,14 @@ class TarjetaProfesionales extends Component {
     this.state = {
     };
   }
-  editarDatos(){
-    const profesional = {
-      nombre: this.state.nombre,
-      apellido: this.state.apellido,
-      dni: this.state.dni,
-      especialidad: this.state.especialidad,
-      telefono: this.state.telefono
+
+  confirmarEliminacion = () => {
+    const confirmacion = window.confirm("¿Estás seguro que quieres eliminar este profecional");
+    if (confirmacion) {
+      this.props.onEliminarTarjeta(this.props.id);
     }
-    const config ={
-      params:{ ID_profesional: t}
-    }
-    axios.put(url + '/profesionales', profesional)
-    .then((res) => {
-      console.log(profesional);
-    // Maneja la respuesta del servidor si es necesario
-    console.log("profesional editado con éxito:", res.data);
-    this.props.salir();
-  })
-  .catch((error) => {
-    // Maneja errores si es necesario
-    console.error("Error al editar el profesional:", error);
-    this.props.salir()
-  });
-  }
+  };
+
   
   render() {
     const { id, nombre, apellido, dni, especialidad, telefono} = this.props;// recibe los datos como propiedades
@@ -55,7 +40,7 @@ class TarjetaProfesionales extends Component {
           <span>{telefono}</span>
         </div>
         <div className="botones" >
-        <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
+        <button className="btntarjeta"  onClick={this.confirmarEliminacion}>
             <img src={basura} className="imagen" />
           </button>
           <button className="btntarjeta"  onClick={() => this.props.onEditarDatos(this.props)}>

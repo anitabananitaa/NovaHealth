@@ -68,7 +68,6 @@ class FormularioZonas extends Component {
     console.error("Error al registrar la zona:", error);
     this.props.salir();
   });
-  //pasar datos Formulario en Zonas.js 
 }  
 limpiarFormulario() {
   this.setState({

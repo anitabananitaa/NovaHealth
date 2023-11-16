@@ -8,7 +8,7 @@ class FormularioLlamados extends Component {
     super(props);
     this.state = {
       ID_llamado:null,
-      estado: "",
+      estado: "Pendiente",
       tipo:"",
       dni: "",
       nombre: "",
@@ -122,22 +122,6 @@ class FormularioLlamados extends Component {
       <div className="modal">
         <div className="contenedorFormulario">
           <h1>Registro de Llamados</h1>
-          <div className="formulario">
-            <span>
-              Estado:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                  Pendiente
-                </option>
-                <option className="edit" value="opcion2">
-                  Atendido
-                </option>
-                <option className="edit" value="opcion2">
-                  Finalizado
-                </option>
-              </select>
-            </span>
-          </div>
           <div className="formulario">
             <span>
               Tipo:

@@ -204,20 +204,6 @@ class FormularioLlamados extends Component {
           </div>
 
           <div className="formulario">
-            <span>
-              Fecha-Hora del Llamado:
-              <input type="text"  />
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Fecha-Hora de Atencion:
-              <input type="text" />
-            </span>
-          </div>
-
-          <div className="formulario">
           <span>
               Profesional:
               <select className="miSelect">

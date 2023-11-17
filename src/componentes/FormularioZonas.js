@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Input from "./Input";
 import axios from 'axios';
-
-const url = "http://192.168.0.76:3201/api";
+const url = "https://72a.ctpoba.ar/api";
 
 class FormularioZonas extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class FormularioZonas extends Component {
       ID_zonas:null,
       descripcion: "",
       tipo: "",
-      disponibilidad: "Disponible"
+      disponibilidad: "disponible"
     };
   }
 
@@ -26,18 +25,29 @@ class FormularioZonas extends Component {
     }
   }
 
+  salir = () => {
+    this.setState({
+      ID_zonas: null,
+      descripcion: "",
+      tipo: "",
+      disponibilidad: "disponible"
+    });
+    this.props.salir();
+  };
+
+
   guardarPost(zona){
     axios.post(url + '/zonas', zona)
     .then((res) => {
       console.log(zona);
     // Maneja la respuesta del servidor si es necesario
     console.log("Zona registrada con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar la zona:", error);
-    this.props.salir()
+    this.props.salir();
   });
   }
 
@@ -51,18 +61,26 @@ class FormularioZonas extends Component {
       console.log(zona);
     // Maneja la respuesta del servidor si es necesario
     console.log("Zona registrada con éxito:", res.data);
-    this.props.salir();
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
     console.error("Error al registrar la zona:", error);
-    this.props.salir()
+    this.props.salir();
   });
-  }
+}  
+limpiarFormulario() {
+  this.setState({
+    ID_zonas: null,
+    descripcion: "",
+    tipo: "",
+    disponibilidad: "disponible"
+  });
+  this.props.salir();
+}
 
   guardar(){
-
-if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
+  if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
 {
   const zona = {
     ID_zonas:this.state.ID_zonas,
@@ -95,17 +113,16 @@ if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
           <h1>Registro de Zonas</h1>
           <div className="formulario">
             <span>
-              Descripción
-              <input type="text" name="descripcion"
-                value={this.state.descripcion}
-                onChange={this.handleInputChange}/>
-            </span>
-          </div>
-          <div className="formulario">
-            <span>
               Tipo
               <input type="text" name="tipo"
                 value={this.state.tipo}
+                onChange={this.handleInputChange}/>
+            </span>
+          </div> <div className="formulario">
+            <span>
+              Descripción
+              <input type="text" name="descripcion"
+                value={this.state.descripcion}
                 onChange={this.handleInputChange}/>
             </span>
           </div>
@@ -115,8 +132,8 @@ if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
               <select className="mi-select" name="disponibilidad"
                 value={this.state.disponibilidad}
                 onChange={this.handleInputChange}>
-                <option value="opcion1">Disponible</option>
-                <option value="opcion2">Ocupada</option>
+                <option value="disponible">Disponible</option>
+                <option value="ocupada">Ocupada</option>
               </select>
             </span>
           </div>
@@ -131,7 +148,7 @@ if (this.state.ID_zonas !== undefined && this.state.ID_zonas !==null)
           <button 
             type="button" 
             className="btn" 
-            onClick={()=> this.props.salir()}  
+            onClick={() => this.salir()}  
           >
             Cancelar
           </button>

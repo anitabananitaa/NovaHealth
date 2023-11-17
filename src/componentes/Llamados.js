@@ -13,12 +13,14 @@ class Llamados extends Component {
     this.state = {
       datosFormulario:null,
       showFormulario: false,
-      datosLlamados: []
+      datosLlamados: [],
+      datosZonas:[]
     };
   }
 
   componentDidMount(){
     this.obtenerDatos();
+    this.obtenerZonas()
   } 
 
   showFormulario(){
@@ -37,6 +39,23 @@ class Llamados extends Component {
     });
   }
 
+  obtenerZonas(){
+    axios.get(url + '/zonas')
+    .then((res) => {
+      console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el array aparte)
+      this.setState({ datosZonas: res.data.result });// trae los resultados(array) guardados en el state
+      console.log(this.state.datosZonas);//verifica que datosZonas se guardo correctamente en la consola
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  editarTarjeta=(datos) =>{
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
+
+
+  }
 
 
   render() {
@@ -47,7 +66,7 @@ class Llamados extends Component {
       {this.state.showFormulario &&
         <FormularioLamados
           datos={this.state.datosFormulario}
-
+          zonas={this.state.datosZonas}
           salir={()=>this.showFormulario()}
         />
       }
@@ -65,7 +84,7 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-
+          onEditarDatos={this.editarTarjeta}
         />
         ))}
       </Carta>

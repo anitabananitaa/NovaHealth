@@ -3,8 +3,7 @@ import TarjetaUsuarios from "./TarjetaUsuarios";
 import Carta from "./Carta";
 import FormularioUsuarios from "./FormularioUsuarios";
 import axios from 'axios';
-
-const url = "http://192.168.0.76:3201/api";
+const url = "https://72a.ctpoba.ar/api";
 
 class Usuarios extends Component {
   constructor(props) {
@@ -19,15 +18,16 @@ class Usuarios extends Component {
   componentDidMount(){
     this.obtenerDatos();
   }
-  showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario})
+
+  showFormulario() {
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario: null });
     this.obtenerDatos();
   }
+
+
   obtenerDatos(){
     const config = {
-      headers: {
-        token: sessionStorage.getItem("token")
-      }
+      headers:{token:sessionStorage.getItem("token")}
     }
     axios.get(url + '/usuarios', config)
     .then((res) => {
@@ -38,6 +38,10 @@ class Usuarios extends Component {
     .catch((error) => {
       console.log(error);
     });
+  }
+
+  editarTarjeta=(datos) =>{
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
   }
 
   eliminarTarjeta = (id) => {
@@ -56,6 +60,7 @@ class Usuarios extends Component {
       });
   }
 
+
   render() {
     const datosUsuarios= this.state.datosUsuarios;
     return (
@@ -64,16 +69,16 @@ class Usuarios extends Component {
           <FormularioUsuarios
           datos={this.state.datosFormulario}
 
-            salir={()=>this.showFormulario()}
+          salir={()=>this.showFormulario()}
           />
         }
         <Carta showFormulario={()=> this.showFormulario()}>
           {datosUsuarios.map((usuario, index)=> ( 
           <TarjetaUsuarios 
             key={index}
+            id={usuario.ID_usuario}
             tipo={usuario.tipo}
             nombre={usuario.nombre_usuario}
-            estado={usuario.estado}
             onEliminarTarjeta={this.eliminarTarjeta}
             onEditarDatos={this.editarTarjeta}
           />

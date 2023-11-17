@@ -20,15 +20,15 @@ class Zonas extends Component {
   }
 
   showFormulario() {
-    this.setState({ showFormulario: !this.state.showFormulario });// llama a showFormulario del this.state
-    this.obtenerDatos()
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario: null });
+    this.obtenerDatos();
   }
 
   obtenerDatos() {
     axios.get(url + '/zonas')
       .then((res) => {
-        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
-        this.setState({ datosZonas: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el array aparte)
+        this.setState({ datosZonas: res.data.result });// trae los resultados(array) guardados en el state
         console.log(this.state.datosZonas);//verifica que datosZonas se guardo correctamente en la consola
       })
       .catch((error) => {
@@ -38,8 +38,6 @@ class Zonas extends Component {
 
   editarTarjeta=(datos) =>{
     this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
-
-
   }
 
   eliminarTarjeta = (id) => {

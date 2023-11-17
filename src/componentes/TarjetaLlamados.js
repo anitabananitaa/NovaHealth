@@ -73,9 +73,10 @@ class TarjetaLlamados extends Component {
               Atender
             </button>
           }
-          {estado === "Atendiendo" &&
+          {estado === "Atendido" &&
+            <button className="btntarjeta" >
               {/* <img src={lapiz} className="imagen" /> */}
-              finalizar
+              Finalizar
             </button>
           }
         </div>

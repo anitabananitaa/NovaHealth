@@ -82,7 +82,7 @@ class Llamados extends Component {
           salir={()=>this.showFormulario()}
         />
       }
-            }
+            
       {this.state.showFormularioFinalizar &&
         <FormularioFinalizar
           datos={this.state.datosFormulario}
@@ -106,8 +106,8 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-          onEditarDatos={this.atenderTarjeta}
-          onEditarDatos={this.finalizarTarjeta}
+          onAtender={this.atenderTarjeta}
+          onFinalizar={this.finalizarTarjeta}
         />
         ))}
       </Carta>

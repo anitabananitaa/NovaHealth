@@ -130,44 +130,29 @@ class FormularioLlamados extends Component {
           </div>
 
           <div className="formulario">
-          <span>
-              Nombre:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                pruebaPaciente1
-                </option>
-                <option className="edit" value="opcion2">
-                pruebaPaciente2
-                </option>
-              </select>
+            <span>
+              Nombre del paciente:              
+              <input type="text" name="nombre"
+                value={this.state.nombre}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
 
           <div className="formulario">
-          <span>
-              Apellido:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                pruebaPaciente1
-                </option>
-                <option className="edit" value="opcion2">
-                pruebaPaciente2
-                </option>
-              </select>
+            <span>
+              Apellido del paciente:
+              <input type="text" name="apellido"
+                value={this.state.apellido}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
 
           <div className="formulario">
-          <span>
-              DNI:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                  pruebaPaciente1
-                </option>
-                <option className="edit" value="opcion2">
-                pruebaPaciente2
-                </option>
-              </select>
+            <span>
+              DNI del paciente:
+              <input type="text" name="dni"
+                value={this.state.dni}
+                onChange={this.handleInputChange}/>
             </span>
           </div>
 
@@ -184,20 +169,6 @@ class FormularioLlamados extends Component {
             </span>
           </div>
 
-          <div className="formulario">
-          <span>
-              Profesional:
-              <select className="miSelect">
-
-                <option className="edit" value="opcion1">
-                  pruebaProfesional1
-                </option>
-                <option className="edit" value="opcion2">
-                  pruebaProfesional2
-                </option>
-              </select>
-            </span>
-          </div>
 
           <button type="button" 
           className="btn" 

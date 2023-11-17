@@ -11,38 +11,41 @@ class FormularioUsuarios extends Component {
       ID_usuario:null,
       nombre: "",
       contraseña: "",
-      estado: "",
-      tipo: ""
-
+      tipo: "agente"
     };
   }
+
+  salir = () => {
+    this.setState({
+      ID_usuario: null,
+      nombre: "",
+      contraseña: "",
+      tipo: "agente"
+    });
+    this.props.salir();
+  };
+
 
   componentDidMount(){
     if(this.props.datos !== null){
       this.setState({
         ID_usuario:this.props.datos.id,
         tipo:this.props.datos.tipo,
-        nombre:this.props.datos.nombre,
-        estado:this.props.datos.estado
+        nombre:this.props.datos.nombre
       })
     }
   }
 
 
-
-  guardar(){
-    const usuario = {
-    nombre: this.state.nombre,
-    contraseña: this.state.contraseña,
-    tipo: this.state.tipo,
-    estado: this.state.estado
-  }
-  axios.post(url + '/usuarios', usuario)
+  guardarPost(usuario){
+    const config = {
+      headers:{token:sessionStorage.getItem("token")}}
+  axios.post(url + '/usuarios', usuario, config)
   .then((res) => {
     console.log(usuario);
   // Maneja la respuesta del servidor si es necesario
   console.log("Usuario registrado con éxito:", res.data);
-  this.props.salir();
+  this.limpiarFormulario();
 })
 .catch((error) => {
   // Maneja errores si es necesario
@@ -51,12 +54,63 @@ class FormularioUsuarios extends Component {
 });
 }
 
+guardarPut(usuario){
+  const config = {
+    params: {ID_usuario: usuario.ID_usuario},
+    headers:{token:sessionStorage.getItem("token")}
+  }
+  console.log(usuario);
+  axios.put(url + '/usuarios', usuario, config)
+  .then((res) => {
+    console.log(usuario);
+  // Maneja la respuesta del servidor si es necesario
+  console.log("usuario registrada con éxito:", res.data);
+  this.limpiarFormulario();
+})
+.catch((error) => {
+  // Maneja errores si es necesario
+  console.error("Error al registrar la usuario:", error);
+  this.props.salir()
+});
+}
+
+limpiarFormulario() {
+  this.setState({
+    ID_usuario: null,
+    nombre: "",
+    contraseña:"",    
+    tipo: ""
+  });
+  this.props.salir();
+}
+
+  guardar(){
+
+if (this.state.ID_usuario !== undefined && this.state.ID_usuario !==null)
+{
+  const usuario = {
+    ID_usuario:this.state.ID_usuario,
+    nombre_usuario: this.state.nombre,
+    contraseña: this.state.contraseña,
+    tipo: this.state.tipo
+  }
+  this.guardarPut(usuario)
+}
+    else
+    {
+    const usuario = {
+      nombre_usuario: this.state.nombre,
+      contraseña: this.state.contraseña,
+      tipo: this.state.tipo
+    }
+    this.guardarPost(usuario)
+  }
+}
+
 handleInputChange = (event) => {
   const { name, value } = event.target;
   this.setState({ [name]: value });
 };
-
-
 
   render() {
     return (
@@ -71,7 +125,6 @@ handleInputChange = (event) => {
                 onChange={this.handleInputChange}/>
           </span>
         </div>
-
         <div className="formulario">
           <span>
             Contraseña
@@ -82,27 +135,12 @@ handleInputChange = (event) => {
         </div>
         <div className="formulario">
           <span>
-            Estado
-            <select className="miSelect" name="estado"
-                value={this.state.estado}
-                onChange={this.handleInputChange}>
-              <option className="edit" value="opcion1">
-                Activo
-              </option>
-              <option className="edit" value="opcion2">
-                Inactivo
-              </option>
-            </select>
-          </span>
-        </div>
-        <div className="formulario">
-          <span>
             Tipo
             <select className="miSelect" name="tipo"
                 value={this.state.tipo}
                 onChange={this.handleInputChange}>
-              <option value="opcion1">Administrador</option>
-              <option value="opcion2">Agente</option>
+              <option value="agente">Agente</option>
+              <option value="admin">Administrador</option>
             </select>
           </span>
         </div>
@@ -112,7 +150,7 @@ handleInputChange = (event) => {
         <button 
             type="button" 
             className="btn" 
-            onClick={()=> this.props.salir()}  
+            onClick={() => this.salir()}  
           >
             Cancelar
           </button>

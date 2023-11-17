@@ -20,10 +20,11 @@ class Pacientes extends Component {
     this.obtenerDatos();
   }
   
-  showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario})
+  showFormulario() {
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario: null });
     this.obtenerDatos();
   }
+
 
   obtenerDatos() {
     axios.get(url + '/pacientes')
@@ -78,7 +79,7 @@ class Pacientes extends Component {
           id={paciente.ID_paciente}
           nombre={paciente.nombre}
           apellido={paciente.apellido}
-          fecNa={paciente.fecha_nac}
+          fecha_nac={paciente.fecha_nac.substr(0, 10)}
           dni={paciente.dni}
           telefono={paciente.telefono}
           onEliminarTarjeta={this.eliminarTarjeta}

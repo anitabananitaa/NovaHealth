@@ -17,13 +17,12 @@ import Tarjetausuarios from "./componentes/TarjetaUsuarios";
 import Tarjetallamados from "./componentes/TarjetaLlamados";
 import Usuarios from "./componentes/Usuarios";
 import Zonas from "./componentes/Zonas";
-import FormularioBusqueda from "./componentes/FormularioBusqueda";
 import FormularioProfesionales from "./componentes/FormularioProfesionales";
-import SubFormularioLlamados from "./componentes/SubFormularioLlamados";
+import FormularioFinalizar from "./componentes/FormularioFinalizar";
 import FormularioUsuarios from "./componentes/FormularioUsuarios";
 import FormularioZonas from "./componentes/FormularioZonas";
 import FormularioLlamados from "./componentes/FormularioLlamados";
-
+import FormularioAtender from  "./componentes/FormularioAtender";
 
 
 class App extends Component {

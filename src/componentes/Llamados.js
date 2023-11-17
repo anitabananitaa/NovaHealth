@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioLamados from "./FormularioLlamados";
+import FormularioAtender from "./FormularioAtender";
 import axios from 'axios'; 
 
 const url = "https://72a.ctpoba.ar/api";
@@ -13,12 +14,15 @@ class Llamados extends Component {
       datosFormulario:null,
       showFormulario: false,
       datosLlamados: [],
-  
+      datosZonas:[],
+      showFormularioAtender: false,
+      showFormularioFinalizar: false
     };
   }
 
   componentDidMount(){
     this.obtenerDatos();
+    this.obtenerZonas()
   } 
 
   showFormulario(){
@@ -37,6 +41,26 @@ class Llamados extends Component {
     });
   }
 
+  obtenerZonas(){
+    axios.get(url + '/zonas')
+    .then((res) => {
+      console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el array aparte)
+      this.setState({ datosZonas: res.data.result });// trae los resultados(array) guardados en el state
+      console.log(this.state.datosZonas);//verifica que datosZonas se guardo correctamente en la consola
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  atenderTarjeta=(datos) =>{
+    this.setState({ showFormularioAtender: !this.state.showFormularioAtender, datosFormulario:datos});
+  }
+
+  finalizarTarjeta=(datos) =>{
+    this.setState({ showFormularioFinalizar: !this.state.showFormularioFinalizar, datosFormulario:datos});
+  }
+
 
   render() {
     const datosLlamados = this.state.datosLlamados;
@@ -46,10 +70,26 @@ class Llamados extends Component {
       {this.state.showFormulario &&
         <FormularioLamados
           datos={this.state.datosFormulario}
-
+          zonas={this.state.datosZonas}
           salir={()=>this.showFormulario()}
         />
       }
+      {this.state.showFormularioAtender &&
+        <FormularioAtender
+          datos={this.state.datosFormulario}
+          salir={()=>this.showFormulario()}
+        />
+      }
+            }
+      {this.state.showFormularioFinalizar &&
+        <FormularioFinalizar
+          datos={this.state.datosFormulario}
+          salir={()=>this.showFormulario()}
+        />
+      }
+
+
+      
       <Carta showFormulario={()=> this.showFormulario()}>
         {datosLlamados.map((llamados, index)=> (
         <TarjetaLlamados 
@@ -64,7 +104,8 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-
+          onEditarDatos={this.atenderTarjeta}
+          onEditarDatos={this.finalizarTarjeta}
         />
         ))}
       </Carta>

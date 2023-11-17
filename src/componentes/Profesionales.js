@@ -21,11 +21,10 @@ class Profesionales extends Component {
     this.obtenerDatos();
   }
   
-  showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario});
+  showFormulario() {
+    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario: null });
     this.obtenerDatos();
   }
-
   obtenerDatos() {
     axios.get(url + '/profesionales')
       .then((res) => {

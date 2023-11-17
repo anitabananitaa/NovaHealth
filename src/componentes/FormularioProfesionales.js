@@ -12,10 +12,24 @@ class FormularioProfesionales extends Component {
       nombre:"",
       apellido:"",
       dni:"",
-      especialidad:"",
+      especialidad:"enfermero",
       telefono:""
     };
   }
+
+  salir = () => {
+    this.setState({
+      ID_profesional: null,
+      nombre: "",
+      apellido: "",
+      dni:"",
+      especialidad:"enfermero",
+      telefono:""
+    });
+    this.props.salir();
+  };
+
+
   componentDidMount(){
     if(this.props.datos !== null){
       this.setState({
@@ -28,20 +42,32 @@ class FormularioProfesionales extends Component {
       })
     }
   }
-  guardar(){
-    const profesional = {
-      nombre: this.state.nombre,
-      apellido: this.state.apellido,
-      dni: this.state.dni,
-      especialidad: this.state.especialidad,
-      telefono: this.state.telefono
-    }
-  axios.post(url + '/profesionales', profesional)
+  guardarPost(profesional){
+    axios.post(url + '/profesionales', profesional)
     .then((res) => {
       console.log(profesional);
     // Maneja la respuesta del servidor si es necesario
-    console.log("profesional registrada con éxito:", res.data);
-    this.props.salir();
+    console.log("Profesional registrado con éxito:", res.data);
+    this.limpiarFormulario();
+  })
+  .catch((error) => {
+    // Maneja errores si es necesario
+    console.error("Error al registrar el Profesional:", error);
+    this.props.salir()
+  });
+  }
+
+  guardarPut(profesional){
+    const config = {
+      params: {ID_profesional: profesional.ID_profesional}
+    }
+    console.log(profesional);
+    axios.put(url + '/profesionales', profesional, config)
+    .then((res) => {
+      console.log(profesional);
+    // Maneja la respuesta del servidor si es necesario
+    console.log("Profesional registrado con éxito:", res.data);
+    this.limpiarFormulario();
   })
   .catch((error) => {
     // Maneja errores si es necesario
@@ -49,6 +75,46 @@ class FormularioProfesionales extends Component {
     this.props.salir()
   });
   }
+
+  limpiarFormulario() {
+    this.setState({
+      ID_profesional: null,
+      nombre: "",
+      apellido: "",
+      dni:"",
+      especialidad:"enfermero",
+      telefono:""
+    });
+    this.props.salir();
+  }
+
+  guardar(){
+
+    if (this.state.ID_profesional !== undefined && this.state.ID_profesional !==null)
+    {
+      const profesional = {
+        ID_profesional:this.state.ID_profesional,
+        nombre:this.state.nombre,
+        apellido:this.state.apellido,
+        dni:this.state.dni,
+        especialidad:this.state.especialidad,
+        telefono:this.state.telefono
+      }
+      this.guardarPut(profesional)
+    }    
+        else
+        {
+          const profesional = {
+            nombre:this.state.nombre,
+            apellido:this.state.apellido,
+            dni:this.state.dni,
+            especialidad:this.state.especialidad,
+            telefono:this.state.telefono
+          }
+          this.guardarPost(profesional)
+        }  
+      }
+    
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -92,8 +158,8 @@ class FormularioProfesionales extends Component {
             <select className="mi-select" name="especialidad"
                 value={this.state.especialidad}
                 onChange={this.handleInputChange}>
-              <option value="opcion1">Medico</option>
-              <option value="opcion2">Enfermero</option>
+              <option value="enfermero">Enfermero</option>
+              <option value="medico">Medico</option>
             </select>
           </span>
         </div>
@@ -116,12 +182,12 @@ class FormularioProfesionales extends Component {
           <button 
             type="button" 
             className="btn" 
-            onClick={()=> this.props.salir()}  
+            onClick={()=> this.salir()}  
           >
             Cancelar
           </button>
       </div>
-      /</div>
+      </div>
     );
   }
 }

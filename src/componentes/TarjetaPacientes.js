@@ -7,13 +7,15 @@ class TarjetaPacientes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // nombre:"",
-      // apellido:"",
-      // fechNa:"",
-      // dni:"",
-      // telefono:""
     };
   }
+
+  confirmarEliminacion = () => {
+    const confirmacion = window.confirm("¿Estás seguro que quieres eliminar este paciente?");
+    if (confirmacion) {
+      this.props.onEliminarTarjeta(this.props.id);
+    }
+  };
   
   editarDatos(){
     const paciente = {
@@ -41,7 +43,7 @@ class TarjetaPacientes extends Component {
   }
 
   render() {
-    const {id,nombre, apellido, fecNa, dni, telefono} = this.props;// recibe los datos como propiedades
+    const {id,nombre, apellido, fecha_nac, dni, telefono} = this.props;// recibe los datos como propiedades
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -52,7 +54,7 @@ class TarjetaPacientes extends Component {
           <span>{apellido}</span>
 
           <h4>Fecha Nac.:</h4>
-          <span>{fecNa}</span>
+          <span>{fecha_nac}</span>
 
           <h4>DNI:</h4>
           <span>{dni}</span>
@@ -61,7 +63,7 @@ class TarjetaPacientes extends Component {
           <span>{telefono}</span>
         </div>
         <div className="botones">
-          <button className="btntarjeta" onClick={() => this.props.onEliminarTarjeta(this.props.id)}>
+          <button className="btntarjeta"  onClick={this.confirmarEliminacion}>
             <img src={basura} className="imagen" />
           </button>
           <button className="btntarjeta" onClick={() => this.props.onEditarDatos(this.props)}>

@@ -23,6 +23,7 @@ import FormularioUsuarios from "./componentes/FormularioUsuarios";
 import FormularioZonas from "./componentes/FormularioZonas";
 import FormularioLlamados from "./componentes/FormularioLlamados";
 import FormularioAtender from  "./componentes/FormularioAtender";
+const url = "https://72a.ctpoba.ar/api";
 
 
 class App extends Component {

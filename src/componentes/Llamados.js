@@ -4,8 +4,7 @@ import Carta from "./Carta";
 import FormularioLamados from "./FormularioLlamados";
 import FormularioAtender from "./FormularioAtender";
 import axios from 'axios'; 
-
-const url = "http://192.168.0.76:3201/api";
+const url = "https://72a.ctpoba.ar/api";
 
 
 class Llamados extends Component {

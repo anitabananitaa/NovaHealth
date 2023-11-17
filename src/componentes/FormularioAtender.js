@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import axios from 'axios';
 const url = "https://72a.ctpoba.ar/api";
 
-class FormularioFinalizacionLlamados extends Component {
+class FormularioAtender extends Component {
   constructor(props) {
     super(props);
     this.state = {
       ID_llamado: null,
-      diagnostico: "",
-      tratamiento: ""
+      profesional: ""
     };
   }
 
@@ -16,8 +15,7 @@ class FormularioFinalizacionLlamados extends Component {
     if(this.props.datos !== null){
       this.setState({
         ID_llamado: this.props.datos.ID_llamado,
-        diagnostico: this.props.datos.diagnostico,
-        tratamiento:this.props.datos.tratamiento
+        profesional: this.props.datos.profesional
       })
     }
   }
@@ -25,8 +23,7 @@ class FormularioFinalizacionLlamados extends Component {
   salir = () => {
     this.setState({
       ID_llamado: null,
-      diagnostico: "",
-      tratamiento: ""
+      profesional: ""
     });
     this.props.salir();
   };
@@ -52,8 +49,7 @@ class FormularioFinalizacionLlamados extends Component {
 limpiarFormulario() {
   this.setState({
     ID_llamado: null,
-    diagnostico: "",
-    tratamiento: ""
+    profesional: ""
   });
   this.props.salir();
 }
@@ -63,8 +59,7 @@ guardar(){
   {
     const llamado = {
       ID_llamado: this.props.datos.ID_llamado,
-      diagnostico: this.props.datos.diagnostico,
-      tratamiento:this.props.datos.tratamiento
+      profesional: this.props.datos.profesional
     }
     this.guardarPut(llamado)
   }    
@@ -82,20 +77,12 @@ guardar(){
   render() {
     return (
       <div className="contenedor2">
-        <h1>Finalizar Llamado</h1>
+        <h1>Atendiendo Llamado</h1>
           <div className="formulario">
             <span>
-              Diagnóstico
-              <input type="text" name="diagnostico"
-                value={this.state.diagnostico}
-                onChange={this.handleInputChange}/>
-            </span>
-          </div>
-          <div className="formulario">
-            <span>
-              Tratamiento
-              <input type="text" name="tratamiento"
-                value={this.state.tratamiento}
+              Profesional
+              <input type="text" name="profesional"
+                value={this.state.profesional}
                 onChange={this.handleInputChange}/>
             </span>
           </div>
@@ -119,4 +106,4 @@ guardar(){
     );
   }
 }
-export default FormularioFinalizacionLlamados;
+export default FormularioAtender;

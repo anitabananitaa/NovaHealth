@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioLamados from "./FormularioLlamados";
+import FormularioAtender from "./FormularioAtender";
 import axios from 'axios'; 
 
 const url = "http://192.168.0.76:3201/api";
@@ -14,7 +15,9 @@ class Llamados extends Component {
       datosFormulario:null,
       showFormulario: false,
       datosLlamados: [],
-      datosZonas:[]
+      datosZonas:[],
+      showFormularioAtender: false,
+      showFormularioFinalizar: false
     };
   }
 
@@ -51,11 +54,14 @@ class Llamados extends Component {
     });
   }
 
-  editarTarjeta=(datos) =>{
-    this.setState({ showFormulario: !this.state.showFormulario, datosFormulario:datos});
-
-
+  atenderTarjeta=(datos) =>{
+    this.setState({ showFormularioAtender: !this.state.showFormularioAtender, datosFormulario:datos});
   }
+
+  finalizarTarjeta=(datos) =>{
+    this.setState({ showFormularioFinalizar: !this.state.showFormularioFinalizar, datosFormulario:datos});
+  }
+
 
 
   render() {
@@ -70,6 +76,22 @@ class Llamados extends Component {
           salir={()=>this.showFormulario()}
         />
       }
+      {this.state.showFormularioAtender &&
+        <FormularioAtender
+          datos={this.state.datosFormulario}
+          salir={()=>this.showFormulario()}
+        />
+      }
+            }
+      {this.state.showFormularioFinalizar &&
+        <FormularioFinalizar
+          datos={this.state.datosFormulario}
+          salir={()=>this.showFormulario()}
+        />
+      }
+
+
+      
       <Carta showFormulario={()=> this.showFormulario()}>
         {datosLlamados.map((llamados, index)=> (
         <TarjetaLlamados 
@@ -84,7 +106,8 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-          onEditarDatos={this.editarTarjeta}
+          onEditarDatos={this.atenderTarjeta}
+          onEditarDatos={this.finalizarTarjeta}
         />
         ))}
       </Carta>

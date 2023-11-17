@@ -7,6 +7,7 @@ class FormularioAtender extends Component {
     super(props);
     this.state = {
       ID_llamado: null,
+      ID_profesional:0,
       profesional: ""
     };
   }
@@ -31,7 +32,7 @@ class FormularioAtender extends Component {
 
   guardarPut(llamado){
     const config = {
-      params: {ID_llamado: llamado.ID_llamado}
+      //params: {ID_llamado: llamado.ID_llamado}
     }
     console.log(llamado);
     axios.put(url + '/llamados/finalizar', llamado, config)
@@ -55,20 +56,17 @@ limpiarFormulario() {
   this.props.salir();
 }
 
-guardar(){
-    if (this.state.ID_llamado !== undefined && this.state.ID_llamado !==null)
-  {
+guardar() {
+  if (this.state.ID_llamado !== undefined && this.state.ID_llamado !== null) {
     const llamado = {
-      ID_llamado: this.props.datos.ID_llamado,
-      profesional: this.props.datos.profesional
-    }
-    this.guardarPut(llamado)
-  }    
-      else
-      {
-        console.log("El ID del llamado es inválido:", this.state.ID_llamado)
-      }  
-    }
+      ID_llamado: this.state.ID_llamado,
+      profesional: this.props.datos.profesional,
+    };
+    this.guardarPut(llamado);
+  } else {
+    console.log("El ID del llamado es inválido:", this.state.ID_llamado);
+  }
+}
 
     handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -76,16 +74,27 @@ guardar(){
       };     
     
   render() {
-    return (
+      const { profesionales } = this.props;    
+      console.log("Profesionales:", profesionales);
+      return (
       <div className="modal">
         <div className="contenedorFormulario">
         <h1>Atendiendo Llamado</h1>
           <div className="formulario">
             <span>
               Profesional
-              <input type="text" name="profesional"
-                value={this.state.profesional}
-                onChange={this.handleInputChange}/>
+              <select
+                className="miSelect"
+                value={this.state.ID_profesional}
+                onChange={(e) => this.setState({ ID_profesional: e.target.value })}
+              >
+                {profesionales && profesionales.map((profesional) => (
+                <option key={profesional.ID_profesionales} className="edit" value={profesional.ID_profesionales}>
+                  {profesional.nombre}
+                </option>
+                ))}
+              </select>
+
             </span>
           </div>
         <div className="botones">

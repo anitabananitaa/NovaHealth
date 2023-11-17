@@ -23,6 +23,7 @@ class Llamados extends Component {
   componentDidMount(){
     this.obtenerDatos();
     this.obtenerZonas()
+    this.obtenerProfesionales(); // Agrega este método para obtener profesionales
   } 
 
   showFormulario(){
@@ -71,6 +72,18 @@ class Llamados extends Component {
     });
   }
 
+  obtenerProfesionales() {
+    axios.get(url + '/profesionales')
+      .then((res) => {
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
+        this.setState({ datosProfesionales: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(this.state.datosProfesionales);//verifica que datosProfesionales se guardo correctamente en la consola
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
 atenderTarjeta = (datos) => {
   this.showFormularioAtender(datos);
 };
@@ -99,6 +112,7 @@ atenderTarjeta = (datos) => {
       {this.state.showFormularioAtender &&
         <FormularioAtender
           datos={this.state.datosFormulario}
+          profesionales={this.state.datosProfesionales} 
           salir={() => this.showFormulario()}
           hideFormularioAtender={() => this.hideFormularioAtender()}
         />

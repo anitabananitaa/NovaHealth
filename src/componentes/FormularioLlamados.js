@@ -206,7 +206,7 @@ class FormularioLlamados extends Component {
           </button>
           <button type="button" 
           className="btn" 
-          onClick={()=> this.props.salir()}>
+          onClick={() => this.props.salir()}>
             Cancelar
           </button>
         </div> 

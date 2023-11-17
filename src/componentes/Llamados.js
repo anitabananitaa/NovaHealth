@@ -29,6 +29,24 @@ class Llamados extends Component {
     this.setState({showFormulario: !this.state.showFormulario});
     this.obtenerDatos()
   }
+
+  //métodos para mostrar y ocultar los formularios
+  showFormularioLlamados = () => {
+    this.setState({ showFormularioLlamados: true });
+  };
+  
+  hideFormularioLlamados = () => {
+    this.setState({ showFormularioLlamados: false });
+  };
+  
+  showFormularioAtender = () => {
+    this.setState({ showFormularioAtender: true });
+  };
+  
+  hideFormularioAtender() {
+    this.setState({ showFormularioAtender: false });
+  }
+
   obtenerDatos() {
     axios.get(url + '/llamados')
     .then((res) => {
@@ -53,14 +71,17 @@ class Llamados extends Component {
     });
   }
 
-  atenderTarjeta=(datos) =>{
-    this.setState({ showFormularioAtender: !this.state.showFormularioAtender, datosFormulario:datos});
-  }
+atenderTarjeta = (datos) => {
+  this.showFormularioAtender(datos);
+};
+  
 
-  finalizarTarjeta=(datos) =>{
-    this.setState({ showFormularioFinalizar: !this.state.showFormularioFinalizar, datosFormulario:datos});
-  }
-
+  finalizarTarjeta = (datos) => {
+    this.setState({
+      showFormularioFinalizar: true,
+      datosFormulario: datos,
+    });
+  };
 
 
   render() {
@@ -72,13 +93,14 @@ class Llamados extends Component {
         <FormularioLamados
           datos={this.state.datosFormulario}
           zonas={this.state.datosZonas}
-          salir={()=>this.showFormulario()}
+          salir={() => this.showFormulario()}
         />
       }
       {this.state.showFormularioAtender &&
         <FormularioAtender
           datos={this.state.datosFormulario}
-          salir={()=>this.showFormulario()}
+          salir={() => this.showFormulario()}
+          hideFormularioAtender={() => this.hideFormularioAtender()}
         />
       }
             
@@ -105,8 +127,9 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-          onAtender={this.atenderTarjeta}
-          onFinalizar={this.finalizarTarjeta}
+          onAtender={(datos) => this.atenderTarjeta(llamados)}
+          onFinalizar={(datos) => this.finalizarTarjeta(llamados)}
+
         />
         ))}
       </Carta>

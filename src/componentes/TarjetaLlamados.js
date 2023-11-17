@@ -21,7 +21,10 @@ class TarjetaLlamados extends Component {
       fecha_hora_llamado: this.state.fecha_hora_llamado,
       fecha_hora_atencion: this.state.fecha_hora_atencion,
       profesional: this.state.profesional,
-      origen: this.state.origen
+      origen: this.state.origen,
+      diagnostico: this.state.diagnostico,
+      tratamiento: this.state.tratamiento
+
     }
     const config ={
       params:{ ID_llamado: t}
@@ -41,7 +44,7 @@ class TarjetaLlamados extends Component {
   }
   
   render() {
-    const{estado, tipo, dni, nombre, apellido, descripcion, fecha_hora_llamado, fecha_hora_atencion, origen, profesional} = this.props;
+    const{estado, tipo, dni, nombre, apellido, descripcion, fecha_hora_llamado, fecha_hora_atencion, origen, profesional, diagnostico, tratamiento} = this.props;
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -65,6 +68,12 @@ class TarjetaLlamados extends Component {
           <span>{nombre}</span>
           <h4>Origen:</h4>
           <span>{origen}</span>
+          <h4>Profesional:</h4>
+          <span>{profesional}</span>
+          <h4>Diagnostico:</h4>
+          <span>{diagnostico}</span>
+          <h4>Tratamiento:</h4>
+          <span>{tratamiento}</span>
         </div>
         <div className="botones">
           {estado === "Pendiente" &&
@@ -73,7 +82,7 @@ class TarjetaLlamados extends Component {
               Atender
             </button>
           }
-          {estado === "Atendido" &&
+          {estado === "Atendiendo" &&
             <button className="btntarjeta" >
               {/* <img src={lapiz} className="imagen" /> */}
               Finalizar

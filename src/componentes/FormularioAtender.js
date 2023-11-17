@@ -11,12 +11,13 @@ class FormularioAtender extends Component {
     };
   }
 
-  componentDidMount(){
-    if(this.props.datos !== null){
+  componentDidMount() {
+    // Verifica si this.props.datos está definido antes de intentar acceder a sus propiedades
+    if (this.props.datos && this.props.datos.ID_llamado) {
       this.setState({
         ID_llamado: this.props.datos.ID_llamado,
-        profesional: this.props.datos.profesional
-      })
+        profesional: this.props.datos.profesional,
+      });
     }
   }
 
@@ -76,7 +77,8 @@ guardar(){
     
   render() {
     return (
-      <div className="contenedor2">
+      <div className="modal">
+        <div className="contenedorFormulario">
         <h1>Atendiendo Llamado</h1>
           <div className="formulario">
             <span>
@@ -97,11 +99,14 @@ guardar(){
           <button
             type="button"
             className="btn"
-            onClick={() => this.salir()}
+            onClick={() => {
+              this.props.hideFormularioAtender();
+            }}
           >
-            Cancelar
-          </button>
+  Cancelar
+</button>
           </div>
+      </div>
       </div>
     );
   }

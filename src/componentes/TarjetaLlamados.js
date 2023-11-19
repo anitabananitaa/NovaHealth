@@ -77,13 +77,13 @@ class TarjetaLlamados extends Component {
         </div>
         <div className="botones">
           {estado === "Pendiente" &&
-            <button className="btntarjeta" onClick={() => this.props.onAtender(this.props.ID_llamado)}>
+            <button className="btntarjetallamado" onClick={() => this.props.onAtender(this.props.ID_llamado)}>
               {/* <img src={lapiz} className="imagen" /> */}
               Atender
             </button>
           }
           {estado === "Atendiendo" &&
-            <button className="btntarjeta" >
+            <button className="btntarjetallamado" >
               {/* <img src={lapiz} className="imagen" /> */}
               Finalizar
             </button>

@@ -40,7 +40,6 @@ class FormularioLlamados extends Component {
         console.log(llamado);
         console.log("llamado registrado con éxito:", res.data);
         this.limpiarFormulario();
-        this.obtenerDatos();
       })
       .catch((error) => {
         console.error("Error al registrar el llamado:", error);

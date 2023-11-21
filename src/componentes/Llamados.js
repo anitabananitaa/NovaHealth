@@ -30,7 +30,7 @@ class Llamados extends Component {
   } 
 
   showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario});
+    this.setState({showFormulario: !this.state.showFormulario, datosFormulario: null});
     this.obtenerDatos();
   }
 
@@ -41,6 +41,7 @@ class Llamados extends Component {
   
   hideFormularioLlamados = () => {
     this.setState({ showFormularioLlamados: false });
+    this.obtenerDatos();
   };
   
   showFormularioAtender = () => {
@@ -49,6 +50,12 @@ class Llamados extends Component {
   
   hideFormularioAtender() {
     this.setState({ showFormularioAtender: false });
+    this.obtenerDatos();
+  }
+
+  hideFormularioFinalizar() {
+    this.setState({ showFormularioFinalizar: false });
+    this.obtenerDatos();
   }
 
   obtenerDatos() {
@@ -100,14 +107,17 @@ class Llamados extends Component {
   }
 
 atenderTarjeta = (datos) => {
-  this.showFormularioAtender(datos);
+  this.setState({
+    showFormularioAtender: true,
+    datosFormulario: datos
+  });
 };
   
 
   finalizarTarjeta = (datos) => {
     this.setState({
       showFormularioFinalizar: true,
-      datosFormulario: datos,
+      datosFormulario: datos
     });
   };
 
@@ -129,7 +139,7 @@ atenderTarjeta = (datos) => {
         <FormularioAtender
           datos={this.state.datosFormulario}
           profesionales={this.state.datosProfesionales} 
-          salir={() => this.showFormulario()}
+          salir={() => this.hideFormularioAtender()}
           hideFormularioAtender={() => this.hideFormularioAtender()}
         />
       }
@@ -137,7 +147,7 @@ atenderTarjeta = (datos) => {
       {this.state.showFormularioFinalizar &&
         <FormularioFinalizar
           datos={this.state.datosFormulario}
-          salir={()=>this.showFormulario()}
+          salir={()=>this.hideFormularioFinalizar()}
         />
       }
 

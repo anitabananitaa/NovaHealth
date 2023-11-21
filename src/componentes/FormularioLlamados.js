@@ -40,6 +40,7 @@ class FormularioLlamados extends Component {
         console.log(llamado);
         console.log("llamado registrado con éxito:", res.data);
         this.limpiarFormulario();
+        this.obtenerDatos();
       })
       .catch((error) => {
         console.error("Error al registrar el llamado:", error);
@@ -119,8 +120,7 @@ class FormularioLlamados extends Component {
               className="miSelect"
               value={this.state.ID_zonas}
               onChange={(e) => this.handleInputChange(e)}
-              name="ID_zonas"
-            >
+              name="ID_zonas" >
               {this.props.zonas.map((zona) => (
                 <option key={zona.ID_zonas} value={zona.ID_zonas}>
                   {zona.tipo}

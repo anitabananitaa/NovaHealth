@@ -4,7 +4,7 @@ var router = express.Router();
 
 /*
 Get: /, /tipo, /estado, /zona
-Post (estado: Pendiente): ID_llamado, ID_zona, ID_paciente, fecha_hora_llamado(Auto), tipo_de_llamado, origen
+Post (estado: Pendiente): ID_zona, ID_paciente, fecha_hora_llamado(Auto), tipo_de_llamado
 Put (estado: Atendido): ID_profesional, fecha_hora_atencion
 Put (estado: Finalizado): diagnostico, tratamiento
 */
@@ -92,9 +92,9 @@ router.get("/", function(req, res, next){
 })
 
 router.post("/", function(req, res, next){
-    const {ID_zona, ID_paciente, tipo_de_llamado, origen} = req.body;
-    const sql = 'INSERT INTO llamados (ID_zona, ID_paciente, tipo_de_llamado, origen) VALUES (?, ?, ?, ?)'; //Comillas simples
-    con.query(sql, [ID_zona, ID_paciente, tipo_de_llamado, origen], function(error, result){
+    const {ID_zona, ID_paciente, tipo_de_llamado} = req.body;
+    const sql = 'INSERT INTO llamados (ID_zona, ID_paciente, tipo_de_llamado) VALUES (?, ?, ?)'; //Comillas simples
+    con.query(sql, [ID_zona, ID_paciente, tipo_de_llamado], function(error, result){
         if (error){
             console.log(error);
             res.json({
@@ -104,7 +104,7 @@ router.post("/", function(req, res, next){
         }else{
             res.json({
                 status: "Llamado Pendiente",
-                msj: {ID_zona, ID_paciente, tipo_de_llamado, origen}
+                msj: {ID_zona, ID_paciente, tipo_de_llamado}
             })
         }
     })

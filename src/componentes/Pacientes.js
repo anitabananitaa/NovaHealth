@@ -3,7 +3,6 @@ import TarjetaPacientes from "./TarjetaPacientes";
 import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
 import axios from 'axios';
-
 const url = "https://72a.ctpoba.ar/api";
 
 class Pacientes extends Component {

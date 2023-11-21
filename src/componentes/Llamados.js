@@ -23,12 +23,31 @@ class Llamados extends Component {
   componentDidMount(){
     this.obtenerDatos();
     this.obtenerZonas()
+    this.obtenerProfesionales(); // Agrega este método para obtener profesionales
   } 
 
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario});
     this.obtenerDatos()
   }
+
+  //métodos para mostrar y ocultar los formularios
+  showFormularioLlamados = () => {
+    this.setState({ showFormularioLlamados: true });
+  };
+  
+  hideFormularioLlamados = () => {
+    this.setState({ showFormularioLlamados: false });
+  };
+  
+  showFormularioAtender = () => {
+    this.setState({ showFormularioAtender: true });
+  };
+  
+  hideFormularioAtender() {
+    this.setState({ showFormularioAtender: false });
+  }
+
   obtenerDatos() {
     axios.get(url + '/llamados')
     .then((res) => {
@@ -53,14 +72,29 @@ class Llamados extends Component {
     });
   }
 
-  atenderTarjeta=(datos) =>{
-    this.setState({ showFormularioAtender: !this.state.showFormularioAtender, datosFormulario:datos});
+  obtenerProfesionales() {
+    axios.get(url + '/profesionales')
+      .then((res) => {
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
+        this.setState({ datosProfesionales: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(this.state.datosProfesionales);//verifica que datosProfesionales se guardo correctamente en la consola
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  finalizarTarjeta=(datos) =>{
-    this.setState({ showFormularioFinalizar: !this.state.showFormularioFinalizar, datosFormulario:datos});
-  }
+atenderTarjeta = (datos) => {
+  this.showFormularioAtender(datos);
+};
+  
 
+  finalizarTarjeta = (datos) => {
+    this.setState({
+      showFormularioFinalizar: true,
+      datosFormulario: datos,
+    });
+  };
 
   render() {
     const datosLlamados = this.state.datosLlamados;
@@ -71,16 +105,18 @@ class Llamados extends Component {
         <FormularioLamados
           datos={this.state.datosFormulario}
           zonas={this.state.datosZonas}
-          salir={()=>this.showFormulario()}
+          salir={() => this.showFormulario()}
         />
       }
       {this.state.showFormularioAtender &&
         <FormularioAtender
           datos={this.state.datosFormulario}
-          salir={()=>this.showFormulario()}
+          profesionales={this.state.datosProfesionales} 
+          salir={() => this.showFormulario()}
+          hideFormularioAtender={() => this.hideFormularioAtender()}
         />
       }
-            }
+            
       {this.state.showFormularioFinalizar &&
         <FormularioFinalizar
           datos={this.state.datosFormulario}
@@ -104,8 +140,9 @@ class Llamados extends Component {
           fecha_hora_atencion={llamados.fecha_hora_atencion}
           origen={llamados.origen}
           profesional={llamados.nombre_profesional}
-          onEditarDatos={this.atenderTarjeta}
-          onEditarDatos={this.finalizarTarjeta}
+          onAtender={(datos) => this.atenderTarjeta(llamados)}
+          onFinalizar={(datos) => this.finalizarTarjeta(llamados)}
+
         />
         ))}
       </Carta>

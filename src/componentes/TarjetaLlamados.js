@@ -11,35 +11,6 @@ class TarjetaLlamados extends Component {
 
     };
   }
-  editarDatos(){
-    const llamado = {
-      estado: this.props.estado,
-      tipo: this.props.tipo,
-      dni: this.props.dni,
-      nombre: this.props.nombre,
-      apellido: this.props.apellido,
-      descripcion: this.props.descripcion,
-      fecha_hora_llamado: this.props.fecha_hora_llamado,
-      fecha_hora_atencion: this.props.fecha_hora_atencion,
-      profesional: this.props.profesional,
-      diagnostico: this.props.diagnostico,
-      tratamiento: this.props.tratamiento
-
-    }
-
-    axios.put(url + '/llamados', llamado)
-    .then((res) => {
-      console.log(llamado);
-    // Maneja la respuesta del servidor si es necesario
-    console.log("llamado editado con éxito:", res.data);
-    this.props.salir();
-  })
-  .catch((error) => {
-    // Maneja errores si es necesario
-    console.error("Error al editar el llamado:", error);
-    this.props.salir()
-  });
-  }
   
   render() {
     const{estado, tipo, dni, nombre, apellido, zona, fecha_hora_llamado, fecha_hora_atencion, profesional, diagnostico, tratamiento} = this.props;

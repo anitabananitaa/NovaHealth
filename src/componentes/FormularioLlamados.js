@@ -46,6 +46,7 @@ class FormularioLlamados extends Component {
         console.log(llamado);
         console.log("llamado registrado con éxito:", res.data);
         this.limpiarFormulario();
+        this.obtenerDatos();
       })
       .catch((error) => {
         console.error("Error al registrar el llamado:", error);
@@ -63,6 +64,7 @@ class FormularioLlamados extends Component {
         console.log(llamado);
         console.log("Llamado actualizado con éxito:", res.data);
         this.limpiarFormulario();
+        this.obtenerDatos();
       })
       .catch((error) => {
         console.error("Error al actualizar el llamado:", error);
@@ -89,39 +91,27 @@ class FormularioLlamados extends Component {
   }
 
   guardar() {
+    const llamado = {
+      ID_llamado: this.state.ID_llamado,
+      estado: this.state.estado,
+      tipo: this.state.tipo,
+      dni: this.state.dni,
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      fecha_hora_llamado: this.state.fecha_hora_llamado,
+      fecha_hora_atencion: this.state.fecha_hora_atencion,
+      profesional: this.state.profesional,
+      ID_zonas: this.state.ID_zonas,
+    };
+  
+    // Lógica para determinar si es una nueva entrada o una actualización
     if (this.state.ID_llamado !== undefined && this.state.ID_llamado !== null) {
-      const llamado = {
-        ID_llamado: this.state.ID_llamado,
-        estado: this.state.estado,
-        tipo: this.state.tipo,
-        dni: this.state.dni,
-        nombre: this.state.nombre,
-        apellido: this.state.apellido,
-        fecha_hora_llamado: this.state.fecha_hora_llamado,
-        fecha_hora_atencion: this.state.fecha_hora_atencion,
-        profesional: this.state.profesional,
-        ID_zonas: this.state.ID_zonas,
-      };
-      console.log(llamado);
       this.guardarPut(llamado);
     } else {
-      const llamado = {
-        ID_llamado: this.state.ID_llamado,
-        estado: this.state.estado,
-        tipo: this.state.tipo,
-        dni: this.state.dni,
-        nombre: this.state.nombre,
-        apellido: this.state.apellido,
-        fecha_hora_llamado: this.state.fecha_hora_llamado,
-        fecha_hora_atencion: this.state.fecha_hora_atencion,
-        profesional: this.state.profesional,
-        ID_zonas: this.state.ID_zonas,
-        
-      };
-      console.log(llamado);
       this.guardarPost(llamado);
     }
   }
+  
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -172,9 +162,15 @@ class FormularioLlamados extends Component {
           <div className="formulario">
             <span>
               Apellido del paciente:
-              <input type="text" name="apellido"
-                value={this.state.apellido}
-                onChange={this.handleInputChange}/>
+              <select className="miSelect" value={this.state.ID_pacientes}
+              onChange={(e) => this.handleInputChange(e)}
+              name="ID_pacientes" >
+              {this.props.pacientes.map((paciente) => (
+                <option key={paciente.ID_pacientes} value={paciente.ID_pacientes}>
+                  {paciente.nombre}
+                </option>
+              ))}
+            </select>
             </span>
           </div>
 
@@ -194,8 +190,7 @@ class FormularioLlamados extends Component {
               className="miSelect"
               value={this.state.ID_zonas}
               onChange={(e) => this.handleInputChange(e)}
-              name="ID_zonas"
-            >
+              name="ID_zonas" >
               {this.props.zonas.map((zona) => (
                 <option key={zona.ID_zonas} value={zona.ID_zonas}>
                   {zona.tipo}

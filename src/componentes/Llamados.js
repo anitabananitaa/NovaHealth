@@ -3,6 +3,7 @@ import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioLamados from "./FormularioLlamados";
 import FormularioAtender from "./FormularioAtender";
+import FormularioFinalizar from "./FormularioFinalizar";
 import axios from 'axios'; 
 const url = "https://72a.ctpoba.ar/api";
 
@@ -52,6 +53,10 @@ class Llamados extends Component {
     this.setState({ showFormularioAtender: false });
     this.obtenerDatos();
   }
+
+  showFormularioFinalizar = () => {
+    this.setState({ showFormularioFinalizar: true });
+  };
 
   hideFormularioFinalizar() {
     this.setState({ showFormularioFinalizar: false });

@@ -62,9 +62,9 @@ guardar(){
     if (this.state.ID_llamado !== undefined && this.state.ID_llamado !==null)
   {
     const llamado = {
-      ID_llamado: this.props.datos.ID_llamado,
-      diagnostico: this.props.datos.diagnostico,
-      tratamiento:this.props.datos.tratamiento
+      ID_llamado: this.state.ID_llamado,
+      diagnostico: this.state.diagnostico,
+      tratamiento:this.state.tratamiento
     }
     this.guardarPut(llamado)
   }    

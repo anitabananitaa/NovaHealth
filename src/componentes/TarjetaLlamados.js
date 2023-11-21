@@ -48,7 +48,7 @@ class TarjetaLlamados extends Component {
             </button>
           }
           {estado === "Atendiendo" &&
-            <button className="btntarjetallamado2" >
+            <button className="btntarjetallamado2" onClick={() => this.props.onFinalizar(this.props.ID_llamado)}>
             
               Finalizar
             </button>

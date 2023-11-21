@@ -148,14 +148,16 @@ atenderTarjeta = (datos) => {
         <TarjetaLlamados 
           key={index}
           estado={llamados.estado}
-          tipo={llamados.tipo}
+          tipo={llamados.tipo_de_llamado}
           dni={llamados.paciente.dni}
           nombre={llamados.paciente.nombre}
           apellido={llamados.paciente.apellido}
-          descripcion={llamados.zona.descripcion}
+          zona={llamados.zona.descripcion}
           fecha_hora_llamado={llamados.fecha_hora_llamado}
           fecha_hora_atencion={llamados.fecha_hora_atencion}
-          profesional={llamados.nombre_profesional}
+          profesional={llamados.profesional.nombre}
+          diagnostico={llamados.diagnostico}
+          tratamiento={llamados.tratamiento}
           onAtender={(datos) => this.atenderTarjeta(llamados)}
           onFinalizar={(datos) => this.finalizarTarjeta(llamados)}
 

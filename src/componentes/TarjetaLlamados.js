@@ -24,8 +24,8 @@ class TarjetaLlamados extends Component {
       profesional: this.props.profesional,
       origen: this.props.origen,
       diagnostico: this.props.diagnostico,
-      tratamiento: this.props.tratamiento
-
+      tratamiento: this.props.tratamiento,
+      zona: this.props.zona
     }
     const config ={
       params: { ID_llamado: this.props.ID_llamado  }
@@ -66,7 +66,6 @@ class TarjetaLlamados extends Component {
           <h4>Fecha/hora de atención:</h4>
           <span>{fecha_hora_atencion}</span>
           <h4>Profesional:</h4>
-          <span>{nombre}</span>
           <span>{profesional}</span>
           <h4>Diagnostico:</h4>
           <span>{diagnostico}</span>

@@ -22,14 +22,11 @@ class TarjetaLlamados extends Component {
       fecha_hora_llamado: this.props.fecha_hora_llamado,
       fecha_hora_atencion: this.props.fecha_hora_atencion,
       profesional: this.props.profesional,
-      origen: this.props.origen,
       diagnostico: this.props.diagnostico,
       tratamiento: this.props.tratamiento
 
     }
-    const config ={
-      params: { ID_llamado: this.props.ID_llamado  }
-    }
+
     axios.put(url + '/llamados', llamado)
     .then((res) => {
       console.log(llamado);
@@ -75,13 +72,13 @@ class TarjetaLlamados extends Component {
         </div>
         <div className="botones">
           {estado === "Pendiente" &&
-            <button className="btntarjeta" onClick={() => this.props.onAtender(this.props.ID_llamado)}>
+            <button className="btntarjetallamado" onClick={() => this.props.onAtender(this.props.ID_llamado)}>
             
               Atender
             </button>
           }
           {estado === "Atendiendo" &&
-            <button className="btntarjeta" >
+            <button className="btntarjetallamado2" >
             
               Finalizar
             </button>

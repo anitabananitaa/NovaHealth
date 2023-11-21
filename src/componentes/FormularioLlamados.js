@@ -189,30 +189,6 @@ class FormularioLlamados extends Component {
 
           <div className="formulario">
             <span>
-              Nombre:
-              <input
-                type="text"
-                name="nombre"
-                value={this.state.nombre}
-                onChange={this.handleInputChange}
-              />
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Apellido:
-              <input
-                type="text"
-                name="apellido"
-                value={this.state.apellido}
-                onChange={this.handleInputChange}
-              />
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
               Zona:
               <select
               className="miSelect"

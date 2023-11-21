@@ -99,7 +99,6 @@ guardar(){
                 onChange={this.handleInputChange}/>
             </span>
           </div>
-        <div className="botones">
           <button
             type="button"
             className="btn"
@@ -115,7 +114,6 @@ guardar(){
             Cancelar
           </button>
           </div>
-      </div>
     );
   }
 }

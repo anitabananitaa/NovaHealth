@@ -97,7 +97,6 @@ guardar() {
 
             </span>
           </div>
-        <div className="botones">
           <button
             type="button"
             className="btn"
@@ -116,7 +115,7 @@ guardar() {
 </button>
           </div>
       </div>
-      </div>
+
     );
   }
 }

@@ -162,14 +162,28 @@ class FormularioLlamados extends Component {
 
           <div className="formulario">
             <span>
-              DNI:
-              <input
-                type="text"
-                pattern="[0-9]"
-                name="dni"
+              Nombre del paciente:              
+              <input type="text" name="nombre"
+                value={this.state.nombre}
+                onChange={this.handleInputChange}/>
+            </span>
+          </div>
+
+          <div className="formulario">
+            <span>
+              Apellido del paciente:
+              <input type="text" name="apellido"
+                value={this.state.apellido}
+                onChange={this.handleInputChange}/>
+            </span>
+          </div>
+
+          <div className="formulario">
+            <span>
+              DNI del paciente:
+              <input type="text" name="dni"
                 value={this.state.dni}
-                onChange={this.handleInputChange}
-              />
+                onChange={this.handleInputChange}/>
             </span>
           </div>
 
@@ -214,7 +228,8 @@ class FormularioLlamados extends Component {
             </select>
             </span>
           </div>
-          <button type="button" className="btn" onClick={() => this.guardar()}>
+
+          <button type="button" className="btn" onClick={()=> this.guardar()}>
             Aceptar
           </button>
           <button type="button" className="btn" onClick={() => this.props.salir()}>

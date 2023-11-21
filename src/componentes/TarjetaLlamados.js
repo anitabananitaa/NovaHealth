@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import lapiz from "./assets/lapiz.png";
 import Carta from "./Carta";
 import FormularioLlamados from "./FormularioLlamados";
+import axios from "axios";
 
 class TarjetaLlamados extends Component {
   constructor(props) {
@@ -12,22 +13,22 @@ class TarjetaLlamados extends Component {
   }
   editarDatos(){
     const llamado = {
-      estado: this.state.estado,
-      tipo: this.state.tipo,
-      dni: this.state.dni,
-      nombre: this.state.nombre,
-      apellido: this.state.apellido,
-      descripcion: this.state.descripcion,
-      fecha_hora_llamado: this.state.fecha_hora_llamado,
-      fecha_hora_atencion: this.state.fecha_hora_atencion,
-      profesional: this.state.profesional,
-      origen: this.state.origen,
-      diagnostico: this.state.diagnostico,
-      tratamiento: this.state.tratamiento
+      estado: this.props.estado,
+      tipo: this.props.tipo,
+      dni: this.props.dni,
+      nombre: this.props.nombre,
+      apellido: this.props.apellido,
+      descripcion: this.props.descripcion,
+      fecha_hora_llamado: this.props.fecha_hora_llamado,
+      fecha_hora_atencion: this.props.fecha_hora_atencion,
+      profesional: this.props.profesional,
+      origen: this.props.origen,
+      diagnostico: this.props.diagnostico,
+      tratamiento: this.props.tratamiento
 
     }
     const config ={
-      params:{ ID_llamado: t}
+      params: { ID_llamado: this.props.ID_llamado  }
     }
     axios.put(url + '/llamados', llamado)
     .then((res) => {
@@ -44,7 +45,7 @@ class TarjetaLlamados extends Component {
   }
   
   render() {
-    const{estado, tipo, dni, nombre, apellido, descripcion, fecha_hora_llamado, fecha_hora_atencion, origen, profesional, diagnostico, tratamiento} = this.props;
+    const{estado, tipo, dni, nombre, apellido, zona, fecha_hora_llamado, fecha_hora_atencion, profesional, diagnostico, tratamiento} = this.props;
     return (
       <div className="ContenedorTarjetas">
         <div className="Tarjetas">
@@ -58,17 +59,14 @@ class TarjetaLlamados extends Component {
           <span>{nombre}</span>
           <h4>Apellido:</h4>
           <span>{apellido}</span>
-          <h4>Descripción:</h4>
-          <span>{descripcion}</span>
+          <h4>Zona:</h4>
+          <span>{zona}</span>
           <h4>Fecha/hora del llamado:</h4>
           <span>{fecha_hora_llamado}</span>
           <h4>Fecha/hora de atención:</h4>
           <span>{fecha_hora_atencion}</span>
           <h4>Profesional:</h4>
           <span>{nombre}</span>
-          <h4>Origen:</h4>
-          <span>{origen}</span>
-          <h4>Profesional:</h4>
           <span>{profesional}</span>
           <h4>Diagnostico:</h4>
           <span>{diagnostico}</span>
@@ -83,7 +81,7 @@ class TarjetaLlamados extends Component {
             </button>
           }
           {estado === "Atendiendo" &&
-            <button className="btntarjetallamado" >
+            <button className="btntarjetallamado2" >
               {/* <img src={lapiz} className="imagen" /> */}
               Finalizar
             </button>

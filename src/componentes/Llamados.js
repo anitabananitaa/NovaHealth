@@ -84,6 +84,7 @@ class Llamados extends Component {
       });
   }
 
+
 atenderTarjeta = (datos) => {
   this.showFormularioAtender(datos);
 };
@@ -132,14 +133,13 @@ atenderTarjeta = (datos) => {
         <TarjetaLlamados 
           key={index}
           estado={llamados.estado}
-          tipo={llamados.zona.tipo}
+          tipo={llamados.tipo}
           dni={llamados.paciente.dni}
           nombre={llamados.paciente.nombre}
           apellido={llamados.paciente.apellido}
           descripcion={llamados.zona.descripcion}
           fecha_hora_llamado={llamados.fecha_hora_llamado}
           fecha_hora_atencion={llamados.fecha_hora_atencion}
-          origen={llamados.origen}
           profesional={llamados.nombre_profesional}
           onAtender={(datos) => this.atenderTarjeta(llamados)}
           onFinalizar={(datos) => this.finalizarTarjeta(llamados)}

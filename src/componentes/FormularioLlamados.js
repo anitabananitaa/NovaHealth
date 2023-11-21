@@ -1,34 +1,31 @@
 import React, { Component } from "react";
-import Input from "./Input";
 import axios from "axios";
+import Llamados from "./Llamados";
+
 const url = "https://72a.ctpoba.ar/api";
 
 class FormularioLlamados extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID_llamado:null,
+      ID_llamado: null,
       estado: "Pendiente",
-      tipo:"",
+      tipo: "",  // Asegúrate de inicializar tipo
       dni: "",
       nombre: "",
-      apellido:"",
-      descripcion:"",
+      apellido: "",
+      descripcion: "",
       fecha_hora_llamado: "",
-      fecha_hora_atencion:"",
+      fecha_hora_atencion: "",
       profesional: "",
-      origen: "",
-      ID_zonas: null
+      ID_zonas: null,
     };
   }
-  guardar(){
-    //
-    this.props.salir()
-  }
-  componentDidMount(){
-    if(this.props.datos !== null){
+
+  componentDidMount() {
+    if (this.props.datos !== null) {
       this.setState({
-        ID_llamado:this.props.datos.id,
+        ID_llamado: this.props.datos.id,
         estado: this.props.datos.estado,
         tipo: this.props.datos.tipo,
         dni: this.props.datos.dni,
@@ -37,76 +34,93 @@ class FormularioLlamados extends Component {
         descripcion: this.props.datos.descripcion,
         fecha_hora_llamado: this.props.datos.fecha_hora_llamado,
         fecha_hora_atencion: this.props.datos.fecha_hora_atencion,
-        profesional: this.props.datos.profesional
+        profesional: this.props.datos.profesional,
+      });
+    }
+  }
+
+  guardarPost(llamado) {
+    axios
+      .post(url + "/llamados", llamado)
+      .then((res) => {
+        console.log(llamado);
+        console.log("llamado registrado con éxito:", res.data);
+        this.limpiarFormulario();
       })
-    }
-  }
-  guardarPost(llamado){
-    axios.post(url + '/llamados', llamado)
-    .then((res) => {
-      console.log(llamado);
-    // Maneja la respuesta del servidor si es necesario
-    console.log("llamado registrado con éxito:", res.data);
-    this.props.salir();
-  })
-  .catch((error) => {
-    // Maneja errores si es necesario
-    console.error("Error al registrar el llamado:", error);
-    this.props.salir()
-  });
+      .catch((error) => {
+        console.error("Error al registrar el llamado:", error);
+        this.props.salir();
+      });
   }
 
-  guardarPut(llamado){
+  guardarPut(llamado) {
     const config = {
-      params: {ID_llamado: llamado.ID_llamado}
-    }
-    console.log(llamado);
-    axios.put(url + '/llamados', llamado, config)
-    .then((res) => {
-      console.log(llamado);
-    // Maneja la respuesta del servidor si es necesario
-    console.log("llamado registrado con éxito:", res.data);
-    this.props.salir();
-  })
-  .catch((error) => {
-    // Maneja errores si es necesario
-    console.error("Error al registrar el llamado:", error);
-    this.props.salir()
-  });
+      params: { ID_llamado: llamado.ID_llamado },
+    };
+    axios
+      .put(url + "/llamados", llamado, config)
+      .then((res) => {
+        console.log(llamado);
+        console.log("Llamado actualizado con éxito:", res.data);
+        this.limpiarFormulario();
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el llamado:", error);
+        this.props.salir();
+      });
   }
 
-  guardar(){
-  if (this.state.ID_llamado !== undefined && this.state.ID_llamado !==null)
-{
-  const llamado = {
-    ID_llamado:this.state.ID_llamado,
-    estado: this.state.estado,
-    tipo: this.state.tipo,
-    dni: this.state.dni,
-    nombre: this.state.nombre,
-    apellido: this.state.apellido,
-    descripcion: this.state.descripcion,
-    fecha_hora_llamado: this.state.fecha_hora_llamado,
-    fecha_hora_atencion: this.state.fecha_hora_atencion,
-    profesional: this.state.profesional
+  limpiarFormulario() {
+    this.setState({
+      ID_llamado: null,
+      estado: "Pendiente",
+      tipo: "",
+      dni: "",
+      nombre: "",
+      apellido: "",
+      descripcion: "",
+      fecha_hora_llamado: "",
+      fecha_hora_atencion: "",
+      profesional: "",
+      origen: "",
+      ID_zonas: null,
+    });
+    this.props.salir();
   }
-  this.guardarPut(llamado)
-}    
-    else
-    {
+
+  guardar() {
+    if (this.state.ID_llamado !== undefined && this.state.ID_llamado !== null) {
       const llamado = {
+        ID_llamado: this.state.ID_llamado,
         estado: this.state.estado,
         tipo: this.state.tipo,
         dni: this.state.dni,
         nombre: this.state.nombre,
         apellido: this.state.apellido,
-        descripcion: this.state.descripcion,
         fecha_hora_llamado: this.state.fecha_hora_llamado,
         fecha_hora_atencion: this.state.fecha_hora_atencion,
-        profesional: this.state.profesional
-      }
-      this.guardarPost(llamado)
-    }  
+        profesional: this.state.profesional,
+        ID_zonas: this.state.ID_zonas,
+      };
+      console.log(llamado);
+      this.guardarPut(llamado);
+    } else {
+      const llamado = {
+        ID_llamado: this.state.ID_llamado,
+        estado: this.state.estado,
+        tipo: this.state.tipo,
+        dni: this.state.dni,
+        nombre: this.state.nombre,
+        apellido: this.state.apellido,
+        fecha_hora_llamado: this.state.fecha_hora_llamado,
+        fecha_hora_atencion: this.state.fecha_hora_atencion,
+        profesional: this.state.profesional,
+        ID_zonas: this.state.ID_zonas,
+        
+      };
+      console.log(llamado);
+      this.guardarPost(llamado);
+    }
   }
 
   handleInputChange = (event) => {
@@ -114,104 +128,103 @@ class FormularioLlamados extends Component {
     this.setState({ [name]: value });
   };
 
+  
+
   render() {
+    const colores = {
+      verde: "#008000",
+      amarillo: "#FFFF00",
+      rojo: "#FF0000",
+    };
     return (
       <div className="modal">
         <div className="contenedorFormulario">
           <h1>Registro de Llamados</h1>
+
           <div className="formulario">
             <span>
               Tipo:
-              <select className="miSelect">
-                <option value="opcion1">Urgente</option>
-                <option value="opcion2">No Urgente</option>
+              <select
+                className="miSelect"
+                value={this.state.tipo}
+                onChange={(e) => this.setState({ tipo: e.target.value })}
+              >
+                <option value="verde">Código Verde</option>
+                <option value="amarillo">Código Amarillo</option>
+                <option value="rojo">Código Rojo</option>
               </select>
+              <span
+                className="color-box"
+                style={{ backgroundColor: colores[this.state.tipo] }}
+              ></span>
             </span>
           </div>
 
           <div className="formulario">
-          <span>
-              Nombre:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                pruebaPaciente1
-                </option>
-                <option className="edit" value="opcion2">
-                pruebaPaciente2
-                </option>
-              </select>
-            </span>
-          </div>
-
-          <div className="formulario">
-          <span>
-              Apellido:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                pruebaPaciente1
-                </option>
-                <option className="edit" value="opcion2">
-                pruebaPaciente2
-                </option>
-              </select>
-            </span>
-          </div>
-
-          <div className="formulario">
-          <span>
+            <span>
               DNI:
-              <select className="miSelect">
-                <option className="edit" value="opcion1">
-                  pruebaPaciente1
-                </option>
-                <option className="edit" value="opcion2">
-                pruebaPaciente2
-                </option>
-              </select>
+              <input
+                type="text"
+                pattern="[0-9]"
+                name="dni"
+                value={this.state.dni}
+                onChange={this.handleInputChange}
+              />
             </span>
           </div>
 
           <div className="formulario">
-          <span>
+            <span>
+              Nombre:
+              <input
+                type="text"
+                name="nombre"
+                value={this.state.nombre}
+                onChange={this.handleInputChange}
+              />
+            </span>
+          </div>
+
+          <div className="formulario">
+            <span>
+              Apellido:
+              <input
+                type="text"
+                name="apellido"
+                value={this.state.apellido}
+                onChange={this.handleInputChange}
+              />
+            </span>
+          </div>
+
+          <div className="formulario">
+            <span>
               Zona:
-              <select className="miSelect" value={this.state.ID_zonas} onChange={(e)=>this.setState({ID_zonas:e.target.value})}>
-                {this.props.zonas.map( (zona, index) => 
-                  <option key={zona.ID_zonas}  className="edit" value={zona.ID_zonas}>
-                    {zona.tipo}
-                  </option>
-                )}
-              </select>
+              <select
+              className="miSelect"
+              value={this.state.ID_zonas}
+              onChange={(e) => this.handleInputChange(e)}
+              name="ID_zonas"
+            >
+              {this.props.zonas.map((zona) => (
+                <option key={zona.ID_zonas} value={zona.ID_zonas}>
+                  {zona.tipo}
+                </option>
+              ))}
+            </select>
             </span>
           </div>
-
-          <div className="formulario">
-          <span>
-              Profesional:
-              <select className="miSelect">
-
-                <option className="edit" value="opcion1">
-                  pruebaProfesional1
-                </option>
-                <option className="edit" value="opcion2">
-                  pruebaProfesional2
-                </option>
-              </select>
-            </span>
-          </div>
-
-          <button type="button" 
-          className="btn" 
-          onClick={()=> this.guardar()}>
+          <button type="button" className="btn" onClick={() => this.guardar()}>
             Aceptar
           </button>
-          <button type="button" 
-          className="btn" 
-          onClick={() => this.props.salir()}>
+          <button type="button" className="btn" onClick={() => this.props.salir()}>
             Cancelar
           </button>
-        </div> 
+        </div>
       </div>
     );
   }
 }
+
 export default FormularioLlamados;
+

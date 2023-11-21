@@ -127,7 +127,7 @@ class Formulario extends Component {
           <h1>Registro de paciente</h1>
           <div className="formulario">
             <span>
-              Apellido
+              Apellido:
               <input type="text"  name="apellido"
                 value={this.state.apellido}
                 onChange={this.handleInputChange}/>
@@ -135,7 +135,7 @@ class Formulario extends Component {
           </div>
           <div className="formulario">
             <span>
-              Nombre
+              Nombre:
               <input type="text"   name="nombre"
                 value={this.state.nombre}
                 onChange={this.handleInputChange}/>
@@ -144,7 +144,7 @@ class Formulario extends Component {
 
           <div className="formulario">
             <span>
-              DNI
+              DNI:
               <input type="text"  pattern="[0-9]"   name="dni"
                 value={this.state.dni}
                 onChange={this.handleInputChange}/>
@@ -160,7 +160,7 @@ class Formulario extends Component {
           </div>
           <div className="formulario">
             <span>
-              Telefono
+              Telefono:
               <input type="text"   name="telefono"
                 value={this.state.telefono}
                 onChange={this.handleInputChange}/>

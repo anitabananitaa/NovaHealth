@@ -15,6 +15,8 @@ class Llamados extends Component {
       showFormulario: false,
       datosLlamados: [],
       datosZonas:[],
+      datosProfesionales:[],
+      datosPacientes:[],
       showFormularioAtender: false,
       showFormularioFinalizar: false
     };
@@ -24,11 +26,12 @@ class Llamados extends Component {
     this.obtenerDatos();
     this.obtenerZonas()
     this.obtenerProfesionales(); // Agrega este método para obtener profesionales
+    this.obtenerPacientes();
   } 
 
   showFormulario(){
     this.setState({showFormulario: !this.state.showFormulario});
-    this.obtenerDatos()
+    this.obtenerDatos();
   }
 
   //métodos para mostrar y ocultar los formularios
@@ -84,6 +87,17 @@ class Llamados extends Component {
       });
   }
 
+  obtenerPacientes() {
+    axios.get(url + '/pacientes')
+      .then((res) => {
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
+        this.setState({ datosPacientes: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(this.state.datosPacientes);//verifica que datosPacientes se guardo correctamente en la consola
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
 atenderTarjeta = (datos) => {
   this.showFormularioAtender(datos);
@@ -107,6 +121,7 @@ atenderTarjeta = (datos) => {
         <FormularioLamados
           datos={this.state.datosFormulario}
           zonas={this.state.datosZonas}
+          pacientes={this.state.datosPacientes}
           salir={() => this.showFormulario()}
         />
       }

@@ -9,16 +9,9 @@ class FormularioLlamados extends Component {
     super(props);
     this.state = {
       ID_llamado: null,
-      estado: "Pendiente",
-      tipo: "",  // Asegúrate de inicializar tipo
-      dni: "",
-      nombre: "",
-      apellido: "",
-      descripcion: "",
-      fecha_hora_llamado: "",
-      fecha_hora_atencion: "",
-      profesional: "",
-      ID_zonas: null,
+      ID_zonas: "",
+      ID_paciente: "",
+      tipo: ""
     };
   }
 
@@ -28,13 +21,7 @@ class FormularioLlamados extends Component {
         ID_llamado: this.props.datos.id,
         estado: this.props.datos.estado,
         tipo: this.props.datos.tipo,
-        dni: this.props.datos.dni,
-        nombre: this.props.datos.nombre,
-        apellido: this.props.datos.apellido,
-        descripcion: this.props.datos.descripcion,
-        fecha_hora_llamado: this.props.datos.fecha_hora_llamado,
-        fecha_hora_atencion: this.props.datos.fecha_hora_atencion,
-        profesional: this.props.datos.profesional,
+        dni: this.props.datos.dni
       });
     }
   }
@@ -162,52 +149,19 @@ class FormularioLlamados extends Component {
 
           <div className="formulario">
             <span>
-              Nombre del paciente:              
-              <input type="text" name="nombre"
-                value={this.state.nombre}
-                onChange={this.handleInputChange}/>
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Apellido del paciente:
-              <input type="text" name="apellido"
-                value={this.state.apellido}
-                onChange={this.handleInputChange}/>
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              DNI del paciente:
-              <input type="text" name="dni"
-                value={this.state.dni}
-                onChange={this.handleInputChange}/>
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Nombre:
-              <input
-                type="text"
-                name="nombre"
-                value={this.state.nombre}
-                onChange={this.handleInputChange}
-              />
-            </span>
-          </div>
-
-          <div className="formulario">
-            <span>
-              Apellido:
-              <input
-                type="text"
-                name="apellido"
-                value={this.state.apellido}
-                onChange={this.handleInputChange}
-              />
+              DNI:
+              <select
+              className="miSelect"
+              value={this.state.ID_paciente}
+              onChange={(e) => this.handleInputChange(e)}
+              name="ID_paciente"
+            >
+              {this.props.pacientes.map((paciente) => (
+                <option key={paciente.ID_paciente} value={paciente.ID_paciente}>
+                  {paciente.dni}
+                </option>
+              ))}
+            </select>
             </span>
           </div>
 

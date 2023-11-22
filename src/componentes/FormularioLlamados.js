@@ -10,7 +10,7 @@ class FormularioLlamados extends Component {
     this.state = {
       ID_zonas: "",
       ID_paciente: "",
-      tipo: ""
+      tipo: "verde"
     };
   }
 
@@ -103,6 +103,7 @@ class FormularioLlamados extends Component {
               onChange={(e) => this.handleInputChange(e)}
               name="ID_paciente"
             >
+                <option value="ninguno">Seleccione una opción...</option>
               {this.props.pacientes.map((paciente) => (
                 <option key={paciente.ID_paciente} value={paciente.ID_paciente}>
                   {paciente.dni}
@@ -120,6 +121,7 @@ class FormularioLlamados extends Component {
               value={this.state.ID_zonas}
               onChange={(e) => this.handleInputChange(e)}
               name="ID_zonas" >
+                <option value="ninguno">Seleccione una opción...</option>
               {this.props.zonas.map((zona) => (
                 <option key={zona.ID_zonas} value={zona.ID_zonas}>
                   {zona.tipo}

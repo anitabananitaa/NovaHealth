@@ -3,7 +3,6 @@ import TarjetaPacientes from "./TarjetaPacientes";
 import Carta from "./Carta";
 import FormularioPacientes from "./FormularioPacientes";
 import axios from 'axios';
-
 const url = "https://72a.ctpoba.ar/api";
 
 class Pacientes extends Component {
@@ -65,6 +64,7 @@ class Pacientes extends Component {
     const datosPacientes = this.state.datosPacientes; //llama a datosProfecionales del this.state
     return (
       <div className="pacientes"> 
+      <h1>Pacientes</h1>
       {this.state.showFormulario &&
         <FormularioPacientes
         datos={this.state.datosFormulario}

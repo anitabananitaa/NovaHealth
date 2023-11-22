@@ -53,7 +53,7 @@ class TarjetaPacientes extends Component {
           <h4>Apellido:</h4>
           <span>{apellido}</span>
 
-          <h4>Fecha Nac.:</h4>
+          <h4>Fecha de nacimiento:</h4>
           <span>{fecha_nac}</span>
 
           <h4>DNI:</h4>

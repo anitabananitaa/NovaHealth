@@ -88,6 +88,7 @@ guardar() {
                 onChange={(e) => this.setState({ ID_profesional: e.target.value })}
                 name="ID_profesional"
               >
+                <option value="ninguno">Seleccione una opción...</option>
                 {profesionales && profesionales.map((profesional) => (
                 <option key={profesional.ID_profesional} value={profesional.ID_profesional}>
                   {profesional.nombre}

@@ -82,7 +82,7 @@ guardar(){
   render() {
     return (
       <div className="modal">
-        <div className="contenedor2">
+        <div className="contenedorFormulario">
         <h1>Finalizar Llamado</h1>
           <div className="formulario">
             <span>

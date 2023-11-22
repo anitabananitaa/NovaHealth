@@ -152,7 +152,7 @@ class Formulario extends Component {
           </div>
           <div className="formulario">
             <span>
-              Fecha Nac.
+              Fecha de nacimiento:
               <input type="date"  name="fecha_nac"
                 value={this.state.fecha_nac}
                 onChange={this.handleInputChange}/>

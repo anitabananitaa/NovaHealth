@@ -29,7 +29,7 @@ class TarjetaZonas extends Component {
           <span>{tipo}</span>
           <h4>Descripción:</h4>
           <span> {descripcion}</span>
-          <h4>disponibilidad:</h4>
+          <h4>Disponibilidad:</h4>
           <span> {disponibilidad}</span>
         </div>
         <div className="botones">

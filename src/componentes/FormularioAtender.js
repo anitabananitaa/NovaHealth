@@ -81,7 +81,7 @@ guardar() {
         <h1>Atendiendo Llamado</h1>
           <div className="formulario">
             <span>
-              Profesional
+              Profesional:
               <select
                 className="miSelect"
                 value={this.state.ID_profesional}

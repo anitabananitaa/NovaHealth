@@ -119,7 +119,7 @@ handleInputChange = (event) => {
         <h1>Registro de Usuarios</h1>
         <div className="formulario">
           <span>
-            Nombre
+            Nombre:
             <input type="text" name="nombre"
                 value={this.state.nombre}
                 onChange={this.handleInputChange}/>
@@ -127,7 +127,7 @@ handleInputChange = (event) => {
         </div>
         <div className="formulario">
           <span>
-            Contraseña
+            Contraseña:
             <input type="password" pattern="[0-9]{8}" name="contraseña"
                 value={this.state.contraseña}
                 onChange={this.handleInputChange}/>
@@ -135,7 +135,7 @@ handleInputChange = (event) => {
         </div>
         <div className="formulario">
           <span>
-            Tipo
+            Tipo:
             <select className="miSelect" name="tipo"
                 value={this.state.tipo}
                 onChange={this.handleInputChange}>

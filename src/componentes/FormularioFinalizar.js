@@ -86,7 +86,7 @@ guardar(){
         <h1>Finalizar Llamado</h1>
           <div className="formulario">
             <span>
-              Diagnóstico
+              Diagnóstico:
               <input type="text" name="diagnostico"
                 value={this.state.diagnostico}
                 onChange={this.handleInputChange}/>
@@ -94,7 +94,7 @@ guardar(){
           </div>
           <div className="formulario">
             <span>
-              Tratamiento
+              Tratamiento:
               <input type="text" name="tratamiento"
                 value={this.state.tratamiento}
                 onChange={this.handleInputChange}/>

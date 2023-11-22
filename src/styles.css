@@ -382,8 +382,12 @@ li:hover {
   margin-left: 20px;
   margin-right: 20px;
   transition: background-color 0.3s ease; 
-
 }
+
+.btntarjetallamado:hover {
+  background-color: #bb3030;
+}
+
 .btntarjetallamado2{
   background: #76c664;
   border: none;
@@ -400,6 +404,10 @@ li:hover {
   margin-left: 20px;
   margin-right: 20px;
   transition: background-color 0.3s ease; 
+}
+
+.btntarjetallamado2:hover {
+  background-color: #62a852;
 }
 
 .imagen {

@@ -81,7 +81,8 @@ guardar(){
     
   render() {
     return (
-      <div className="contenedor2">
+      <div className="modal">
+        <div className="contenedor2">
         <h1>Finalizar Llamado</h1>
           <div className="formulario">
             <span>
@@ -114,6 +115,8 @@ guardar(){
             Cancelar
           </button>
           </div>
+      </div>
+      
     );
   }
 }

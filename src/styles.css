@@ -37,7 +37,16 @@ body {
   color: #a67ac4;
 }
 
+.llamados h1{
+  color: #3d3d3d;
+  transition: 0.5s ease; 
+  cursor: pointer;
+  margin-bottom: 0;
+}
 
+.llamados h1:hover{
+  color: #a67ac4;
+}
 .imagen1 {
   display: flex;
   flex-direction: column;
@@ -266,6 +275,17 @@ li:hover {
   margin: 8px;
 }
 
+.ContenedorTarjetas.pendiente {
+  order: -1; /* Coloca tarjetas pendientes al principio */
+}
+
+.ContenedorTarjetas.atendiendo {
+  order: 0; /* Coloca tarjetas atendiendo después de pendientes */
+}
+
+.ContenedorTarjetas.finalizado {
+  order: 1; /* Coloca tarjetas finalizadas al final */
+}
 
 .Tarjetas {
   
@@ -355,7 +375,7 @@ li:hover {
   min-height: 100%;
   z-index: 3;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
 }
 .contenedorFormulario{
   padding: 50px;
@@ -363,6 +383,7 @@ li:hover {
   flex-direction: column;
   background-color: #fff;
   border-radius: 15px;
+  margin-top: 100px;
 }
 
 .CartaContenedor {
@@ -372,6 +393,7 @@ li:hover {
 }
 
 .Agregar {
+  flex-direction: row;
   height: 70px;
   width: 100%;
   text-align: left;

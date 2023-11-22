@@ -131,7 +131,7 @@ atenderTarjeta = (datos) => {
     const datosLlamados = this.state.datosLlamados;
     return (
       <div className="llamados">
-        {/* <h1>Llamados</h1> */}
+        <h1>Llamados</h1> 
       {this.state.showFormulario &&
         <FormularioLamados
           datos={this.state.datosFormulario}

@@ -14,8 +14,11 @@ class TarjetaLlamados extends Component {
   
   render() {
     const{estado, tipo, dni, nombre, apellido, zona, fecha_hora_llamado, fecha_hora_atencion, profesional, diagnostico, tratamiento} = this.props;
+    const estadoTarjeta = estado.toLowerCase();
+    /* La función toLowerCase() convierte todos los caracteres de una cadena de texto a minúsculas.
+    Esto es útil para normalizar los valores del estado,ya que puede variar entre mayúsculas o minúsculas */ 
     return (
-      <div className="ContenedorTarjetas">
+      <div className={`ContenedorTarjetas ${estadoTarjeta}`}>
         <div className="Tarjetas">
           <h4>Estado:</h4>
           <span>{estado}</span>

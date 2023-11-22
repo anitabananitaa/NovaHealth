@@ -37,6 +37,8 @@ body {
   color: #a67ac4;
 }
 
+
+
 .llamados h1{
   color: #3d3d3d;
   transition: 0.5s ease; 
@@ -47,6 +49,46 @@ body {
 .llamados h1:hover{
   color: #a67ac4;
 }
+.zonas h1{
+  color: #3d3d3d;
+  transition: 0.5s ease; 
+  cursor: pointer;
+}
+
+.zonas h1:hover{
+  color: #a67ac4;
+}
+
+.pacientes h1{
+  color: #3d3d3d;
+  transition: 0.5s ease; 
+  cursor: pointer;
+}
+
+.pacientes h1:hover{
+  color: #a67ac4;
+}
+
+.profesionales h1{
+  color: #3d3d3d;
+  transition: 0.5s ease; 
+  cursor: pointer;
+}
+
+.profesionales h1:hover{
+  color: #a67ac4;
+}
+
+.usuarios h1{
+  color: #3d3d3d;
+  transition: 0.5s ease; 
+  cursor: pointer;
+}
+
+.usuarios h1:hover{
+  color: #a67ac4;
+}
+
 .imagen1 {
   display: flex;
   flex-direction: column;

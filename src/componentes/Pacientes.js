@@ -64,6 +64,7 @@ class Pacientes extends Component {
     const datosPacientes = this.state.datosPacientes; //llama a datosProfecionales del this.state
     return (
       <div className="pacientes"> 
+      <h1>Pacientes</h1>
       {this.state.showFormulario &&
         <FormularioPacientes
         datos={this.state.datosFormulario}

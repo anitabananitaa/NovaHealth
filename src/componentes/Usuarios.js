@@ -65,6 +65,7 @@ class Usuarios extends Component {
     const datosUsuarios= this.state.datosUsuarios;
     return (
       <div className="usuarios">
+        <h1>Usuarios</h1>
         {this.state.showFormulario &&
           <FormularioUsuarios
           datos={this.state.datosFormulario}

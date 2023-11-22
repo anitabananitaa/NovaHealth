@@ -3,6 +3,7 @@ import TarjetaLlamados from "./TarjetaLlamados";
 import Carta from "./Carta";
 import FormularioLamados from "./FormularioLlamados";
 import FormularioAtender from "./FormularioAtender";
+import FormularioFinalizar from "./FormularioFinalizar";
 import axios from 'axios'; 
 
 const url = "https://72a.ctpoba.ar/api";
@@ -15,6 +16,8 @@ class Llamados extends Component {
       showFormulario: false,
       datosLlamados: [],
       datosZonas:[],
+      datosProfesionales:[],
+      datosPacientes:[],
       showFormularioAtender: false,
       showFormularioFinalizar: false
     };
@@ -24,11 +27,12 @@ class Llamados extends Component {
     this.obtenerDatos();
     this.obtenerZonas()
     this.obtenerProfesionales(); // Agrega este método para obtener profesionales
+    this.obtenerPacientes();
   } 
 
   showFormulario(){
-    this.setState({showFormulario: !this.state.showFormulario});
-    this.obtenerDatos()
+    this.setState({showFormulario: !this.state.showFormulario, datosFormulario: null});
+    this.obtenerDatos();
   }
 
   //métodos para mostrar y ocultar los formularios
@@ -38,6 +42,7 @@ class Llamados extends Component {
   
   hideFormularioLlamados = () => {
     this.setState({ showFormularioLlamados: false });
+    this.obtenerDatos();
   };
   
   showFormularioAtender = () => {
@@ -46,6 +51,16 @@ class Llamados extends Component {
   
   hideFormularioAtender() {
     this.setState({ showFormularioAtender: false });
+    this.obtenerDatos();
+  }
+
+  showFormularioFinalizar = () => {
+    this.setState({ showFormularioFinalizar: true });
+  };
+
+  hideFormularioFinalizar() {
+    this.setState({ showFormularioFinalizar: false });
+    this.obtenerDatos();
   }
 
   obtenerDatos() {
@@ -84,15 +99,30 @@ class Llamados extends Component {
       });
   }
 
+  obtenerPacientes() {
+    axios.get(url + '/pacientes')
+      .then((res) => {
+        console.log(res.data); //registra toda la informacion en la consola (status:"ok" con el arry aparte)
+        this.setState({ datosPacientes: res.data.result });// trae los resultados(arry) guardados en el state
+        console.log(this.state.datosPacientes);//verifica que datosPacientes se guardo correctamente en la consola
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
 atenderTarjeta = (datos) => {
-  this.showFormularioAtender(datos);
+  this.setState({
+    showFormularioAtender: true,
+    datosFormulario: datos
+  });
 };
   
 
   finalizarTarjeta = (datos) => {
     this.setState({
       showFormularioFinalizar: true,
-      datosFormulario: datos,
+      datosFormulario: datos
     });
   };
 
@@ -100,11 +130,12 @@ atenderTarjeta = (datos) => {
     const datosLlamados = this.state.datosLlamados;
     return (
       <div className="llamados">
-        {/* <h1>Llamados</h1> */}
+        <h1>Llamados</h1> 
       {this.state.showFormulario &&
         <FormularioLamados
           datos={this.state.datosFormulario}
           zonas={this.state.datosZonas}
+          pacientes={this.state.datosPacientes}
           salir={() => this.showFormulario()}
         />
       }
@@ -112,7 +143,7 @@ atenderTarjeta = (datos) => {
         <FormularioAtender
           datos={this.state.datosFormulario}
           profesionales={this.state.datosProfesionales} 
-          salir={() => this.showFormulario()}
+          salir={() => this.hideFormularioAtender()}
           hideFormularioAtender={() => this.hideFormularioAtender()}
         />
       }
@@ -120,7 +151,7 @@ atenderTarjeta = (datos) => {
       {this.state.showFormularioFinalizar &&
         <FormularioFinalizar
           datos={this.state.datosFormulario}
-          salir={()=>this.showFormulario()}
+          salir={()=>this.hideFormularioFinalizar()}
         />
       }
 
@@ -131,15 +162,16 @@ atenderTarjeta = (datos) => {
         <TarjetaLlamados 
           key={index}
           estado={llamados.estado}
-          tipo={llamados.zona.tipo}
+          tipo={llamados.tipo_de_llamado}
           dni={llamados.paciente.dni}
           nombre={llamados.paciente.nombre}
           apellido={llamados.paciente.apellido}
-          descripcion={llamados.zona.descripcion}
+          zona={llamados.zona.descripcion}
           fecha_hora_llamado={llamados.fecha_hora_llamado}
           fecha_hora_atencion={llamados.fecha_hora_atencion}
-          origen={llamados.origen}
-          profesional={llamados.nombre_profesional}
+          profesional={llamados.profesional.nombre}
+          diagnostico={llamados.diagnostico}
+          tratamiento={llamados.tratamiento}
           onAtender={(datos) => this.atenderTarjeta(llamados)}
           onFinalizar={(datos) => this.finalizarTarjeta(llamados)}
 

@@ -129,7 +129,7 @@ class FormularioProfesionales extends Component {
         <h1>Formulario de Profesionales</h1>
         <div className="formulario">
           <span>
-            Nombre
+            Nombre:
             <input type="text" name="nombre"
                 value={this.state.nombre}
                 onChange={this.handleInputChange} />
@@ -137,7 +137,7 @@ class FormularioProfesionales extends Component {
         </div>
         <div className="formulario">
           <span>
-            Apellido
+            Apellido:
             <input type="text" name="apellido"
                 value={this.state.apellido}
                 onChange={this.handleInputChange}/>
@@ -146,7 +146,7 @@ class FormularioProfesionales extends Component {
 
         <div className="formulario">
           <span>
-            DNI
+            DNI:
             <input type="text"  pattern="[0-9]{8}"name="dni"
                 value={this.state.dni}
                 onChange={this.handleInputChange}  />
@@ -154,7 +154,7 @@ class FormularioProfesionales extends Component {
         </div>
         <div className="formulario">
           <span>
-            Especialidad
+            Especialidad:
             <select className="mi-select" name="especialidad"
                 value={this.state.especialidad}
                 onChange={this.handleInputChange}>
@@ -165,7 +165,7 @@ class FormularioProfesionales extends Component {
         </div>
         <div className="formulario">
           <span>
-            Telefono
+            Telefono:
             <input type="text" name="telefono"
                 value={this.state.telefono}
                 onChange={this.handleInputChange}   />

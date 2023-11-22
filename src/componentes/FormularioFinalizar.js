@@ -62,9 +62,9 @@ guardar(){
     if (this.state.ID_llamado !== undefined && this.state.ID_llamado !==null)
   {
     const llamado = {
-      ID_llamado: this.props.datos.ID_llamado,
-      diagnostico: this.props.datos.diagnostico,
-      tratamiento:this.props.datos.tratamiento
+      ID_llamado: this.state.ID_llamado,
+      diagnostico: this.state.diagnostico,
+      tratamiento:this.state.tratamiento
     }
     this.guardarPut(llamado)
   }    
@@ -81,11 +81,12 @@ guardar(){
     
   render() {
     return (
-      <div className="contenedor2">
+      <div className="modal">
+        <div className="contenedorFormulario">
         <h1>Finalizar Llamado</h1>
           <div className="formulario">
             <span>
-              Diagnóstico
+              Diagnóstico:
               <input type="text" name="diagnostico"
                 value={this.state.diagnostico}
                 onChange={this.handleInputChange}/>
@@ -93,13 +94,12 @@ guardar(){
           </div>
           <div className="formulario">
             <span>
-              Tratamiento
+              Tratamiento:
               <input type="text" name="tratamiento"
                 value={this.state.tratamiento}
                 onChange={this.handleInputChange}/>
             </span>
           </div>
-        <div className="botones">
           <button
             type="button"
             className="btn"
@@ -116,6 +116,7 @@ guardar(){
           </button>
           </div>
       </div>
+      
     );
   }
 }

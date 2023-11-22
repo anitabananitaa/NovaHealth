@@ -64,6 +64,7 @@ class Profesionales extends Component {
     const datosProfesionales = this.state.datosProfesionales; //llama datosProfesionales del this.state
     return (
       <div className="profesionales">
+        <h1>Profesionales</h1>
         {this.state.showFormulario &&
           <FormularioProfesionales
             datos={this.state.datosFormulario}

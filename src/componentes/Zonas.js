@@ -61,6 +61,7 @@ class Zonas extends Component {
     const datosZonas = this.state.datosZonas;// llama datosZonas del this.state
     return (
       <div className="zonas">
+        <h1>Zonas</h1> 
         {this.state.showFormulario &&
           <FormularioZonas
             datos={this.state.datosFormulario}
